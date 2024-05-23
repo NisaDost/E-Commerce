@@ -29,3 +29,34 @@ C:\Users\Nisa\Documents\GitHub\E-Commerce\ECOMMERCE2\obj\Release\net8.0\refint\E
 C:\Users\Nisa\Documents\GitHub\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.pdb
 C:\Users\Nisa\Documents\GitHub\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.genruntimeconfig.cache
 C:\Users\Nisa\Documents\GitHub\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ref\ECOMMERCE2.dll
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\bin\Release\net8.0\appsettings.Development.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\bin\Release\net8.0\appsettings.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\bin\Release\net8.0\ECOMMERCE2.staticwebassets.runtime.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\bin\Release\net8.0\ECOMMERCE2.exe
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\bin\Release\net8.0\ECOMMERCE2.deps.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\bin\Release\net8.0\ECOMMERCE2.runtimeconfig.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\bin\Release\net8.0\ECOMMERCE2.dll
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\bin\Release\net8.0\ECOMMERCE2.pdb
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.AssemblyInfoInputs.cache
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.AssemblyInfo.cs
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.csproj.CoreCompileInputs.cache
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.RazorAssemblyInfo.cache
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.RazorAssemblyInfo.cs
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.sourcelink.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\staticwebassets.build.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\staticwebassets.development.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\staticwebassets\msbuild.ECOMMERCE2.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\staticwebassets\msbuild.build.ECOMMERCE2.props
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\staticwebassets\msbuild.buildMultiTargeting.ECOMMERCE2.props
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\staticwebassets\msbuild.buildTransitive.ECOMMERCE2.props
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\staticwebassets.pack.json
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\scopedcss\bundle\ECOMMERCE2.styles.css
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\scopedcss\projectbundle\ECOMMERCE2.bundle.scp.css
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.dll
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\refint\ECOMMERCE2.dll
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.pdb
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ECOMMERCE2.genruntimeconfig.cache
+C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2\obj\Release\net8.0\ref\ECOMMERCE2.dll
