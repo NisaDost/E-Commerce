@@ -63,14 +63,14 @@ namespace ECOMMERCE2.Data
             modelBuilder.Entity<Product>().Property(p => p.Price).IsRequired();
             modelBuilder.Entity<Product>().Property(p => p.Quantity).IsRequired();
             modelBuilder.Entity<Product>().Property(p => p.Image).HasMaxLength(50).IsRequired();
-            modelBuilder.Entity<Product>().HasMany(p => p.Category).WithMany(c => c.Product).HasForeignKey(p => p.CategoryId);
+            //modelBuilder.Entity<Product>().HasMany(p => p.Category).WithMany(c => c.Product).HasForeignKey(p => p.CategoryId);
 
             modelBuilder.Entity<Cart>().HasKey(c => c.Id);
             modelBuilder.Entity<Cart>().Property(c => c.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Cart>().Property(c => c.Quantity).IsRequired();
-            modelBuilder.Entity<Cart>().HasOne(c => c.User).WithOne(u => u.Cart).HasForeignKey(c => c.UserId);
+            //modelBuilder.Entity<Cart>().HasOne(c => c.User).WithOne(u => u.Cart).HasForeignKey(c => c.UserId);
             modelBuilder.Entity<Cart>().HasOne(c => c.Product).WithMany(p => p.Cart).HasForeignKey(c => c.Product);
-            modelBuilder.Entity<Cart>().HasOne(c => c.BillingDetail).WithOne(b => b.Cart).HasForeignKey(c => c.BillingDetail);
+            //modelBuilder.Entity<Cart>().HasOne(c => c.BillingDetail).WithOne(b => b.Cart).HasForeignKey(c => c.BillingDetail);
 
 
             
