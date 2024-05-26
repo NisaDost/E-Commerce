@@ -1,9 +1,14 @@
-﻿namespace ECOMMERCE2.Data.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ECOMMERCE2.Data.Model
 {
     public class Category
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
-        public List<Product> Product { get; set; }
+        public int Order { get; set; }
+        public ICollection<ProductCategory> ProductCategories { get; set; }
     }
 }

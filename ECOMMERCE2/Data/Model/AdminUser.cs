@@ -2,10 +2,10 @@
 
 namespace ECOMMERCE2.Data.Model
 {
-    public class User
+    public class AdminUser
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]
@@ -14,7 +14,5 @@ namespace ECOMMERCE2.Data.Model
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
-        public ICollection<Order> Orders { get; set; }
-        public Cart Cart { get; set; }
     }
 }

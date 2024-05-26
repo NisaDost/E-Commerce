@@ -1,11 +1,13 @@
-﻿namespace ECOMMERCE2.Data.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ECOMMERCE2.Data.Model
 {
     public class Cart
     {
-        public Guid Id { get; set; }
-        public int Quantity { get; set; }
+        [Key]
+        public int CartId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
-        public Product Product { get; set; }
-        public BillingDetail BillingDetail { get; set; }
+        public ICollection<CartItem> CartItems { get; set; }
     }
 }
