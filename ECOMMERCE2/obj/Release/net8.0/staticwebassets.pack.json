@@ -101,20 +101,88 @@
       "PackagePath": "staticwebassets\\img\\hero-img-2.jpg"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-img.jpg",
-      "PackagePath": "staticwebassets\\img\\hero-img.jpg"
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-img.png",
+      "PackagePath": "staticwebassets\\img\\hero-img.png"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-item-2.jpg",
+      "PackagePath": "staticwebassets\\img\\hero-item-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-item.jpg",
+      "PackagePath": "staticwebassets\\img\\hero-item.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-1-thumbnail.jpg",
+      "PackagePath": "staticwebassets\\img\\image-product-1-thumbnail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-1.jpg",
+      "PackagePath": "staticwebassets\\img\\image-product-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-2-thumbnail.jpg",
+      "PackagePath": "staticwebassets\\img\\image-product-2-thumbnail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-2.jpg",
+      "PackagePath": "staticwebassets\\img\\image-product-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-3-thumbnail.jpg",
+      "PackagePath": "staticwebassets\\img\\image-product-3-thumbnail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-3.jpg",
+      "PackagePath": "staticwebassets\\img\\image-product-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-4-thumbnail.jpg",
+      "PackagePath": "staticwebassets\\img\\image-product-4-thumbnail.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-4.jpg",
+      "PackagePath": "staticwebassets\\img\\image-product-4.jpg"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\payment.png",
       "PackagePath": "staticwebassets\\img\\payment.png"
     },
     {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\running.png",
+      "PackagePath": "staticwebassets\\img\\running.png"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\shoes-1.jpg",
+      "PackagePath": "staticwebassets\\img\\shoes-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\shoes-2.jpg",
+      "PackagePath": "staticwebassets\\img\\shoes-2.jpg"
+    },
+    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\single-item.jpg",
       "PackagePath": "staticwebassets\\img\\single-item.jpg"
     },
     {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneaker-1.jpg",
+      "PackagePath": "staticwebassets\\img\\sneaker-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneaker-2.jpg",
+      "PackagePath": "staticwebassets\\img\\sneaker-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneaker-3.jpg",
+      "PackagePath": "staticwebassets\\img\\sneaker-3.jpg"
+    },
+    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\testimonial-1.jpg",
       "PackagePath": "staticwebassets\\img\\testimonial-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\testimonial-2.jpg",
+      "PackagePath": "staticwebassets\\img\\testimonial-2.jpg"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-1.jpg",

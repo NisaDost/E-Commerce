@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Login";
+    ViewData["AppName"] = "DashUP";
     Layout = null;
 }
 <head>
@@ -32,25 +33,26 @@
     <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
 </head>
 
-<form class="container center col-md-4 align-content-center mt-5">
-    <div class="container center form-control">
-        <a href="index.html" class="navbar-brand text-center"><h1 class="text-primary display-6">LOGO</h1></a>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <div class="form-item center">
+<div>
+    <img src="~/img/running.png" class="img-fluid position-absolute" style="width: 60vw;" alt="">
+</div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+<form action="" method="" class="d-flex flex-column min-vh-100 justify-content-center">
+    <div class="container card shadow-lg col-md-3 py-4 px-4">
+        <a class="navbar-brand"><h1 class="text-primary display-6 text-center">@ViewData["AppName"]</h1></a>
+        <div class="form-group mb-4">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp" placeholder="sample@example.com">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
+        <div class="form-group mb-3">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" required placeholder="******">
+        </div>
+        <div class="form-check mb-4">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
     </div>
-</form> 
+</form>
