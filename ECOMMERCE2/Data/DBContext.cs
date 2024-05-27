@@ -12,11 +12,10 @@ namespace ECOMMERCE2.Data
         {
             _productList =
             [
-                new Product(){Id=1, Name="Chuck Taylor", Description="LOREM1",Price=75, Brand="Converse", InStock=true, Picture="~/img/converse-ad.gif"},
-                new Product(){Id=2, Name="Air Jordan",Description="LOREM1",Price=150, Brand="Nike", InStock=true, Picture="gt3rs"},
+                new Product(){Id=1, Brand = "Converse",  Name ="Chuck Taylor", Picture = "~/img/converse-ad.gif", Price = 75, StockQuantity=20, InStock = true, Description ="LOREM1", /*ProductCategories=""*/ },
 
-                //new Product(){Id=3, Name="Dunk",Description="LOREM1",Price=120, Brand="Nike", InStock=true, Picture=""},
-                //new Product(){Id=4, Name="Samba",Description="LOREM1",Price=9, Brand="Adidas", InStock=true, Picture="gtr"},
+                new Product(){Id=2, Brand = "Nike", Name ="Air Jordan", Picture = "~/img/sneaker-4.jpg", Price = 150, StockQuantity=5, InStock = true, Description ="LOREM2", /*ProductCategories=""*/},
+
              ];
             productCount = _productList.Where(p => p.InStock == true).Count();
         }
