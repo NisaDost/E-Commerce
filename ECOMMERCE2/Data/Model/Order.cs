@@ -10,9 +10,8 @@ namespace ECOMMERCE2.Data.Model
         public User User { get; set; }
         public DateTime OrderDate { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
-        [Required]
-        public string ShippingAddress { get; set; }
-        [Required]
-        public string BillingInformation { get; set; }
+        public ICollection<BillingAddress> BillingAddresses { get; set; }
+        public ICollection<BillingCard> BillingCard { get; set; }
+
     }
 }

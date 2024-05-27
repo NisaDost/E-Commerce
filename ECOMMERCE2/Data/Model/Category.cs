@@ -8,7 +8,6 @@ namespace ECOMMERCE2.Data.Model
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public int Order { get; set; }
-        public ICollection<ProductCategory> ProductCategories { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

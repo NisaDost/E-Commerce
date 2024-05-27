@@ -20,7 +20,6 @@ namespace ECOMMERCE2.Data
             productCount = _productList.Where(p => p.InStock == true).Count();
         }
 
-        public DbSet<AdminUser> AdminUsers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -28,25 +27,12 @@ namespace ECOMMERCE2.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
-        public DbSet<BillingDetails> BillingDetails { get; set; }
-        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<BillingCard> BillingCard { get; set; }
+        public DbSet<BillingAddress> BillingAddresses { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProductCategory>()
-                .HasKey(pc => new { pc.ProductId, pc.CategoryId });
-
-            modelBuilder.Entity<ProductCategory>()
-                .HasOne(pc => pc.Product)
-                .WithMany(p => p.ProductCategories)
-                .HasForeignKey(pc => pc.ProductId);
-
-            modelBuilder.Entity<ProductCategory>()
-                .HasOne(pc => pc.Category)
-                .WithMany(c => c.ProductCategories)
-                .HasForeignKey(pc => pc.CategoryId);
-
             modelBuilder.Entity<OrderDetail>()
                 .HasOne(od => od.Order)
                 .WithMany(o => o.OrderDetails)
@@ -75,6 +61,42 @@ namespace ECOMMERCE2.Data
             modelBuilder.Entity<Product>()
                 .Property(p => p.Price)
                 .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId);
+
+            modelBuilder.Entity<BillingAddress>()
+                .HasOne(ba => ba.User)
+                .WithMany(u => u.BillingAddresses)
+                .HasForeignKey(ba => ba.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<BillingAddress>()
+                .HasOne(ba => ba.Order)
+                .WithMany(o => o.BillingAddresses)
+                .HasForeignKey(ba => ba.OrderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<BillingCard>()
+                .HasOne(bc => bc.User)
+                .WithMany(u => u.BillingCards)
+                .HasForeignKey(bc => bc.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<BillingCard>()
+                .HasOne(bc => bc.Order)
+                .WithMany(o => o.BillingCard)
+                .HasForeignKey(bc => bc.OrderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Order>()
+                .HasOne(o => o.User)
+                .WithMany(u => u.Orders)
+                .HasForeignKey(o => o.UserId);
+
+            base.OnModelCreating(modelBuilder);
         }
         public static List<Product> GetProducts()
         {

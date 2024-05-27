@@ -4,7 +4,7 @@
 
 <partial name="_SinglePageHeaderPartial" />
 
-<div class="py-5">
+<div class="py-5 container">
     <h1 class="mb-4">Billing details</h1>
     <form action="#" method="get">
         <!--Shipping info start-->
@@ -53,7 +53,11 @@
                     <label class="form-label my-3">Address <sup>*</sup></label>
                     <input type="text" class="form-control" placeholder="House Number Street Name">
                 </div>
-                <!--Shipping info start-->
+                <div class="form-check text-start mt-2">
+                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" value="Save">
+                    <label class="form-check-label" for="SaveInfo">Save my address</label>
+                </div>
+                <!--Shipping info end-->
                 <br>
                 <br>
                 <!--Payment info start-->

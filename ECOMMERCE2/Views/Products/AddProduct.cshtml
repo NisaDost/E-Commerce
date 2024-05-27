@@ -1,0 +1,95 @@
+﻿@model ECOMMERCE2.Models.ProductAddViewModel
+@{
+    ViewData["Title"] = "Add Product";
+    var categories = ViewBag.Categories as List<ECOMMERCE2.Data.Model.Category>;
+}
+<partial name="_SinglePageHeaderPartial" />
+
+<div class="form d-flex justify-content-center">
+    <div class="row w-75 align-items-center pt-md-5 mt-md-5 mb-5">
+        <div class="card shadow-lg py-5">
+            <div class="card-title text-center mt-3">
+                <h3>Add a New Product</h3>
+            </div>
+            <div class="card-body">
+                <form class="d-flex flex-row justify-content-between" asp-action="AddProduct">
+                    <div class="container col-6">
+
+                        <div class="form-group">
+                            <label for="productname" class="text-secondary">Product Name:</label>
+                            <input type="text" class="form-control" id="productname" asp-for="Name"
+                                   placeholder="Enter Product Name">
+                            <div class="invalid-feedback">Product Name Can't Be Empty</div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label for="productcategory" class="text-secondary">Product Category:</label>
+                            <select class="form-select" asp-for="CategoryId">
+                                <option value="none">Select</option>
+                                @foreach (var item in categories)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                            <div class="invalid-feedback">Product ID Can't Be Empty</div>
+                        </div>
+                        <br />
+                        <div class="d-flex justify-content-between">
+                            <div class="form-group col-4">
+                                <label for="productprice" class="text-secondary">Product Price:</label>
+                                <input type="text" class="form-control" id="productprice" asp-for="Price"
+                                       placeholder="Enter Product Price">
+                                <div class="invalid-feedback">Product Price Can't Be Empty</div>
+
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center form-group col-7">
+                                <div class="col-7">
+                                    <label for="productquantity" class="text-secondary">Product Quantity:</label>
+                                    <input type="number" class="form-control" id="productquantity" asp-for="StockQuantity"
+                                           placeholder="Enter Product Quantity">
+                                    <div class="invalid-feedback">Product Quantity Can't Be Empty</div>
+                                </div>
+                                <div class="col-4 form-check text-start mt-4">
+                                    <input type="checkbox" asp-for="InStock" class="form-check-input bg-primary border-0" id="InStock" name="InStock" value="Stock">
+                                    <label class="form-check-label" for="InStock">In Stock</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <p class="text-secondary">Product Image:</p>
+                        <div class="custom-file">
+
+                            <input type="file" class="custom-file-input" id="productimage" asp-for="Image" required>
+                            <label class="custom-file-label" for="productimage">
+                                Choose
+                                file...
+                            </label>
+                            <div class="invalid-feedback">File Format Not Supported</div>
+                        </div>
+                    </div>
+
+                    <div class="container col-6">
+                        <div class="form-group">
+                            <label for="productbrand" class="text-secondary">Product Brand:</label>
+                            <input type="text" class="form-control" id="productbrand" asp-for="Brand"
+                                   placeholder="Enter Product Brand">
+                            <div class="invalid-feedback">Product Brand Can't Be Empty</div>
+                        </div>
+                        <br />
+                        <div>
+                            <label for="productdescription" class="text-secondary">Product Description:</label>
+                            <textarea class="form-control" style="resize: none" id="productdescription" rows="5" asp-for="Description"
+                                      placeholder="Enter Product Description"> 
+                                      </textarea>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-secondary text-light mt-5" type="submit">
+                                Add Product
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,7 @@ namespace ECOMMERCE2.Data.Model
         [Required]
         public bool InStock { get; set; }
         public string Description { get; set; }
-        public ICollection<ProductCategory> ProductCategories { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECOMMERCE2.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240526165625_InitialCreate")]
+    [Migration("20240527190536_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -25,42 +25,64 @@ namespace ECOMMERCE2.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ECOMMERCE2.Data.Model.AdminUser", b =>
+            modelBuilder.Entity("ECOMMERCE2.Data.Model.BillingAddress", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("BillingAddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BillingAddressId"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Surname")
+                    b.Property<string>("Country")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("AdminUsers");
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mobile")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BillingAddressId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BillingAddresses");
                 });
 
-            modelBuilder.Entity("ECOMMERCE2.Data.Model.BillingDetails", b =>
+            modelBuilder.Entity("ECOMMERCE2.Data.Model.BillingCard", b =>
                 {
-                    b.Property<int>("BillingDetailsId")
+                    b.Property<int>("BillingCardId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BillingDetailsId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BillingCardId"));
 
                     b.Property<string>("CVV")
                         .IsRequired()
@@ -74,12 +96,25 @@ namespace ECOMMERCE2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ExpiryDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("ExpiryDateMonth")
+                        .HasColumnType("int");
 
-                    b.HasKey("BillingDetailsId");
+                    b.Property<int>("ExpiryDateYear")
+                        .HasColumnType("int");
 
-                    b.ToTable("BillingDetails");
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BillingCardId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BillingCard");
                 });
 
             modelBuilder.Entity("ECOMMERCE2.Data.Model.Cart", b =>
@@ -139,9 +174,6 @@ namespace ECOMMERCE2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Order")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
@@ -155,16 +187,8 @@ namespace ECOMMERCE2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"));
 
-                    b.Property<string>("BillingInformation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ShippingAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -210,9 +234,19 @@ namespace ECOMMERCE2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Brand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("InStock")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -230,22 +264,9 @@ namespace ECOMMERCE2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("ECOMMERCE2.Data.Model.ProductCategory", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "CategoryId");
-
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("ProductCategories");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("ECOMMERCE2.Data.Model.User", b =>
@@ -264,6 +285,10 @@ namespace ECOMMERCE2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -275,6 +300,44 @@ namespace ECOMMERCE2.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ECOMMERCE2.Data.Model.BillingAddress", b =>
+                {
+                    b.HasOne("ECOMMERCE2.Data.Model.Order", "Order")
+                        .WithMany("BillingAddresses")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ECOMMERCE2.Data.Model.User", "User")
+                        .WithMany("BillingAddresses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ECOMMERCE2.Data.Model.BillingCard", b =>
+                {
+                    b.HasOne("ECOMMERCE2.Data.Model.Order", "Order")
+                        .WithMany("BillingCard")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ECOMMERCE2.Data.Model.User", "User")
+                        .WithMany("BillingCards")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ECOMMERCE2.Data.Model.Cart", b =>
@@ -337,23 +400,15 @@ namespace ECOMMERCE2.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ECOMMERCE2.Data.Model.ProductCategory", b =>
+            modelBuilder.Entity("ECOMMERCE2.Data.Model.Product", b =>
                 {
                     b.HasOne("ECOMMERCE2.Data.Model.Category", "Category")
-                        .WithMany("ProductCategories")
+                        .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ECOMMERCE2.Data.Model.Product", "Product")
-                        .WithMany("ProductCategories")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Category");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("ECOMMERCE2.Data.Model.Cart", b =>
@@ -363,21 +418,24 @@ namespace ECOMMERCE2.Migrations
 
             modelBuilder.Entity("ECOMMERCE2.Data.Model.Category", b =>
                 {
-                    b.Navigation("ProductCategories");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("ECOMMERCE2.Data.Model.Order", b =>
                 {
-                    b.Navigation("OrderDetails");
-                });
+                    b.Navigation("BillingAddresses");
 
-            modelBuilder.Entity("ECOMMERCE2.Data.Model.Product", b =>
-                {
-                    b.Navigation("ProductCategories");
+                    b.Navigation("BillingCard");
+
+                    b.Navigation("OrderDetails");
                 });
 
             modelBuilder.Entity("ECOMMERCE2.Data.Model.User", b =>
                 {
+                    b.Navigation("BillingAddresses");
+
+                    b.Navigation("BillingCards");
+
                     b.Navigation("Cart")
                         .IsRequired();
 
