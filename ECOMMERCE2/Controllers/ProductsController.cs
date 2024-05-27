@@ -8,5 +8,10 @@ namespace ECOMMERCE2.Controllers
         {
             return View();
         }
+
+        public IActionResult Details()
+        {
+            return View();
+        }
     }
 }

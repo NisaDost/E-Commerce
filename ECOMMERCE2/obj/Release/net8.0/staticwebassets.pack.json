@@ -53,8 +53,12 @@
       "PackagePath": "staticwebassets\\img\\best-product-6.jpg"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\cart-page-header-img.jpg",
-      "PackagePath": "staticwebassets\\img\\cart-page-header-img.jpg"
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\catalog.jpg",
+      "PackagePath": "staticwebassets\\img\\catalog.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\converse-ad.gif",
+      "PackagePath": "staticwebassets\\img\\converse-ad.gif"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\featur-1.jpg",
@@ -145,12 +149,28 @@
       "PackagePath": "staticwebassets\\img\\image-product-4.jpg"
     },
     {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\jordan.png",
+      "PackagePath": "staticwebassets\\img\\jordan.png"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nisa.png",
+      "PackagePath": "staticwebassets\\img\\nisa.png"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\page-header-img.jpg",
+      "PackagePath": "staticwebassets\\img\\page-header-img.jpg"
+    },
+    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\payment.png",
       "PackagePath": "staticwebassets\\img\\payment.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\running.png",
       "PackagePath": "staticwebassets\\img\\running.png"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sena.png",
+      "PackagePath": "staticwebassets\\img\\sena.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\shoes-1.jpg",
@@ -175,6 +195,18 @@
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneaker-3.jpg",
       "PackagePath": "staticwebassets\\img\\sneaker-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneaker-4.jpg",
+      "PackagePath": "staticwebassets\\img\\sneaker-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneakers-1.jpg",
+      "PackagePath": "staticwebassets\\img\\sneakers-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneakers.jpg",
+      "PackagePath": "staticwebassets\\img\\sneakers.jpg"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\testimonial-1.jpg",
@@ -207,6 +239,14 @@
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-6.jpg",
       "PackagePath": "staticwebassets\\img\\vegetable-item-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\woman.jpg",
+      "PackagePath": "staticwebassets\\img\\woman.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\yigit.png",
+      "PackagePath": "staticwebassets\\img\\yigit.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\js\\main.js",
