@@ -15,12 +15,19 @@ namespace ECOMMERCE2.Controllers
         }
         public IActionResult Index()
         {
+            var categories = _context.Categories.ToList();
             var products = _context.Products.ToList();
+            ViewBag.Categories = categories;
             return View(products);
         }
 
-        public IActionResult Details(ProductAddViewModel product)
+        public IActionResult Details(int id)
         {
+            var product = _context.Products.Find(id);
+            //if (product == null)
+            //{
+            //    return NotFound();
+            //}
             return View(product);
         }
         public IActionResult AddProduct()
@@ -50,6 +57,18 @@ namespace ECOMMERCE2.Controllers
             _context.Products.Add(newProduct);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult EditProduct(int id)
+        {
+            var product = _context.Products.Find(id);
+            //if (product == null)
+            //{
+            //    return NotFound();
+            //}
+            var categories = _context.Categories.ToList();
+            ViewBag.Categories = categories;
+            return View(product);
         }
     }
 }

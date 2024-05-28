@@ -1,4 +1,4 @@
-﻿@model ECOMMERCE2.Models.ProductAddViewModel
+﻿@model ECOMMERCE2.Data.Model.Product
 @{
     ViewData["Title"] = "Details";
 }
@@ -12,15 +12,17 @@
                 <div class="row g-4">
                     <div class="col-lg-6">
                         <div class="border rounded">
-                            <img src="@Model.Image" class="img-fluid rounded" alt="Image">
+                            <img src="@Model.Picture" class="img-fluid rounded" alt="Image">
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <h4 class="fw-bold mb-3">@Model.Name</h4>
+                        <h2 class="fw-bold mb-3">@Model.Name</h2>
                         <p class="mb-3">Category: @Model.CategoryId</p>
-                        <h5 class="fw-bold mb-3">@Model.Price $</h5>
+                        <h5 class="fw-bold mb-3">$ @Model.Price</h5>
+                        <h7>Description</h7>
+                        <hr class="col-3">
+                        <p class="mt-2">@Model.Description</p>
 
-                        <p class="my-5">@Model.Description</p>
                         <div class="input-group quantity mb-5" style="width: 100px;">
                             <div class="input-group-btn">
                                 <button class="btn btn-sm btn-minus rounded-circle bg-light border">
@@ -246,4 +248,5 @@
             </div>
         </div>
     </div>
-    <!-- Single Product End -->
+</div>
+<!-- Single Product End -->
