@@ -23,15 +23,21 @@
                         </div>
                         <br />
                         <div class="form-group">
-                            <label for="productcategory" class="text-secondary">Product Category:</label>
-                            <select class="form-select" asp-for="CategoryId">
-                                <option value="none">Select</option>
-                                @foreach (var item in categories)
-                                {
-                                    <option value="@item.Id">@item.Name</option>
-                                }
-                            </select>
-                            <div class="invalid-feedback">Product ID Can't Be Empty</div>
+                            <div>
+
+                                <label for="productcategory" class="text-secondary">Product Category:</label>
+                                <select class="form-select" asp-for="CategoryId">
+                                    <option value="none">Select</option>
+                                    @foreach (var item in categories)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                                <div class="invalid-feedback">Product ID Can't Be Empty</div>
+                            </div>
+                            <div>
+                                <a>Don't see your category? Add a new one <a href="/Categories/AddCategory">here</a></a>
+                            </div>
                         </div>
                         <br />
                         <div class="d-flex justify-content-between">

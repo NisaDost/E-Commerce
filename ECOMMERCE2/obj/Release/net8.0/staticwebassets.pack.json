@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\4f.png",
+      "PackagePath": "staticwebassets\\img\\4f.png"
+    },
+    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\adidas-predator.jpg",
       "PackagePath": "staticwebassets\\img\\adidas-predator.jpg"
     },
@@ -123,6 +127,10 @@
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-item.jpg",
       "PackagePath": "staticwebassets\\img\\hero-item.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hypervenom ii.png",
+      "PackagePath": "staticwebassets\\img\\hypervenom ii.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\image-product-1.jpg",
