@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+BKAUmAHXVJzEBjRItaZByK+k5dXpdc+drPjsdN7CRE=",
+  "Hash": "Q3OtmrI626GUTg9kkGQUbojq7dvtdwzVzYYYDDD2zBo=",
   "Source": "ECOMMERCE2",
   "BasePath": "_content/ECOMMERCE2",
   "Mode": "Default",
@@ -376,6 +376,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\converse-ad.gif"
+    },
+    {
+      "Identity": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\dnd-converse.png",
+      "SourceId": "ECOMMERCE2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\",
+      "BasePath": "_content/ECOMMERCE2",
+      "RelativePath": "img/dnd-converse.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\dnd-converse.png"
     },
     {
       "Identity": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\featur-1.jpg",

@@ -1,7 +1,9 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Login";
     ViewData["AppName"] = "DashUP";
     Layout = null;
+    var role = ViewBag.Role as string;
 }
 <head>
     <meta charset="utf-8" />
@@ -41,9 +43,8 @@
     <div class="container card shadow-lg col-md-3 py-4 px-4">
         <a class="navbar-brand"><h1 class="text-primary display-6 text-center">@ViewData["AppName"]</h1></a>
         <div class="form-group mb-4">
-            <label class="text-secondary" for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" required aria-describedby="emailHelp" placeholder="sample@example.com">
-            <small id="emailHelp" class="form-text text-secondary">We'll never share your email with anyone else.</small>
+            <label class="text-secondary" for="userName">Username</label>
+            <input type="text" class="form-control" id="userName" required placeholder="Username">
         </div>
         <div class="form-group mb-3">
             <label class="text-secondary" for="exampleInputPassword1">Password</label>

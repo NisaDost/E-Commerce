@@ -6,18 +6,8 @@ namespace ECOMMERCE2.Data
 {
     public class DBContext : DbContext
     {
-        static List<Product> _productList;
-        static int productCount;
         public DBContext(DbContextOptions<DBContext> options) : base(options) 
         {
-            _productList =
-            [
-                new Product(){Id=1, Brand = "Converse",  Name ="Chuck Taylor", Picture = "~/img/converse-ad.gif", Price = 75, StockQuantity=20, InStock = true, Description ="LOREM1", /*ProductCategories=""*/ },
-
-                new Product(){Id=2, Brand = "Nike", Name ="Air Jordan", Picture = "~/img/sneaker-4.jpg", Price = 150, StockQuantity=5, InStock = true, Description ="LOREM2", /*ProductCategories=""*/},
-
-             ];
-            productCount = _productList.Where(p => p.InStock == true).Count();
         }
 
         public DbSet<Category> Categories { get; set; }
@@ -97,14 +87,6 @@ namespace ECOMMERCE2.Data
                 .HasForeignKey(o => o.UserId);
 
             base.OnModelCreating(modelBuilder);
-        }
-        public static List<Product> GetProducts()
-        {
-            return _productList;
-        }
-        public static int GetProductCount()
-        {
-            return productCount;
         }
     }
 }

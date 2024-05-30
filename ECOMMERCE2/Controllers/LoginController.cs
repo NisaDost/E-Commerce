@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ECOMMERCE2.Data.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ECOMMERCE2.Controllers
 {
@@ -6,7 +7,9 @@ namespace ECOMMERCE2.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var role = new User().Role;
+            ViewBag.Role = role;
+            return RedirectToAction("Index", "Home", role);
         }
     }
 }
