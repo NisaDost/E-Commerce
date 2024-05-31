@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj": {}
+    "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj": {
+    "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
+        "projectUniqueName": "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
         "projectName": "ECOMMERCE2",
-        "projectPath": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
-        "packagesPath": "C:\\Users\\Nisa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\obj\\",
+        "projectPath": "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
+        "packagesPath": "C:\\Users\\Yigit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Nisa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Users\\Yigit\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,25 +40,29 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Cookies": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.5, )"
+              "version": "[8.0.6, )"
             }
           },
           "imports": [

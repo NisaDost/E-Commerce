@@ -12,9 +12,17 @@ namespace ECOMMERCE2.Controllers
     public class LoginController : Controller
     {
         private readonly DBContext _context;
+        public LoginController(DBContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
-            return RedirectToAction("Index", "Home");
+            return View();
+        }
+        public IActionResult Register()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -25,20 +33,26 @@ namespace ECOMMERCE2.Controllers
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.Username),
-                    new Claim(ClaimTypes.Role, user.Role),
-                    new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
+                    new(ClaimTypes.Name, user.Username),
+                    new(ClaimTypes.Role, user.Role.ToString()),
+                    new(ClaimTypes.NameIdentifier, user.UserId.ToString())
                 };
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authProperties = new AuthenticationProperties { };
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-
                 return RedirectToAction("Index", "Home");
             }
 
             ViewBag.Error = "Invalid username or password!";
 
             return View("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> LogoutAsync()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

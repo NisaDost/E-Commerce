@@ -1,4 +1,4 @@
-﻿
+﻿@model ECOMMERCE2.Data.Model.User
 @{
     ViewData["Title"] = "Login";
     ViewData["AppName"] = "DashUP";
@@ -39,21 +39,27 @@
     <img src="~/img/running.png" class="img-fluid position-absolute" style="width: 60vw;" alt="">
 </div>
 
-<form action="" method="" class="d-flex flex-column min-vh-100 justify-content-center">
+<form asp-action="Login" class="d-flex flex-column min-vh-100 justify-content-center">
     <div class="container card shadow-lg col-md-3 py-4 px-4">
         <a class="navbar-brand"><h1 class="text-primary display-6 text-center">@ViewData["AppName"]</h1></a>
         <div class="form-group mb-4">
             <label class="text-secondary" for="userName">Username</label>
-            <input type="text" class="form-control" id="userName" required placeholder="Username">
+            <input asp-for="Username" type="text" class="form-control" id="userName" required placeholder="Username">
         </div>
         <div class="form-group mb-3">
             <label class="text-secondary" for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" required placeholder="******">
+            <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1" required placeholder="******">
         </div>
         <div class="form-check mb-4">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label text-secondary" for="exampleCheck1">Remember me</label>
         </div>
-        <button asp-controller="Home" asp-action="Index" type="submit" class="btn btn-primary">Login</button>
+        @if (!string.IsNullOrEmpty(ViewBag.Error))
+        {
+            <div class="alert alert-danger mt-3" role="alert">
+                @ViewBag.Error
+            </div>
+        }
+        <button type="submit" class="btn btn-primary">Login</button>
     </div>
 </form>
