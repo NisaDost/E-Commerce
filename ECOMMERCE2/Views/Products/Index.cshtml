@@ -13,61 +13,56 @@
         <div class="row g-4">
             <div class="col-lg-12">
                 <div class="row g-4">
-                    <div class="col-xl-3">
-                        <div class="input-group w-100 mx-auto d-flex">
-                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
-                        </div>
-                    </div>
-                    <div class="col-6"></div>
+                    <div class="col-lg-3">
 
-                    <div class="col-xl-3">
+                        @* <div class="navbar-nav mx-auto">
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Default Sorting:</a>
+                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                    <a class="dropdown-item">Ascending Price</a>
+                                    <a class="dropdown-item">Descending Price</a>
+                                </div>
+                            </div>
+                        </div> *@
+
                         <div class="bg-light ps-3 py-3 rounded d-flex justify-content-around align-items-center mb-4">
-                            <label for="fruits">Default Sorting:</label>
-                            <select id="fruits" name="fruitlist" class="border-0 form-select-sm bg-light me-3" form="fruitform">
-                                <option value="volvo">Nothing</option>
-                                <option value="saab">Popularity</option>
-                                <option value="opel">Organic</option>
-                                <option value="audi">Fantastic</option>
+                            <label for="priceFilter">Default Sorting:</label>
+                            <select id="priceFilter" name="priceFilter" class="border-0 form-select-sm bg-light me-3">
+                                <option value="asc">Ascending Price</option>
+                                <option value="desc">Descending Price</option>
                             </select>
                         </div>
-                    </div>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-3">
                         <div class="row g-4">
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <h4>Categories</h4>
-
-                                    @foreach (var item in categories)
-                                    {
-                                        <ul class="list-unstyled fruite-categorie">
-                                            <li>
-                                                <div class="d-flex justify-content-between fruite-name">
-                                                    <a href="#tab-@item.Id"><i class="@item.Icon me-2 active" data-bs-toggle="pill"></i>@item.Name</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    }
+                                    <div class="fruite-categorie text-primary">
+                                        <div class="mb-2">
+                                            <input type="checkbox" class="category-checkbox" id="category-all" value="all" checked>
+                                            <label for="category-all">All</label>
+                                        </div>
+                                        @foreach (var item in categories)
+                                        {
+                                            <div class="mb-2 text-primary">
+                                                <input type="checkbox" class="category-checkbox" id="category-@item.Id" value="@item.Id">
+                                                <label for="category-@item.Id">@item.Name</label>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <h4 class="mb-2">Price</h4>
-                                    <input type="range" class="form-range w-100" id="rangeInput" name="rangeInput" min="0" max="500" value="0" oninput="amount.value=rangeInput.value">
-                                    <output id="amount" name="amount" min-velue="0" max-value="500" for="rangeInput">0</output>
-                                </div>
-                            </div>
-
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <h4>Brands</h4>
+                                    <div class="mb-2">
+                                        <input type="checkbox" class="brand-checkbox text-secondary" id="brand-all" value="all" checked>
+                                        <label for="brand-all">All</label>
+                                    </div>
                                     @foreach (var brand in uniqueBrands)
                                     {
-                                        <div class="mb-2">
-                                            <input type="checkbox" class="me-2" id="Categories-@brand" name="Categories" value="@brand">
-                                            <label for="Categories-@brand">@brand</label>
+                                        <div class="mb-2 text-secondary">
+                                            <input type="checkbox" class="brand-checkbox" id="brand-@brand" value="@brand">
+                                            <label for="brand-@brand">@brand</label>
                                         </div>
                                     }
                                 </div>
@@ -85,45 +80,40 @@
                     </div>
 
                     <div class="col-lg-9">
-                        <div class="row g-4 justify-content-start">
-
-                            <!--Products List start-->
-                            @{
-                                foreach (var item in Model)
-                                {
-                                    <div class="col-md-6 col-lg-6 col-xl-4">
-                                        <div class="rounded position-relative fruite-item">
-                                            <a href="/products/details/@item.Id">
-                                                <div class="fruite-img" style="height:65.5%">
-                                                    <img src="@item.Picture" class="img-fluid w-100 h-100 rounded-top" alt="">
+                        <div class="row g-4 justify-content-start" id="product-list">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="@item.CategoryId" data-brand="@item.Brand" data-price="@item.Price">
+                                    <div class="rounded position-relative fruite-item">
+                                        <a href="/products/details/@item.Id">
+                                            <div class="fruite-img" style="height:65.5%">
+                                                <img src="@item.Picture" class="img-fluid w-100 h-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.Brand</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>@item.Name</h4>
+                                                <p>@item.Description</p>
+                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">$@item.Price</p>
+                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                                 </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.Brand</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>@item.Name</h4>
-                                                    <p>@item.Description</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">$@item.Price</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                }
-                            }
-                            <!--Products List end-->
-
-                            <div class="col-12">
-                                <div class="pagination d-flex justify-content-center mt-5">
-                                    <a href="#" class="rounded">&laquo;</a>
-                                    <a href="#" class="active rounded">1</a>
-                                    <a href="#" class="rounded">2</a>
-                                    <a href="#" class="rounded">3</a>
-                                    <a href="#" class="rounded">4</a>
-                                    <a href="#" class="rounded">5</a>
-                                    <a href="#" class="rounded">6</a>
-                                    <a href="#" class="rounded">&raquo;</a>
                                 </div>
+                            }
+                        </div>
+
+                        <div class="col-12">
+                            <div class="pagination d-flex justify-content-center mt-5">
+                                <a href="#" class="rounded">&laquo;</a>
+                                <a href="#" class="active rounded">1</a>
+                                <a href="#" class="rounded">2</a>
+                                <a href="#" class="rounded">3</a>
+                                <a href="#" class="rounded">4</a>
+                                <a href="#" class="rounded">5</a>
+                                <a href="#" class="rounded">6</a>
+                                <a href="#" class="rounded">&raquo;</a>
                             </div>
                         </div>
                     </div>

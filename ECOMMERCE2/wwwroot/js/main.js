@@ -149,3 +149,87 @@
 
 })(jQuery);
 
+document.addEventListener('DOMContentLoaded', function () {
+    const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+    const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
+    const priceFilter = document.getElementById('priceFilter');
+    const productItems = document.querySelectorAll('.product-item');
+
+    function filterProducts() {
+        let selectedCategories = Array.from(categoryCheckboxes)
+            .filter(checkbox => checkbox.checked && checkbox.value !== 'all')
+            .map(checkbox => checkbox.value);
+
+        let selectedBrands = Array.from(brandCheckboxes)
+            .filter(checkbox => checkbox.checked && checkbox.value !== 'all')
+            .map(checkbox => checkbox.value);
+
+        productItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            const itemBrand = item.getAttribute('data-brand');
+
+            let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(itemCategory);
+            let brandMatch = selectedBrands.length === 0 || selectedBrands.includes(itemBrand);
+
+            if (categoryMatch && brandMatch) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        sortProducts();
+    }
+
+    function sortProducts() {
+        const sortOrder = priceFilter.value;
+        const productList = document.getElementById('product-list');
+        const products = Array.from(productItems).filter(item => item.style.display !== 'none');
+
+        products.sort((a, b) => {
+            const priceA = parseFloat(a.getAttribute('data-price'));
+            const priceB = parseFloat(b.getAttribute('data-price'));
+            return sortOrder === 'asc' ? priceA - priceB : priceB - priceA;
+        });
+
+        products.forEach(product => productList.appendChild(product));
+    }
+
+    function handleCheckboxChange(checkboxes, allCheckbox) {
+        return function () {
+            const isAll = this.value === 'all';
+
+            if (isAll) {
+                if (this.checked) {
+                    checkboxes.forEach(cb => {
+                        if (cb !== this) cb.checked = false;
+                    });
+                } else {
+                    this.checked = true;
+                }
+            } else {
+                if (!this.checked) {
+                    if (!Array.from(checkboxes).some(cb => cb.checked && cb !== allCheckbox)) {
+                        allCheckbox.checked = true;
+                    }
+                } else {
+                    allCheckbox.checked = false;
+                }
+            }
+
+            filterProducts();
+        };
+    }
+
+    categoryCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleCheckboxChange(categoryCheckboxes, document.getElementById('category-all')));
+    });
+
+    brandCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleCheckboxChange(brandCheckboxes, document.getElementById('brand-all')));
+    });
+
+    priceFilter.addEventListener('change', sortProducts);
+
+    filterProducts();
+});

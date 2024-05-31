@@ -2,6 +2,7 @@
 using ECOMMERCE2.Data.Model;
 using ECOMMERCE2.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECOMMERCE2.Controllers
 {
@@ -23,11 +24,15 @@ namespace ECOMMERCE2.Controllers
 
         public IActionResult Details(int id)
         {
-            var product = _context.Products.Find(id);
-            //if (product == null)
-            //{
-            //    return NotFound();
-            //}
+            var product = _context.Products
+                           .Include(p => p.Category) // Include the Category navigation property
+                           .FirstOrDefault(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
             return View(product);
         }
         public IActionResult AddProduct()
