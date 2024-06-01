@@ -28,13 +28,13 @@
                                     <div class="fruite-categorie text-primary">
                                         <div class="mb-2">
                                             <input type="checkbox" class="category-checkbox" id="category-all" value="all" checked>
-                                            <label for="category-all">All</label>
+                                            <label for="category-all"><i class="fas fa-bolt"></i> All</label>
                                         </div>
                                         @foreach (var item in categories)
                                         {
                                             <div class="mb-2 text-primary">
                                                 <input type="checkbox" class="category-checkbox" id="category-@item.Id" value="@item.Id">
-                                                <label for="category-@item.Id">@item.Name</label>
+                                                <label for="category-@item.Id"><i class="@item.Icon"></i> @item.Name</label>
                                             </div>
                                         }
                                     </div>
@@ -129,11 +129,15 @@
 @section Scripts
 {
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('[id^="delete-icon-"]').forEach(function (element) {
-                element.addEventListener('click', function (event) {
+        document.addEventListener('DOMContentLoaded', function () 
+        {
+            document.querySelectorAll('[id^="delete-icon-"]').forEach(function (element) 
+            {
+                element.addEventListener('click', function (event) 
+                {
                     var confirmation = confirm("Are you sure you want to delete this product?");
-                    if (!confirmation) {
+                    if (!confirmation) 
+                    {
                         event.preventDefault();
                     }
                 });

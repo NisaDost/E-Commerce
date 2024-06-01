@@ -77,20 +77,10 @@
 
                     <div class="container col-6">
                         <div class="form-group">
-                            <div>
-                                <label for="productbrand" class="text-secondary">Product Brand:</label>
-                                <select class="form-select" asp-for="Brand">
-                                    <option value="none">Select</option>
-                                    @foreach (var item in uniqueBrands)
-                                    {
-                                        <option value="@item">@item</option>
-                                    }
-                                </select>
-                                <div class="invalid-feedback">Product Brand Can't Be Empty</div>
-                            </div>
-                            <div>
-                                <a>Don't see your brand? Add a new one <a asp-controller="Products" asp-action="AddBrand">here</a></a>
-                            </div>
+                            <label for="productbrand" class="text-secondary">Product Brand:</label>
+                            <input type="text" class="form-control" id="productbrand" asp-for="Brand"
+                                   placeholder="Enter Product Brand">
+                            <div class="invalid-feedback">Product Brand Can't Be Empty</div>
                         </div>
                         <br />
                         <div>

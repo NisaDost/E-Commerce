@@ -141,7 +141,8 @@ namespace ECOMMERCE2.Controllers
                 return NotFound();
             }
 
-            _context.Products.Remove(product);
+            product.IsDeleted = true;
+            _context.Products.Update(product);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -16,7 +16,7 @@
             <div class="card-body">
                 <form class="d-flex flex-row justify-content-between" asp-action="EditProduct" enctype="multipart/form-data">
                     <div class="container col-6">
-                        <input type="hidden" asp-for="Id"/>
+                        <input type="hidden" asp-for="Id" />
                         <div class="form-group">
                             <label for="productname" class="text-secondary">Product Name:</label>
                             <input type="text" value="@Model.Name" class="form-control" id="productname" asp-for="Name"
@@ -73,13 +73,8 @@
                     <div class="container col-6">
                         <div class="form-group">
                             <label for="productbrand" class="text-secondary">Product Brand:</label>
-                            <select class="form-select" asp-for="Brand">
-                                <option value="none">Select</option>
-                                @foreach (var item in uniqueBrands)
-                                {
-                                    <option value="@item">@item</option>
-                                }
-                            </select>
+                            <input type="text" class="form-control" id="productbrand" asp-for="Brand"
+                                   placeholder="Enter Product Brand">
                             <div class="invalid-feedback">Product Brand Can't Be Empty</div>
                         </div>
                         <br />
@@ -90,7 +85,8 @@
                                       </textarea>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-secondary text-light mt-5" type="submit"> @* işlevsiz *@
+                            <button class="btn btn-secondary text-light mt-5" type="submit">
+                                @* işlevsiz *@
                                 Save Changes
                             </button>
                         </div>
