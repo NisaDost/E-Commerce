@@ -13,29 +13,45 @@ namespace ECOMMERCE2.Controllers
         {
             _context = context;
         }
+
         public IActionResult Index()
         {
             var categories = _context.Categories.ToList();
             return View(categories);
         }
+
         [HttpPost]
         public async Task<IActionResult> AddCategory(string name, string icon)
         {
-            var newCategoty = new Category
+            var newCategory = new Category
             {
                 Name = name,
                 Icon = icon
             };
-            _context.Categories.Add(newCategoty);
-            _context.SaveChanges();
+            _context.Categories.Add(newCategory);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult EditCategory(int id)
+        [HttpPost]
+        public async Task<IActionResult> EditCategory(int id, string name, string icon)
         {
-            return View();
+            var category = await _context.Categories.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            category.Name = name;
+            category.Icon = icon;
+
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
+
         public IActionResult DeleteCategory(int id)
         {
             var category = _context.Categories.Find(id);

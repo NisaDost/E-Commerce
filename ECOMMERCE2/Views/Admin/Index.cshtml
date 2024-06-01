@@ -27,14 +27,14 @@
             <tbody id="category-table-body">
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>@item.Icon</td>
-                        <td>
-                            <a id="delete-icon-@item.Id" class="btn btn-danger float-end" asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@item.Id">
+                    <tr id="category-row-@item.Id">
+                        <td class="category-name">@item.Name</td>
+                        <td class="category-icon">@item.Icon</td>
+                        <td class="actions">
+                            <a id="delete-icon-@item.Id" class="btn btn-danger float-end delete-button" asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@item.Id">
                                 <i class="fas fa-trash"></i> Delete
                             </a>
-                            <a class="btn btn-primary float-end mx-2" asp-controller="Admin" asp-action="EditCategory" asp-route-id="@item.Id">
+                            <a id="edit-icon-@item.Id" class="btn btn-primary float-end mx-2 edit-button" data-id="@item.Id">
                                 <i class="fas fa-pen"></i> Edit
                             </a>
                         </td>
@@ -50,13 +50,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Handle delete confirmation
-            document.querySelectorAll('[id^="delete-icon-"]').forEach(function (element) {
+            document.querySelectorAll('.delete-button').forEach(function (element) {
                 element.addEventListener('click', function (event) {
                     var confirmation = confirm("Are you sure you want to delete this category?");
                     if (!confirmation) {
                         event.preventDefault();
-                    }
-                    else {
+                    } else {
                         alert("There are products in this category!");
                     }
                 });
@@ -68,19 +67,57 @@
                 var newRow = document.createElement('tr');
 
                 newRow.innerHTML = `
-                                    <td><input type="text" id="new-category-name" class="form-control" placeholder="Category Name" required /></td>
-                                    <td><input type="text" id="new-category-icon" class="form-control" placeholder="Icon" required /></td>
-                                    <td>
-                                        <button id="save-button" class="btn btn-success float-end" type="button">
-                                            <i class="fas fa-save"></i> Save
-                                        </button>
-                                    </td>
-                                `;
+                            <td><input type="text" id="new-category-name" class="form-control" placeholder="Category Name" required /></td>
+                            <td><input type="text" id="new-category-icon" class="form-control" placeholder="Icon" required /></td>
+                            <td>
+                                <button id="save-button" class="btn btn-success float-end" type="button">
+                                    <i class="fas fa-save"></i> Save
+                                </button>
+                            </td>
+                        `;
                 tableBody.appendChild(newRow);
             });
-        });
 
-        $(document).ready(function () {
+            // Handle edit row
+            document.querySelectorAll('.edit-button').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var row = document.getElementById(`category-row-${this.dataset.id}`);
+                    var name = row.querySelector('.category-name').innerText;
+                    var icon = row.querySelector('.category-icon').innerText;
+
+                    row.innerHTML = `
+                                <td><input type="text" class="form-control" value="${name}" id="edit-category-name-${this.dataset.id}" /></td>
+                                <td><input type="text" class="form-control" value="${icon}" id="edit-category-icon-${this.dataset.id}" /></td>
+                                <td>
+                                    <button class="btn btn-success float-end save-edit-button" data-id="${this.dataset.id}">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                </td>
+                            `;
+
+                    // Handle save edited category
+                    row.querySelector('.save-edit-button').addEventListener('click', function () {
+                        var categoryId = this.dataset.id;
+                        var newName = document.getElementById(`edit-category-name-${categoryId}`).value;
+                        var newIcon = document.getElementById(`edit-category-icon-${categoryId}`).value;
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/Admin/EditCategory",
+                            data: {
+                                id: categoryId,
+                                name: newName,
+                                icon: newIcon
+                            },
+                            success: function () {
+                                location.reload();
+                            }
+                        });
+                    });
+                });
+            });
+
+            // Handle save new category
             $("#category-table-body").on("click", "#save-button", function () {
                 $.ajax({
                     type: "POST",
