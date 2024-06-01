@@ -2,6 +2,9 @@
 using ECOMMERCE2.Data.Model;
 using ECOMMERCE2.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace ECOMMERCE2.Controllers
 {
@@ -52,22 +55,26 @@ namespace ECOMMERCE2.Controllers
             return Ok();
         }
 
-        public IActionResult DeleteCategory(int id)
+        [HttpPost]
+        public async Task<IActionResult> DeleteCategory(int id)
         {
-            var category = _context.Categories.Find(id);
-            var products = _context.Products.Where(p => p.CategoryId == id).ToList();
+            var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
-                return NotFound();
-            }
-            if (products.Count <= 0)
-            {
-                category.IsDeleted = true;
-                _context.Categories.Update(category);
-                _context.SaveChanges();
+                return Json(new { success = false, message = "Category not found" });
             }
 
-            return RedirectToAction("Index");
+            var productsCount = await _context.Products.CountAsync(p => p.CategoryId == id);
+            if (productsCount > 0)
+            {
+                return Json(new { success = false, message = "There are products in this category!" });
+            }
+
+            category.IsDeleted = true;
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true });
         }
     }
 }
