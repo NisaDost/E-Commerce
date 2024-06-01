@@ -20,10 +20,6 @@ namespace ECOMMERCE2.Controllers
         {
             return View();
         }
-        public IActionResult Register()
-        {
-            return View();
-        }
 
         [HttpPost]
         public async Task<IActionResult> LoginAsync(LoginViewModel loginViewModel)
@@ -39,6 +35,11 @@ namespace ECOMMERCE2.Controllers
                 };
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authProperties = new AuthenticationProperties { };
+                if (loginViewModel.RememberMe)
+                {
+                    authProperties.IsPersistent = true;
+                    authProperties.ExpiresUtc = DateTime.UtcNow.AddMinutes(10);
+                }
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
                 return RedirectToAction("Index", "Home");
             }
@@ -53,6 +54,32 @@ namespace ECOMMERCE2.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterAsync(RegisterViewModel register)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    Username = register.Username,
+                    Password = register.Password,
+                    Name = register.Name,
+                    Surname = register.Surname,
+                    Role = "User"
+                };
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Error = "Invalid data!";
+            return View("Register");
         }
     }
 }

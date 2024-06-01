@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj": {}
+    "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj": {
+    "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
+        "projectUniqueName": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
         "projectName": "ECOMMERCE2",
-        "projectPath": "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
+        "projectPath": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
         "packagesPath": "C:\\Users\\Yigit\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\obj\\",
+        "outputPath": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\Yigit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

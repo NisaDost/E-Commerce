@@ -1,7 +1,9 @@
-﻿@model ECOMMERCE2.Data.Model.Product
+﻿@model ECOMMERCE2.Models.ProductEditViewModel
 @{
     ViewData["Title"] = "Edit Product";
     var categories = ViewBag.Categories as List<ECOMMERCE2.Data.Model.Category>;
+    var products = ViewBag.Brands as List<ECOMMERCE2.Data.Model.Product>;
+    var uniqueBrands = products.Select(p => p.Brand).Distinct().ToList();
 }
 <partial name="_SinglePageHeaderPartial" />
 
@@ -12,9 +14,9 @@
                 <h3>Edit Product</h3>
             </div>
             <div class="card-body">
-                <form class="d-flex flex-row justify-content-between" asp-action="EditProduct">
+                <form class="d-flex flex-row justify-content-between" asp-action="EditProduct" enctype="multipart/form-data">
                     <div class="container col-6">
-
+                        <input type="hidden" asp-for="Id"/>
                         <div class="form-group">
                             <label for="productname" class="text-secondary">Product Name:</label>
                             <input type="text" value="@Model.Name" class="form-control" id="productname" asp-for="Name"
@@ -59,7 +61,7 @@
                         <p class="text-secondary">Product Image:</p>
                         <div class="custom-file">
 
-                            <input type="file" class="custom-file-input" id="productimage" asp-for="Picture" required>
+                            <input type="file" class="custom-file-input" id="productimage" asp-for="Image">
                             <label class="custom-file-label" for="productimage">
                                 Choose
                                 file...
@@ -71,8 +73,13 @@
                     <div class="container col-6">
                         <div class="form-group">
                             <label for="productbrand" class="text-secondary">Product Brand:</label>
-                            <input type="text" class="form-control" id="productbrand" asp-for="Brand"
-                                   placeholder="Enter Product Brand">
+                            <select class="form-select" asp-for="Brand">
+                                <option value="none">Select</option>
+                                @foreach (var item in uniqueBrands)
+                                {
+                                    <option value="@item">@item</option>
+                                }
+                            </select>
                             <div class="invalid-feedback">Product Brand Can't Be Empty</div>
                         </div>
                         <br />

@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Add Product";
     var categories = ViewBag.Categories as List<ECOMMERCE2.Data.Model.Category>;
+    var products = ViewBag.Brands as List<ECOMMERCE2.Data.Model.Product>;
+    var uniqueBrands = products.Select(p => p.Brand).Distinct().ToList();
 }
 <partial name="_SinglePageHeaderPartial" />
 
@@ -12,7 +14,7 @@
                 <h3>Add a New Product</h3>
             </div>
             <div class="card-body">
-                <form class="d-flex flex-row justify-content-between" asp-action="AddProduct">
+                <form class="d-flex flex-row justify-content-between" asp-action="AddProduct" enctype="multipart/form-data">
                     <div class="container col-6">
 
                         <div class="form-group">
@@ -24,7 +26,6 @@
                         <br />
                         <div class="form-group">
                             <div>
-
                                 <label for="productcategory" class="text-secondary">Product Category:</label>
                                 <select class="form-select" asp-for="CategoryId">
                                     <option value="none">Select</option>
@@ -36,7 +37,7 @@
                                 <div class="invalid-feedback">Product ID Can't Be Empty</div>
                             </div>
                             <div>
-                                <a>Don't see your category? Add a new one <a href="/Categories/AddCategory">here</a></a>
+                                <a>Don't see your category? Add a new one <a asp-controller="Products" asp-action="AddCategory">here</a></a>
                             </div>
                         </div>
                         <br />
@@ -65,7 +66,7 @@
                         <p class="text-secondary">Product Image:</p>
                         <div class="custom-file">
 
-                            <input type="file" class="custom-file-input" id="productimage" asp-for="Image" required>
+                            <input type="file" class="custom-file-input" id="productimage" name="Image" asp-for="Image" required>
                             <label class="custom-file-label" for="productimage">
                                 Choose
                                 file...
@@ -76,10 +77,20 @@
 
                     <div class="container col-6">
                         <div class="form-group">
-                            <label for="productbrand" class="text-secondary">Product Brand:</label>
-                            <input type="text" class="form-control" id="productbrand" asp-for="Brand"
-                                   placeholder="Enter Product Brand">
-                            <div class="invalid-feedback">Product Brand Can't Be Empty</div>
+                            <div>
+                                <label for="productbrand" class="text-secondary">Product Brand:</label>
+                                <select class="form-select" asp-for="Brand">
+                                    <option value="none">Select</option>
+                                    @foreach (var item in uniqueBrands)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+                                </select>
+                                <div class="invalid-feedback">Product Brand Can't Be Empty</div>
+                            </div>
+                            <div>
+                                <a>Don't see your brand? Add a new one <a asp-controller="Products" asp-action="AddBrand">here</a></a>
+                            </div>
                         </div>
                         <br />
                         <div>

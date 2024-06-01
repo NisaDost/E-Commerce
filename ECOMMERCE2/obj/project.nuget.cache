@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bbnZpugBLFU02RzGJlqEbKiRRvrweZYvmRe7CdVzFS2EnRtFU43S0DsU4bZGb+QEB4qtJB/4Y+TlqIlzvKQziw==",
+  "dgSpecHash": "100JeeciZdE5gYXNZhxBh046CVmJrGegthBCJ9LwuNYQcfRTgE3UKfSqHYRMkK60sRHWdyT4TPYLZf8igAkung==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yigit\\Desktop\\MAU\\3rd Grade\\E-Commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
+  "projectFilePath": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\ECOMMERCE2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yigit\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Yigit\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

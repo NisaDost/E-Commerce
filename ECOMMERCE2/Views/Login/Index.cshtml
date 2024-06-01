@@ -1,4 +1,4 @@
-﻿@model ECOMMERCE2.Data.Model.User
+﻿@model ECOMMERCE2.Models.LoginViewModel
 @{
     ViewData["Title"] = "Login";
     ViewData["AppName"] = "DashUP";
@@ -51,7 +51,7 @@
             <input asp-for="Password" type="password" class="form-control" id="exampleInputPassword1" required placeholder="******">
         </div>
         <div class="form-check mb-4">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <input asp-for="RememberMe" type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label text-secondary" for="exampleCheck1">Remember me</label>
         </div>
         @if (!string.IsNullOrEmpty(ViewBag.Error))
