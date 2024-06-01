@@ -89,6 +89,7 @@ namespace ECOMMERCE2.Data
 
             modelBuilder.Entity<Product>().HasQueryFilter(p => !p.IsDeleted);
             modelBuilder.Entity<Category>().HasQueryFilter(p => !p.IsDeleted);
+            modelBuilder.Entity<User>().HasQueryFilter(p => !p.IsDeleted);
 
             base.OnModelCreating(modelBuilder);
         }

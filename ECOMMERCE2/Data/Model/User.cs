@@ -16,6 +16,7 @@ namespace ECOMMERCE2.Data.Model
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
+        public bool IsDeleted { get; set; }
         public ICollection<Order> Orders { get; set; }
         public ICollection<BillingCard> BillingCards { get; set; }
         public ICollection<BillingAddress> BillingAddresses { get; set; }

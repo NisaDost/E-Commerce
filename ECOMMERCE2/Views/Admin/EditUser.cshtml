@@ -1,0 +1,112 @@
+﻿@model List<ECOMMERCE2.Models.UserViewModel>
+@{
+    ViewData["Title"] = "Edit User";
+}
+<partial name="_SinglePageHeaderPartial" />
+
+<div class="container px-4">
+    <div class="row my-4 justify-content-between">
+        <div class="col-5">
+            <h1>Users</h1>
+        </div>
+        <div class="col-4 my-auto">
+            <div class="input-group">
+                <input type="text" id="search-input" class="form-control" placeholder="Search by username" />
+                <button id="search-button" class="btn btn-success">
+                    <i class="fas fa-search"></i> Search
+                </button>
+                <button id="reset-button" class="btn btn-secondary">
+                    <i class="bi bi-arrow-clockwise"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Usernames</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col" class="text-end">Action</th>
+                </tr>
+            </thead>
+            <tbody id="user-table-body">
+                @foreach (var item in Model)
+                {
+                    <tr id="user-row-@item.UserId">
+                        <td class="col">@item.Username</td>
+                        <td class="col">@item.Name</td>
+                        <td class="col">@item.Surname</td>
+                        <td class="col">
+                            @if (item.Role == "Admin")
+                            {
+                                @item.Role
+                            }
+                            else
+                            {
+                                <select class="form-select role-select" data-userid="@item.UserId">
+                                    <option value="User">User</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                            }
+                        </td>
+                        <td class="actions">
+                            <a class="btn btn-danger float-end delete-button" asp-route-userid="@item.UserId" asp-controller="Admin" asp-action="DeleteUser">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="text-end">
+            <button id="save-button" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('search-button').addEventListener('click', function () {
+            var searchTerm = document.getElementById('search-input').value;
+            if (searchTerm) {
+                window.location.href = '@Url.Action("EditUser", "Admin")' + '?search=' + searchTerm;
+            }
+        });
+
+        document.getElementById('reset-button').addEventListener('click', function () {
+            window.location.href = '@Url.Action("EditUser", "Admin")';
+        });
+
+        document.getElementById('save-button').addEventListener('click', async function () {
+            let changes = [];
+            document.querySelectorAll('.role-select').forEach(select => {
+                changes.push({
+                    userId: select.dataset.userid,
+                    role: select.value
+                });
+            });
+
+            await fetch('@Url.Action("SaveUserRoles", "Admin")', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(changes)
+            });
+
+            window.location.reload();
+        });
+
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', async function () {
+                let userId = this.dataset.userid;
+                if (confirm('Are you sure you want to delete this user?')) {
+
+                }
+            });
+        });
+    </script>
+}
