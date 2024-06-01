@@ -1,4 +1,6 @@
 ﻿using ECOMMERCE2.Data;
+using ECOMMERCE2.Data.Model;
+using ECOMMERCE2.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECOMMERCE2.Controllers
@@ -16,10 +18,20 @@ namespace ECOMMERCE2.Controllers
             var categories = _context.Categories.ToList();
             return View(categories);
         }
-        public IActionResult AddCategory()
+        [HttpPost]
+        public async Task<IActionResult> AddCategory(string name, string icon)
         {
-            return View();
+            var newCategoty = new Category
+            {
+                Name = name,
+                Icon = icon
+            };
+            _context.Categories.Add(newCategoty);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
+
         public IActionResult EditCategory(int id)
         {
             return View();

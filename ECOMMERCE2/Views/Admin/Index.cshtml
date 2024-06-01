@@ -10,9 +10,9 @@
             <h1>Categories</h1>
         </div>
         <div class="col-3 my-auto">
-            <a class="btn btn-success float-end" asp-controller="Admin" asp-action="AddCategorty">
+            <button id="create-button" class="btn btn-success float-end">
                 <i class="fas fa-plus"></i> Create
-            </a>
+            </button>
         </div>
     </div>
     <div class="row">
@@ -20,14 +20,16 @@
             <thead>
                 <tr>
                     <th scope="col">Category Names</th>
+                    <th scope="col">Icon</th>
                     <th scope="col" class="text-end">Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="category-table-body">
                 @foreach (var item in Model)
                 {
                     <tr>
                         <td>@item.Name</td>
+                        <td>@item.Icon</td>
                         <td>
                             <a id="delete-icon-@item.Id" class="btn btn-danger float-end" asp-controller="Admin" asp-action="DeleteCategory" asp-route-id="@item.Id">
                                 <i class="fas fa-trash"></i> Delete
@@ -47,14 +49,48 @@
 {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Handle delete confirmation
             document.querySelectorAll('[id^="delete-icon-"]').forEach(function (element) {
                 element.addEventListener('click', function (event) {
-                    var confirmation = confirm("Are you sure you want to delete this product?");
+                    var confirmation = confirm("Are you sure you want to delete this category?");
                     if (!confirmation) {
                         event.preventDefault();
                     }
                     else {
                         alert("There are products in this category!");
+                    }
+                });
+            });
+
+            // Handle create new category row
+            document.getElementById('create-button').addEventListener('click', function () {
+                var tableBody = document.getElementById('category-table-body');
+                var newRow = document.createElement('tr');
+
+                newRow.innerHTML = `
+                                    <td><input type="text" id="new-category-name" class="form-control" placeholder="Category Name" required /></td>
+                                    <td><input type="text" id="new-category-icon" class="form-control" placeholder="Icon" required /></td>
+                                    <td>
+                                        <button id="save-button" class="btn btn-success float-end" type="button">
+                                            <i class="fas fa-save"></i> Save
+                                        </button>
+                                    </td>
+                                `;
+                tableBody.appendChild(newRow);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#category-table-body").on("click", "#save-button", function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/AddCategory",
+                    data: {
+                        name: $("#new-category-name").val(),
+                        icon: $("#new-category-icon").val()
+                    },
+                    success: function () {
+                        location.reload();
                     }
                 });
             });
