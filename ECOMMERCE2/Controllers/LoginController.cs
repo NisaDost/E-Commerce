@@ -35,7 +35,6 @@ namespace ECOMMERCE2.Controllers
                 };
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var authProperties = new AuthenticationProperties { };
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 if (loginViewModel.RememberMe)
                 {
                     authProperties.IsPersistent = true;

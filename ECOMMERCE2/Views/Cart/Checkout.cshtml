@@ -1,38 +1,21 @@
-<<<<<<< Updated upstream
 ﻿@{
     ViewData["Title"] = "Checkout";
-=======
-﻿@model ECOMMERCE2.Models.BillingViewModel
-@{
-    ViewData["Title"] = "Checkout";
-    var billingAddress = ViewBag.BillingAddress as List<ECOMMERCE2.Data.Model.BillingAddress>;
-    var billingCard = ViewBag.BillingCard as List<ECOMMERCE2.Data.Model.BillingCard>;
->>>>>>> Stashed changes
 }
 
 <partial name="_SinglePageHeaderPartial" />
 
 <div class="py-5 container">
     <h1 class="mb-4">Billing details</h1>
-<<<<<<< Updated upstream
     <form action="#" method="get">
         <!--Shipping info start-->
-=======
-    <form asp-action="Checkout" method="post">
-        <!-- Shipping info start -->
->>>>>>> Stashed changes
         <div class="d-flex justify-content-between">
             <div class="col-md-11 col-lg-5 col-xl-6">
                 <div id="collapseOne" class="form-item accordion-collapse collapse @(Context.Request.Query.Count() > 0 ? "" : "show")" data-bs-parent="#accordionExample">
                     <div class="input-group mb-3 mt-3">
-                        <label class="input-group-text">Saved Addresses</label>
-                        <input type="hidden" asp-for="UserId">
+                        <label class="input-group-text">Saved Adresses</label>
                         <select class="form-select">
                             <option value="none">None</option>
-                            @foreach (var item in billingAddress)
-                            {
-                                <option value="@item.BillingAddressId">@item.FirstName @item.LastName</option>
-                            }
+                            <option value="">Address 1</option>
                         </select>
                     </div>
                 </div>
@@ -66,7 +49,6 @@
                     <label class="form-label my-3">City<sup>*</sup></label>
                     <input type="text" class="form-control">
                 </div>
-<<<<<<< Updated upstream
                 <div class="form-item ">
                     <label class="form-label my-3">Address <sup>*</sup></label>
                     <input type="text" class="form-control" placeholder="House Number Street Name">
@@ -74,28 +56,16 @@
                 <div class="form-check text-start mt-2">
                     <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" value="Save">
                     <label class="form-check-label" for="SaveInfo">Save my address</label>
-=======
-                <div class="form-item">
-                    <label class="form-label my-3">Address<sup>*</sup></label>
-                    <input type="text" class="form-control" placeholder="House Number Street Name" asp-for="Address">
                 </div>
-                <div class="form-check text-start mt-2">
-                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" value="true" asp-for="SaveAddress">
-                    <label class="form-check-label" for="SaveAddress">Save my address</label>
->>>>>>> Stashed changes
-                </div>
-                <!-- Shipping info end -->
+                <!--Shipping info end-->
                 <br>
                 <br>
-                <!-- Payment info start -->
+                <!--Payment info start-->
                 <div class="input-group mb-3">
                     <label class="input-group-text">Saved Cards</label>
                     <select class="form-select">
                         <option value="none">None</option>
-                        @foreach (var item in billingCard)
-                        {
-                            <option value="@item.BillingCardId">@item.CardHolderName</option>
-                        }
+                        <option value="">Card 1</option>
                     </select>
                 </div>
                 <div class="form-item">
@@ -103,9 +73,9 @@
                     <input type="text" class="form-control">
                 </div>
                 <div class="d-flex justify-content-between">
+
                     <div class="form-item col-md-5">
                         <label class="form-label my-3">Card Number<sup>*</sup></label>
-<<<<<<< Updated upstream
                         <input type="text" class="form-control">
                     </div>
                     <div class="form-item col-md-3">
@@ -115,40 +85,17 @@
                     <div class="form-item col-md-3">
                         <label class="form-label my-3">CVV<sup>*</sup></label>
                         <input type="text" class="form-control" placeholder="***">
-=======
-                        <input type="text" class="form-control" asp-for="CreditCardNumber">
                     </div>
-                    <div class="form-item col-md-3">
-                        <label class="form-label my-3">Expire Date<sup>*</sup></label>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" placeholder="MM" asp-for="ExpiryDateMonth">
-                            <span class="mx-2">/</span>
-                            <input type="text" class="form-control" placeholder="YY" asp-for="ExpiryDateYear">
-                        </div>
-                    </div>
-                    <div class="form-item col-md-3">
-                        <label class="form-label my-3">CVV<sup>*</sup></label>
-                        <input type="text" class="form-control" placeholder="***" asp-for="CVV">
->>>>>>> Stashed changes
-                    </div>
+
                 </div>
                 <div class="form-check text-start mt-2">
-<<<<<<< Updated upstream
                     <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveInfo" name="SaveInfo" value="Save">
                     <label class="form-check-label" for="SaveInfo">Save my info</label>
-=======
-                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveCard" name="SaveCard" value="true" asp-for="SaveCard">
-                    <label class="form-check-label" for="SaveCard">Save my card info</label>
->>>>>>> Stashed changes
                 </div>
-                <!-- Payment info end -->
+                <!--Payment info end-->
             </div>
-<<<<<<< Updated upstream
 
             <!-- Order Summary -->
-=======
-            <!-- Order Summary start -->
->>>>>>> Stashed changes
             <div class="col-md-12 col-lg-6 col-xl-5">
                 <div class="table-responsive">
                     <table class="table">
@@ -162,7 +109,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Replace these with your dynamic items -->
                             <tr>
                                 <th scope="row">
                                     <div class="d-flex align-items-center mt-2">
@@ -174,9 +120,31 @@
                                 <td class="py-5">2</td>
                                 <td class="py-5">$138.00</td>
                             </tr>
-                            <!-- Repeat above block for more items -->
                             <tr>
-                                <th scope="row"></th>
+                                <th scope="row">
+                                    <div class="d-flex align-items-center mt-2">
+                                        <img src="~/img/vegetable-item-5.jpg" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
+                                    </div>
+                                </th>
+                                <td class="py-5">Potatoes</td>
+                                <td class="py-5">$69.00</td>
+                                <td class="py-5">2</td>
+                                <td class="py-5">$138.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <div class="d-flex align-items-center mt-2">
+                                        <img src="~/img/vegetable-item-3.png" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
+                                    </div>
+                                </th>
+                                <td class="py-5">Big Banana</td>
+                                <td class="py-5">$69.00</td>
+                                <td class="py-5">2</td>
+                                <td class="py-5">$138.00</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                </th>
                                 <td class="py-5">
                                     <p class="mb-0 text-dark py-3">Subtotal</p>
                                 </td>
@@ -189,9 +157,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row"></th>
+                                <th scope="row">
+                                </th>
                                 <td class="py-5">
-                                    <p class="mb-0 text-dark py-3">Shipping</p>
+                                    <p class="mb-0 text-dark py-3">Shipping </p>
                                 </td>
                                 <td class="py-5"></td>
                                 <td class="py-5"></td>
@@ -201,8 +170,10 @@
                                     </div>
                                 </td>
                             </tr>
+
                             <tr>
-                                <th scope="row"></th>
+                                <th scope="row">
+                                </th>
                                 <td class="py-5">
                                     <p class="mb-0 text-dark text-uppercase py-3">TOTAL</p>
                                 </td>
@@ -217,7 +188,7 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Order summary end -->
+                <!-- order summary end -->
                 <div class="row g-4 text-center align-items-center justify-content-center pt-4">
                     <button type="button" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order</button>
                 </div>
