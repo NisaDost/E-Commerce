@@ -1,21 +1,28 @@
-﻿@{
+﻿@model ECOMMERCE2.Models.BillingViewModel
+@{
     ViewData["Title"] = "Checkout";
+    var billingAddress = ViewBag.BillingAddress as List<ECOMMERCE2.Data.Model.BillingAddress>;
+    var billingCard = ViewBag.BillingCard as List<ECOMMERCE2.Data.Model.BillingCard>;
 }
 
 <partial name="_SinglePageHeaderPartial" />
 
 <div class="py-5 container">
     <h1 class="mb-4">Billing details</h1>
-    <form action="#" method="get">
+    <form asp-action="Checkout" method="post">
         <!--Shipping info start-->
         <div class="d-flex justify-content-between">
             <div class="col-md-11 col-lg-5 col-xl-6">
                 <div id="collapseOne" class="form-item accordion-collapse collapse @(Context.Request.Query.Count() > 0 ? "" : "show")" data-bs-parent="#accordionExample">
                     <div class="input-group mb-3 mt-3">
-                        <label class="input-group-text">Saved Adresses</label>
+                        <label class="input-group-text">Saved Addresses</label>
+                        <input type="hidden" asp-for="UserId">
                         <select class="form-select">
                             <option value="none">None</option>
-                            <option value="">Address 1</option>
+                            @foreach (var item in billingAddress)
+                            {
+                                <option value="@item.BillingAddressId">@item.FirstName @item.LastName</option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -23,39 +30,40 @@
                     <div class="col-md-12 col-lg-6">
                         <div class="form-item w-100">
                             <label class="form-label my-3">First Name<sup>*</sup></label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" asp-for="FirstName">
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6">
                         <div class="form-item w-100">
                             <label class="form-label my-3">Last Name<sup>*</sup></label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" asp-for="LastName">
                         </div>
                     </div>
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">Email Address<sup>*</sup></label>
-                    <input type="email" class="form-control">
+                    <input type="email" class="form-control" asp-for="Email">
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">Mobile<sup>*</sup></label>
-                    <input type="tel" class="form-control">
+                    <input type="tel" class="form-control" asp-for="Mobile">
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">Country<sup>*</sup></label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" asp-for="Country">
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">City<sup>*</sup></label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" asp-for="City">
                 </div>
                 <div class="form-item ">
                     <label class="form-label my-3">Address <sup>*</sup></label>
-                    <input type="text" class="form-control" placeholder="House Number Street Name">
+                    <input type="text" class="form-control" placeholder="House Number Street Name" asp-for="Address">
                 </div>
                 <div class="form-check text-start mt-2">
-                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" value="Save">
+                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" value="Save" asp-for="SaveAddress">
                     <label class="form-check-label" for="SaveInfo">Save my address</label>
+
                 </div>
                 <!--Shipping info end-->
                 <br>
@@ -65,32 +73,38 @@
                     <label class="input-group-text">Saved Cards</label>
                     <select class="form-select">
                         <option value="none">None</option>
-                        <option value="">Card 1</option>
+                        @foreach (var item in billingCard)
+                        {
+                            <option value="@item.BillingCardId">@item.CardHolderName</option>
+                        }
                     </select>
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">Name on Card<sup>*</sup></label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" asp-for="CardHolderName">
                 </div>
                 <div class="d-flex justify-content-between">
-
-                    <div class="form-item col-md-5">
-                        <label class="form-label my-3">Card Number<sup>*</sup></label>
-                        <input type="text" class="form-control">
+                    <div class="form-item col-5">
+                        <label class="form-label my-3">Credit Card Number<sup>*</sup></label>
+                        <input type="number" maxlength="16" class="form-control" asp-for="CreditCardNumber">
                     </div>
-                    <div class="form-item col-md-3">
+                    <div class="form-item col-3">
                         <label class="form-label my-3">Expire Date<sup>*</sup></label>
-                        <input type="text" class="form-control" placeholder="MM/YY">
+                        <div class="d-flex align-items-center">
+                            <input type="text" maxlength="2" class="form-control" placeholder="MM" asp-for="ExpiryDateMonth">
+                            <span class="mx-2">/</span>
+                            <input type="number" maxlength="2" class="form-control" placeholder="YY" asp-for="ExpiryDateYear">
+                        </div>
                     </div>
-                    <div class="form-item col-md-3">
+                    <div class="form-item col-3">
                         <label class="form-label my-3">CVV<sup>*</sup></label>
-                        <input type="text" class="form-control" placeholder="***">
-                    </div>
+                        <input type="number" maxlength="3" class="form-control" placeholder="***" asp-for="CVV">
 
+                    </div>
                 </div>
                 <div class="form-check text-start mt-2">
-                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveInfo" name="SaveInfo" value="Save">
-                    <label class="form-check-label" for="SaveInfo">Save my info</label>
+                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveCard" name="SaveCard" value="true" asp-for="SaveCard">
+                    <label class="form-check-label" for="SaveCard">Save my card info</label>
                 </div>
                 <!--Payment info end-->
             </div>
