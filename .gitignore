@@ -506,3 +506,14 @@ ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.dll
 *.pdb
 ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.sourcelink.json
 ECOMMERCE2/obj/Release/net8.0/project.razor.vs.bin
+ECOMMERCE2/.vs/ECOMMERCE2/v17/.suo
+ECOMMERCE2/obj/ECOMMERCE2.csproj.nuget.dgspec.json
+ECOMMERCE2/obj/ECOMMERCE2.csproj.nuget.g.props
+ECOMMERCE2/obj/project.assets.json
+ECOMMERCE2/obj/project.nuget.cache
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.AssemblyInfo.cs
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.AssemblyInfoInputs.cache
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.assets.cache
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.csproj.AssemblyReference.cache
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.GeneratedMSBuildEditorConfig.editorconfig
+ECOMMERCE2/obj/Release/net8.0/project.razor.vs.bin
