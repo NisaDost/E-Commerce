@@ -482,3 +482,27 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+ECOMMERCE2/bin/Release/net8.0/ECOMMERCE2.pdb
+ECOMMERCE2/Models/BillingViewModel.cs
+ECOMMERCE2/obj/Release/net8.0/apphost.exe
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.AssemblyInfo.cs
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.AssemblyInfoInputs.cache
+/ECOMMERCE2/obj/Release/net8.0
+ECOMMERCE2/obj/Release/net8.0/refint/ECOMMERCE2.dll
+ECOMMERCE2/obj/Release/net8.0/ref/ECOMMERCE2.dll
+ECOMMERCE2/obj/Release/net8.0/project.razor.vs.bin
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.sourcelink.json
+ECOMMERCE2/bin/Release/net8.0/ECOMMERCE2.pdb
+ECOMMERCE2/obj/Release/net8.0/apphost.exe
+ECOMMERCE2/bin/Release/net8.0/ECOMMERCE2.pdb
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.AssemblyInfo.cs
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.AssemblyInfoInputs.cache
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.csproj.CoreCompileInputs.cache
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.dll
+*.dll
+*.dll
+*.dll
+*.pdb
+*.pdb
+ECOMMERCE2/obj/Release/net8.0/ECOMMERCE2.sourcelink.json
+ECOMMERCE2/obj/Release/net8.0/project.razor.vs.bin
