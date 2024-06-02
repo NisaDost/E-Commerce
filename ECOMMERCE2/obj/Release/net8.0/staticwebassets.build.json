@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vy6gqeQvvPlB5/L9gnmD9FKo2gwhVmi7a6nm6U/tgHE=",
+  "Hash": "YnbvSZkRgxl/8V5g9wgVyYbDrfgWhlpVdC4xPQ2YdHE=",
   "Source": "ECOMMERCE2",
   "BasePath": "_content/ECOMMERCE2",
   "Mode": "Default",
@@ -1288,6 +1288,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\vegetable-item-6.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\WhatsApp Image 2024-02-28 at 11.32.20.jpeg",
+      "SourceId": "ECOMMERCE2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\",
+      "BasePath": "_content/ECOMMERCE2",
+      "RelativePath": "img/WhatsApp Image 2024-02-28 at 11.32.20.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\WhatsApp Image 2024-02-28 at 11.32.20.jpeg"
     },
     {
       "Identity": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\yigit.png",

@@ -58,8 +58,11 @@ namespace ECOMMERCE2.Controllers
 
         public IActionResult Details(int id)
         {
+            var categories = _context.Categories.ToList();
+
+            // Fetch the selected product with its category
             var product = _context.Products
-                           .Include(p => p.Category) // Include the Category navigation property
+                           .Include(p => p.Category)
                            .FirstOrDefault(p => p.Id == id);
 
             if (product == null)
@@ -67,8 +70,17 @@ namespace ECOMMERCE2.Controllers
                 return NotFound();
             }
 
+            // Fetch other products that belong to the same category but exclude the selected product
+            var otherProducts = _context.Products
+                                .Where(p => p.Id != id && p.CategoryId == product.CategoryId)
+                                .ToList();
+
+            ViewBag.Categories = categories;
+            ViewBag.OtherProducts = otherProducts;
+
             return View(product);
         }
+
         public IActionResult AddProduct()
         {
             var categories = _context.Categories.ToList();
