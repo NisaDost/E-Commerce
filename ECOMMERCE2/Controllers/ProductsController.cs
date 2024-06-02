@@ -19,10 +19,42 @@ namespace ECOMMERCE2.Controllers
         public IActionResult Index(int page = 1)
         {
             var categories = _context.Categories.ToList();
-            var products = _context.Products.OrderBy(p => p.Price).Skip((page-1)*PageSize).Take(PageSize).ToList();
+            var products = _context.Products.OrderBy(p => p.Price).Skip((page - 1) * PageSize).Take(PageSize).ToList();
             ViewBag.Categories = categories;
             return View(products);
         }
+
+        public IActionResult SearchProducts(string search = null)
+        {
+            var products = _context.Products.ToList();
+            var searchedProducts = _context.Products.Where(p => !p.IsDeleted && p.Name.Contains(search)).ToList();
+
+            if (string.IsNullOrEmpty(search))
+            {
+                return View(products);
+            }
+
+            // Return JSON if the request is AJAX
+            if (Request.Headers.XRequestedWith == "XMLHttpRequest" && searchedProducts != null)
+            {
+                var searchedProductList = searchedProducts.Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Brand = p.Brand,
+                    Description = p.Description,
+                    Price = p.Price,
+                    StockQuantity = p.StockQuantity,
+                    InStock = p.InStock,
+                    CategoryId = p.CategoryId,
+                    Image = p.Picture
+                }).ToList();
+                return Json(searchedProductList);
+            }
+            return View(products);
+        }
+
+
 
         public IActionResult Details(int id)
         {
@@ -45,7 +77,7 @@ namespace ECOMMERCE2.Controllers
             ViewBag.Brands = brands;
             return View();
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> AddProductAsync(ProductAddViewModel product)
         {

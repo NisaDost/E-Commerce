@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Yigit\Desktop\Maltepe\6. Donem\E-commerce\E-Commerce\ECOMMERCE2
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Yigit/Desktop/Maltepe/6. Donem/E-commerce/E-Commerce/ECOMMERCE2/Views/Admin/EditUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Yigit/Desktop/Maltepe/6. Donem/E-commerce/E-Commerce/ECOMMERCE2/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Yigit/Desktop/Maltepe/6. Donem/E-commerce/E-Commerce/ECOMMERCE2/Views/Cart/Checkout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxDaGVja291dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
