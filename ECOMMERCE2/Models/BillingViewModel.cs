@@ -5,6 +5,7 @@ namespace ECOMMERCE2.Models
 {
     public class BillingViewModel
     {
+        public int UserId { get; set; }
         //address
         public int BillingAddressId { get; set; }
         public string FirstName { get; set; }
@@ -15,10 +16,7 @@ namespace ECOMMERCE2.Models
         public string City { get; set; }
         public string Address { get; set; }
         public bool SaveAddress { get; set; }
-
-
         //card
-
         public int BillingCardId { get; set; }
         public string CreditCardNumber { get; set; }
         public string CardHolderName { get; set; }

@@ -32,6 +32,7 @@ namespace ECOMMERCE2.Controllers
             {
                 var billingAddress = new BillingAddress
                 {
+                    UserId = billingViewModel.UserId,
                     FirstName = billingViewModel.FirstName,
                     LastName = billingViewModel.LastName,
                     Email = billingViewModel.Email,
@@ -41,20 +42,8 @@ namespace ECOMMERCE2.Controllers
                     Address = billingViewModel.Address
                 };
                 _context.BillingAddresses.Add(billingAddress);
-                _context.SaveChanges();
             }
-            return View();
-        }
-        [HttpGet]
-        public IActionResult GetAddress(int id)
-        {
-            var billingAddress = _context.BillingAddresses.Find(id);
-            return View(billingAddress);
-        }
 
-        [HttpPost]
-        public IActionResult SaveCard(BillingViewModel billingViewModel)
-        {
             if (billingViewModel.SaveCard)
             {
                 var billingCard = new BillingCard
@@ -66,9 +55,17 @@ namespace ECOMMERCE2.Controllers
                     CVV = billingViewModel.CVV
                 };
                 _context.BillingCard.Add(billingCard);
-                _context.SaveChanges();
             }
-            return View();
+
+            _context.SaveChanges();
+            return RedirectToAction("Checkout");
+        }
+
+        [HttpGet]
+        public IActionResult GetAddress(int id)
+        {
+            var billingAddress = _context.BillingAddresses.Find(id);
+            return View(billingAddress);
         }
 
         [HttpGet]
