@@ -34,10 +34,15 @@ namespace ECOMMERCE2.Data
                 .WithMany()
                 .HasForeignKey(od => od.ProductId);
 
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Carts)
+                .WithOne(c => c.User)
+                .HasForeignKey(c => c.UserId);
+
             modelBuilder.Entity<Cart>()
                 .HasOne(c => c.User)
-                .WithOne(u => u.Cart)
-                .HasForeignKey<Cart>(c => c.UserId);
+                .WithMany(u => u.Carts)
+                .HasForeignKey(c => c.UserId);
 
             modelBuilder.Entity<CartItem>()
                 .HasOne(ci => ci.Cart)

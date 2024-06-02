@@ -3,6 +3,7 @@
     ViewData["Title"] = "Checkout";
     var billingAddress = ViewBag.BillingAddress as List<ECOMMERCE2.Data.Model.BillingAddress>;
     var billingCard = ViewBag.BillingCard as List<ECOMMERCE2.Data.Model.BillingCard>;
+    var cart = ViewBag.Cart as ECOMMERCE2.Data.Model.Cart;
 }
 
 <partial name="_SinglePageHeaderPartial" />
@@ -19,9 +20,12 @@
                         <input type="hidden" asp-for="UserId">
                         <select class="form-select">
                             <option value="none">None</option>
-                            @foreach (var item in billingAddress)
+                            @if (billingAddress != null)
                             {
-                                <option value="@item.BillingAddressId">@item.FirstName @item.LastName</option>
+                                foreach (var item in billingAddress)
+                                {
+                                    <option value="@item.BillingAddressId">@item.FirstName @item.LastName</option>
+                                }
                             }
                         </select>
                     </div>
@@ -61,7 +65,7 @@
                     <input type="text" class="form-control" placeholder="House Number Street Name" asp-for="Address">
                 </div>
                 <div class="form-check text-start mt-2">
-                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" value="Save" asp-for="SaveAddress">
+                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" asp-for="SaveAddress">
                     <label class="form-check-label" for="SaveInfo">Save my address</label>
 
                 </div>
@@ -73,9 +77,12 @@
                     <label class="input-group-text">Saved Cards</label>
                     <select class="form-select">
                         <option value="none">None</option>
-                        @foreach (var item in billingCard)
+                        @if (billingCard != null)
                         {
-                            <option value="@item.BillingCardId">@item.CardHolderName</option>
+                            foreach (var item in billingCard)
+                            {
+                                <option value="@item.BillingCardId">@item.CardHolderName</option>
+                            }
                         }
                     </select>
                 </div>
@@ -103,7 +110,7 @@
                     </div>
                 </div>
                 <div class="form-check text-start mt-2">
-                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveCard" name="SaveCard" value="true" asp-for="SaveCard">
+                    <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveCard" name="SaveCard" asp-for="SaveCard">
                     <label class="form-check-label" for="SaveCard">Save my card info</label>
                 </div>
                 <!--Payment info end-->
@@ -123,64 +130,47 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center mt-2">
-                                        <img src="~/img/vegetable-item-2.jpg" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
-                                    </div>
-                                </th>
-                                <td class="py-5">Awesome Brocoli</td>
-                                <td class="py-5">$69.00</td>
-                                <td class="py-5">2</td>
-                                <td class="py-5">$138.00</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center mt-2">
-                                        <img src="~/img/vegetable-item-5.jpg" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
-                                    </div>
-                                </th>
-                                <td class="py-5">Potatoes</td>
-                                <td class="py-5">$69.00</td>
-                                <td class="py-5">2</td>
-                                <td class="py-5">$138.00</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div class="d-flex align-items-center mt-2">
-                                        <img src="~/img/vegetable-item-3.png" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
-                                    </div>
-                                </th>
-                                <td class="py-5">Big Banana</td>
-                                <td class="py-5">$69.00</td>
-                                <td class="py-5">2</td>
-                                <td class="py-5">$138.00</td>
-                            </tr>
+                            @foreach (var item in cart.CartItems)
+                            {
+                                var total = item.Product.Price * item.Quantity;
+                                <tr>
+                                    <th scope="row">
+                                        <div class="d-flex align-items-center mt-2">
+                                            <img src="@item.Product.Picture" class="img-fluid rounded-circle" style="width: 90px; height: 90px;">
+                                        </div>
+                                    </th>
+                                    <td class="py-5">@item.Product.Name</td>
+                                    <td class="py-5">@item.Product.Price</td>
+                                    <td class="py-5 text-center">@item.Quantity</td>
+                                    <td class="py-5">@(total)</td>
+                                </tr>
+                                <a hidden>@(ViewBag.Total += total)</a>
+                            }
                             <tr>
                                 <th scope="row">
                                 </th>
-                                <td class="py-5">
+                                <td class="py-4">
                                     <p class="mb-0 text-dark py-3">Subtotal</p>
                                 </td>
-                                <td class="py-5"></td>
-                                <td class="py-5"></td>
-                                <td class="py-5">
+                                <td class="py-4"></td>
+                                <td class="py-4"></td>
+                                <td class="py-4">
                                     <div class="py-3 border-bottom border-top">
-                                        <p class="mb-0 text-dark">$414.00</p>
+                                        <p class="mb-0 text-dark">$ @ViewBag.Total</p>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <th scope="row">
                                 </th>
-                                <td class="py-5">
-                                    <p class="mb-0 text-dark py-3">Shipping </p>
+                                <td class="py-4">
+                                    <p class="mb-0 text-dark py-3">Shipping</p>
                                 </td>
-                                <td class="py-5"></td>
-                                <td class="py-5"></td>
-                                <td class="py-5">
+                                <td class="py-4"></td>
+                                <td class="py-4"></td>
+                                <td class="py-4">
                                     <div class="py-3 border-bottom border-top">
-                                        <p class="mb-0 text-dark">Flat rate: $15.00</p>
+                                        <p class="mb-0 text-dark">$ @ViewBag.Shipping</p>
                                     </div>
                                 </td>
                             </tr>
@@ -188,14 +178,14 @@
                             <tr>
                                 <th scope="row">
                                 </th>
-                                <td class="py-5">
+                                <td class="py-4">
                                     <p class="mb-0 text-dark text-uppercase py-3">TOTAL</p>
                                 </td>
-                                <td class="py-5"></td>
-                                <td class="py-5"></td>
-                                <td class="py-5">
+                                <td class="py-4"></td>
+                                <td class="py-4"></td>
+                                <td class="py-4">
                                     <div class="py-3 border-bottom border-top">
-                                        <p class="mb-0 text-dark">$135.00</p>
+                                        <p class="mb-0 text-dark">$@(ViewBag.Total + @ViewBag.Shipping)</p>
                                     </div>
                                 </td>
                             </tr>
@@ -204,7 +194,7 @@
                 </div>
                 <!-- order summary end -->
                 <div class="row g-4 text-center align-items-center justify-content-center pt-4">
-                    <button type="button" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order</button>
+                    <button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place Order</button>
                 </div>
             </div>
         </div>

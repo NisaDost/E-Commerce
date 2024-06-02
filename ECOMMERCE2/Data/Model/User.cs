@@ -20,6 +20,6 @@ namespace ECOMMERCE2.Data.Model
         public ICollection<Order> Orders { get; set; }
         public ICollection<BillingCard> BillingCards { get; set; }
         public ICollection<BillingAddress> BillingAddresses { get; set; }
-        public Cart Cart { get; set; }
+        public ICollection<Cart> Carts { get; set; }
     }
 }

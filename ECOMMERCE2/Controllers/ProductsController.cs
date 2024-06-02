@@ -1,9 +1,11 @@
 ﻿using ECOMMERCE2.Data;
 using ECOMMERCE2.Data.Model;
+using ECOMMERCE2.Helper;
 using ECOMMERCE2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Security.Claims;
 
 namespace ECOMMERCE2.Controllers
 {
@@ -188,6 +190,47 @@ namespace ECOMMERCE2.Controllers
             product.IsDeleted = true;
             _context.Products.Update(product);
             _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult AddToCartSingle(int productId)
+        {
+            var userId = UserHelper.GetUserId(User);
+            var cart = _context.Carts.Where(c => c.UserId == userId && c.IsCheckedOut == false).FirstOrDefault();
+            
+            if (cart == null)
+            {
+                cart = new Cart
+                {
+                    UserId = userId,
+                    IsCheckedOut = false
+                };
+                _context.Carts.Add(cart);
+                _context.SaveChanges();
+            }
+
+            var product = _context.Products.Find(productId);
+            var cartItem = _context.CartItems.Where(ci => ci.CartId == cart.CartId && ci.ProductId == productId).FirstOrDefault();
+            if (cartItem != null)
+            {
+                cartItem.Quantity++;
+                _context.CartItems.Update(cartItem);
+                _context.SaveChanges();
+            } 
+            else
+            {
+                cartItem = new CartItem
+                {
+                    CartId = cart.CartId,
+                    Cart = cart,
+                    ProductId = productId,
+                    Product = product,
+                    Quantity = 1
+                };
+                _context.CartItems.Add(cartItem);
+                _context.SaveChanges();
+            }
+
             return RedirectToAction("Index");
         }
     }

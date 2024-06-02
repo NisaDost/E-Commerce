@@ -3,6 +3,7 @@
     ViewData["Title"] = "Products";
     var categories = ViewBag.Categories as List<ECOMMERCE2.Data.Model.Category>;
     var uniqueBrands = Model.Select(p => p.Brand).Distinct().ToList();
+    var orderViewModel = ViewBag.OrderViewModel as ECOMMERCE2.Models.OrderViewModel;
 }
 <partial name="_SinglePageHeaderPartial" />
 
@@ -98,7 +99,7 @@
                                                     <p class="text-dark fs-5 fw-bold mb-0">$@item.Price</p>
                                                     @if (!User.IsInRole("Admin"))
                                                     {
-                                                        <a class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                        <a asp-controller="Products" asp-action="AddToCartSingle" asp-route-productId="@item.Id" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                                     }
                                                     else if (User.IsInRole("Admin"))
                                                     {
@@ -170,21 +171,21 @@
                                                         <p>${product.description}</p>
                                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                                             <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
-        @if (!User.IsInRole("Admin"))
-        {
-                                                                            <a class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-        }
-        else if (User.IsInRole("Admin"))
-        {
-                                                                            <div>
-                                                                                <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
-                                                                                    <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
-                                                                                </a>
-                                                                                <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
-                                                                                    <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
-                                                                                </a>
-                                                                            </div>
-        }
+                                                                @if (!User.IsInRole("Admin"))
+                                                                {
+                                                                    <a class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                                }
+                                                                else if (User.IsInRole("Admin"))
+                                                                {
+                                                                    <div>
+                                                                        <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
+                                                                            <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
+                                                                        </a>
+                                                                        <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
+                                                                            <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                }
                                                         </div>
                                                     </div>
                                                 </a>

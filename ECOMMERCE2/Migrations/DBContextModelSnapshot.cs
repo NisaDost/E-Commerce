@@ -122,13 +122,15 @@ namespace ECOMMERCE2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CartId"));
 
+                    b.Property<bool>("IsCheckedOut")
+                        .HasColumnType("bit");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("CartId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Carts");
                 });
@@ -353,8 +355,8 @@ namespace ECOMMERCE2.Migrations
             modelBuilder.Entity("ECOMMERCE2.Data.Model.Cart", b =>
                 {
                     b.HasOne("ECOMMERCE2.Data.Model.User", "User")
-                        .WithOne("Cart")
-                        .HasForeignKey("ECOMMERCE2.Data.Model.Cart", "UserId")
+                        .WithMany("Carts")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -446,8 +448,7 @@ namespace ECOMMERCE2.Migrations
 
                     b.Navigation("BillingCards");
 
-                    b.Navigation("Cart")
-                        .IsRequired();
+                    b.Navigation("Carts");
 
                     b.Navigation("Orders");
                 });

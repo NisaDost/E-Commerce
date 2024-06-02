@@ -4,7 +4,7 @@ namespace ECOMMERCE2.Helper
 {
     public class UserHelper
     {
-        public static int? GetUserId(ClaimsPrincipal user)
+        public static int GetUserId(ClaimsPrincipal user)
         {
             string userIdValue = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -13,7 +13,7 @@ namespace ECOMMERCE2.Helper
                 return userId;
             }
 
-            return null;
+            return 0;
         }
     }
 }

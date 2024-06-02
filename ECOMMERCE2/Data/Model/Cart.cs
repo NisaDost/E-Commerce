@@ -7,6 +7,7 @@ namespace ECOMMERCE2.Data.Model
         [Key]
         public int CartId { get; set; }
         public int UserId { get; set; }
+        public bool IsCheckedOut { get; set; }
         public User User { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
     }
