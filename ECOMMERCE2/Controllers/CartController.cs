@@ -51,6 +51,11 @@ namespace ECOMMERCE2.Controllers
             var user = _context.Users.Find(userId);
 
             var cart = _context.Carts.FirstOrDefault(c => c.UserId == userId && !c.IsCheckedOut);
+            if (cart == null)
+            {
+                // Handle cart not found
+                return RedirectToAction("Index", "Cart");
+            }
             cart.IsCheckedOut = true;
             _context.Carts.Update(cart);
 
@@ -61,7 +66,7 @@ namespace ECOMMERCE2.Controllers
                 OrderDate = System.DateTime.Now
             };
             _context.Orders.Add(order);
-            _context.SaveChanges();
+            _context.SaveChanges(); // Save the order first to generate OrderId
 
             var cartItems = _context.CartItems.Where(ci => ci.CartId == cart.CartId).ToList();
             foreach (var cartItem in cartItems)
@@ -123,14 +128,40 @@ namespace ECOMMERCE2.Controllers
         public IActionResult GetAddress(int id)
         {
             var billingAddress = _context.BillingAddresses.Find(id);
-            return View(billingAddress);
+            if (billingAddress == null)
+            {
+                return NotFound();
+            }
+
+            return Json(new
+            {
+                firstName = billingAddress.FirstName,
+                lastName = billingAddress.LastName,
+                email = billingAddress.Email,
+                mobile = billingAddress.Mobile,
+                country = billingAddress.Country,
+                city = billingAddress.City,
+                address = billingAddress.Address
+            });
         }
 
         [HttpGet]
         public IActionResult GetCard(int id)
         {
             var billingCard = _context.BillingCard.Find(id);
-            return View(billingCard);
+            if (billingCard == null)
+            {
+                return NotFound();
+            }
+
+            return Json(new
+            {
+                cardHolderName = billingCard.CardHolderName,
+                creditCardNumber = billingCard.CreditCardNumber,
+                expiryDateMonth = billingCard.ExpiryDateMonth,
+                expiryDateYear = billingCard.ExpiryDateYear,
+                cvv = billingCard.CVV
+            });
         }
 
         public IActionResult Order(OrderViewModel orderViewModel)

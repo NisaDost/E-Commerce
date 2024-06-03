@@ -18,7 +18,7 @@
                     <div class="input-group mb-3 mt-3">
                         <label class="input-group-text">Saved Addresses</label>
                         <input type="hidden" asp-for="UserId">
-                        <select class="form-select">
+                        <select class="form-select" id="savedAddresses">
                             <option value="none">None</option>
                             @if (billingAddress != null)
                             {
@@ -61,13 +61,12 @@
                     <input type="text" class="form-control" asp-for="City">
                 </div>
                 <div class="form-item ">
-                    <label class="form-label my-3">Address <sup>*</sup></label>
+                    <label class="form-label my-3">Address<sup>*</sup></label>
                     <input type="text" class="form-control" placeholder="House Number Street Name" asp-for="Address">
                 </div>
                 <div class="form-check text-start mt-2">
                     <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" asp-for="SaveAddress">
-                    <label class="form-check-label" for="SaveInfo">Save my address</label>
-
+                    <label class="form-check-label" for="SaveAddress">Save my address</label>
                 </div>
                 <!--Shipping info end-->
                 <br>
@@ -75,7 +74,7 @@
                 <!--Payment info start-->
                 <div class="input-group mb-3">
                     <label class="input-group-text">Saved Cards</label>
-                    <select class="form-select">
+                    <select class="form-select" id="savedCards">
                         <option value="none">None</option>
                         @if (billingCard != null)
                         {
@@ -111,7 +110,7 @@
                 </div>
                 <div class="form-check text-start mt-2">
                     <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveCard" name="SaveCard" asp-for="SaveCard">
-                    <label class="form-check-label" for="SaveCard">Save my card info</label>
+                    <label class="form-check-label" for="SaveCard">Save my card</label>
                 </div>
                 <!--Payment info end-->
             </div>
@@ -201,3 +200,52 @@
     </form>
 </div>
 <!-- Checkout Page End -->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#savedAddresses').change(function () {
+                var addressId = $(this).val();
+                if (addressId !== 'none') {
+                    $.ajax({
+                        url: '/Cart/GetAddress',
+                        type: 'GET',
+                        data: { id: addressId },
+                        success: function (data) {
+                            $('input[name="FirstName"]').val(data.firstName);
+                            $('input[name="LastName"]').val(data.lastName);
+                            $('input[name="Email"]').val(data.email);
+                            $('input[name="Mobile"]').val(data.mobile);
+                            $('input[name="Country"]').val(data.country);
+                            $('input[name="City"]').val(data.city);
+                            $('input[name="Address"]').val(data.address);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Error fetching address:', error);
+                        }
+                    });
+                }
+            });
+
+            $('#savedCards').change(function () {
+                var cardId = $(this).val();
+                if (cardId !== 'none') {
+                    $.ajax({
+                        url: '/Cart/GetCard',
+                        type: 'GET',
+                        data: { id: cardId },
+                        success: function (data) {
+                            $('input[name="CardHolderName"]').val(data.cardHolderName);
+                            $('input[name="CreditCardNumber"]').val(data.creditCardNumber);
+                            $('input[name="ExpiryDateMonth"]').val(data.expiryDateMonth);
+                            $('input[name="ExpiryDateYear"]').val(data.expiryDateYear);
+                            $('input[name="CVV"]').val(data.cvv);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Error fetching card:', error);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
