@@ -145,16 +145,40 @@ namespace ECOMMERCE2.Controllers
         public IActionResult EditCartItemQuantity(int cartItemId, string editType)
         {
             var cartItem = _context.CartItems.FirstOrDefault(ci => ci.CartItemId == cartItemId);
+            if (cartItem == null)
+            {
+                return Json(new { success = false, message = "Cart item not found." });
+            }
+
+            var product = _context.Products.Find(cartItem.ProductId);
             if (editType == "increase")
             {
-                cartItem.Quantity++;
+                if (cartItem.Quantity + 1 <= product.StockQuantity)
+                {
+                    cartItem.Quantity++;
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Stock quantity is not enough." });
+                }
             }
-            else
+            else if (editType == "decrease")
             {
-                cartItem.Quantity--;
+                if (cartItem.Quantity > 1)
+                {
+                    cartItem.Quantity--;
+                }
+                else
+                {
+                    return Json(new { success = false, message = "Quantity cannot be less than 1." });
+                }
             }
+
             _context.SaveChanges();
-            return RedirectToAction("Index");
+
+            var totalPrice = cartItem.Quantity * product.Price;
+
+            return Json(new { success = true, quantity = cartItem.Quantity, totalPrice = totalPrice });
         }
     }
 }

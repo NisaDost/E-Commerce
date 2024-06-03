@@ -51,7 +51,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td class="total-cell">
                                     <p class="mb-0 mt-4">@(item.Product.Price * item.Quantity) $</p>
                                 </td>
                                 <td>
@@ -70,7 +70,7 @@
                 <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
                 <div class="d-flex justify-content-between mb-4">
                     <h5 class="mb-0 me-4">Subtotal:</h5>
-                    <p class="mb-0">
+                    <p class="mb-0" id="subtotal">
                         $
                         @if (Model != null && Model.CartItems != null)
                         {
@@ -93,7 +93,7 @@
             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                 <h5 class="mb-0 ps-4 me-4">Total</h5>
 
-                <p class="mb-0 pe-4">$ @(ViewBag.Total += ViewBag.Shipping)</p>
+                <p class="mb-0 pe-4" id="total">$ @(ViewBag.Total += ViewBag.Shipping)</p>
             </div>
             <a class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" asp-controller="Cart" asp-action="Checkout">Proceed Checkout</a>
         </div>
@@ -102,7 +102,6 @@
 <!-- Cart Page End -->
 @section Scripts {
     <script>
-        //Not working
         $(document).ready(function () {
             $('.btn-minus, .btn-plus').click(function (e) {
                 e.preventDefault();
@@ -118,13 +117,50 @@
                         cartItemId: cartItemId,
                         editType: editType
                     },
+                    success: function (response) {
+                        if (response.success) {
+                            var row = button.closest('tr');
+                            var quantityInput = row.find('input');
+                            var totalCell = row.find('.total-cell p');
+
+                            quantityInput.val(response.quantity);
+                            totalCell.text(response.totalPrice.toFixed(2) + ' $');
+
+                            // Update the subtotal and total in the cart summary
+                            updateCartSummary();
+                        } else {
+                            alert(response.message);
+                        }
+                    },
                     error: function (xhr, status, error) {
-                        // Handle errors
                         console.error('Error updating quantity:', error);
                     }
                 });
             });
-        });
 
+            function updateCartSummary() {
+                var subtotal = 0;
+                $('.table tbody tr').each(function () {
+                    var totalText = $(this).find('.total-cell p').text().replace('$', '').trim();
+                    var total = parseFloat(totalText);
+
+                    if (!isNaN(total)) {
+                        subtotal += total;
+                    }
+                });
+
+                $('#subtotal').text(subtotal.toFixed(2) + ' $');
+
+                var shippingText = $('#shipping').text().replace('Flat rate: $', '').trim();
+                var shipping = parseFloat(shippingText);
+
+                if (isNaN(shipping)) {
+                    shipping = 0;
+                }
+
+                var total = subtotal + shipping;
+                $('#total').text(total.toFixed(2) + ' $');
+            }
+        });
     </script>
 }

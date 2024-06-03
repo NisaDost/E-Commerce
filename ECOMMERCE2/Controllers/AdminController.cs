@@ -20,6 +20,10 @@ namespace ECOMMERCE2.Controllers
 
         public IActionResult Index()
         {
+            if (!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var categories = _context.Categories.ToList();
             return View(categories);
         }
@@ -41,6 +45,10 @@ namespace ECOMMERCE2.Controllers
         [HttpPost]
         public async Task<IActionResult> EditCategory(int id, string name, string icon)
         {
+            if (!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
@@ -80,6 +88,10 @@ namespace ECOMMERCE2.Controllers
 
         public IActionResult EditUser(string search = null)
         {
+            if (!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var users = string.IsNullOrEmpty(search)
                 ? _context.Users.Where(u => !u.IsDeleted).ToList()
                 : _context.Users.Where(u => !u.IsDeleted && u.Username.Contains(search)).ToList();

@@ -85,6 +85,10 @@ namespace ECOMMERCE2.Controllers
 
         public IActionResult AddProduct()
         {
+            if (!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var categories = _context.Categories.ToList();
             var brands = _context.Products.ToList();
             ViewBag.Categories = categories;
@@ -123,6 +127,10 @@ namespace ECOMMERCE2.Controllers
 
         public IActionResult EditProduct(int id)
         {
+            if (!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var product = _context.Products.Find(id);
             var brands = _context.Products.ToList();
             ViewBag.Brands = brands;
@@ -150,6 +158,10 @@ namespace ECOMMERCE2.Controllers
         [HttpPost]
         public IActionResult EditProduct(ProductEditViewModel productViewModel)
         {
+            if (!User.IsInRole("Admin"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var category = _context.Categories.Find(productViewModel.CategoryId);
             var product = _context.Products.Find(productViewModel.Id);
             var brands = _context.Products.ToList();
