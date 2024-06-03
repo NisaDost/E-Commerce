@@ -147,7 +147,7 @@ namespace ECOMMERCE2.Controllers
             var cartItem = _context.CartItems.FirstOrDefault(ci => ci.CartItemId == cartItemId);
             if (cartItem == null)
             {
-                return Json(new { success = false, message = "Cart item not found." });
+                return Json(new { success = false, message = "Cart item not found.", quantity = 1 });
             }
 
             var product = _context.Products.Find(cartItem.ProductId);
@@ -159,7 +159,7 @@ namespace ECOMMERCE2.Controllers
                 }
                 else
                 {
-                    return Json(new { success = false, message = "Stock quantity is not enough." });
+                    return Json(new { success = false, message = "Stock quantity is not enough.", quantity = cartItem.Quantity });
                 }
             }
             else if (editType == "decrease")
@@ -170,7 +170,7 @@ namespace ECOMMERCE2.Controllers
                 }
                 else
                 {
-                    return Json(new { success = false, message = "Quantity cannot be less than 1." });
+                    return Json(new { success = false, message = "Quantity cannot be less than 1.", quantity = cartItem.Quantity });
                 }
             }
 
@@ -180,5 +180,20 @@ namespace ECOMMERCE2.Controllers
 
             return Json(new { success = true, quantity = cartItem.Quantity, totalPrice = totalPrice });
         }
+        [HttpPost]
+        public IActionResult DeleteCartItem(int cartItemId)
+        {
+            var cartItem = _context.CartItems.FirstOrDefault(ci => ci.CartItemId == cartItemId);
+            if (cartItem == null)
+            {
+                return Json(new { success = false, message = "Cart item not found." });
+            }
+
+            _context.CartItems.Remove(cartItem);
+            _context.SaveChanges();
+
+            return Json(new { success = true });
+        }
+
     }
 }
