@@ -25,6 +25,14 @@
       "PackagePath": "staticwebassets\\img\\Crying Jordan.png"
     },
     {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\Jordan-RED-BLACK.png",
+      "PackagePath": "staticwebassets\\img\\Jordan-RED-BLACK.png"
+    },
+    {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\Jordan-red.jpg",
+      "PackagePath": "staticwebassets\\img\\Jordan-red.jpg"
+    },
+    {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\MV-10 Win.jpg",
       "PackagePath": "staticwebassets\\img\\MV-10 Win.jpg"
     },
@@ -37,6 +45,10 @@
       "PackagePath": "staticwebassets\\img\\Obi-Wan.jpg"
     },
     {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\Reebok-Aztrek.jpg",
+      "PackagePath": "staticwebassets\\img\\Reebok-Aztrek.jpg"
+    },
+    {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\WhatsApp Image 2024-02-28 at 11.32.20.jpeg",
       "PackagePath": "staticwebassets\\img\\WhatsApp Image 2024-02-28 at 11.32.20.jpeg"
     },
@@ -45,40 +57,16 @@
       "PackagePath": "staticwebassets\\img\\adidas-predator.jpg"
     },
     {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\asics-gel-nimbus.jpg",
+      "PackagePath": "staticwebassets\\img\\asics-gel-nimbus.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\asics-purple.webp",
+      "PackagePath": "staticwebassets\\img\\asics-purple.webp"
+    },
+    {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\avatar.jpg",
       "PackagePath": "staticwebassets\\img\\avatar.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\baner-1.png",
-      "PackagePath": "staticwebassets\\img\\baner-1.png"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\banner-fruits.jpg",
-      "PackagePath": "staticwebassets\\img\\banner-fruits.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\best-product-1.jpg",
-      "PackagePath": "staticwebassets\\img\\best-product-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\best-product-2.jpg",
-      "PackagePath": "staticwebassets\\img\\best-product-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\best-product-3.jpg",
-      "PackagePath": "staticwebassets\\img\\best-product-3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\best-product-4.jpg",
-      "PackagePath": "staticwebassets\\img\\best-product-4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\best-product-5.jpg",
-      "PackagePath": "staticwebassets\\img\\best-product-5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\best-product-6.jpg",
-      "PackagePath": "staticwebassets\\img\\best-product-6.jpg"
     },
     {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\catalog.jpg",
@@ -95,54 +83,6 @@
     {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\dnd-converse.png",
       "PackagePath": "staticwebassets\\img\\dnd-converse.png"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\fan.png",
-      "PackagePath": "staticwebassets\\img\\fan.png"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\featur-1.jpg",
-      "PackagePath": "staticwebassets\\img\\featur-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\featur-2.jpg",
-      "PackagePath": "staticwebassets\\img\\featur-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\featur-3.jpg",
-      "PackagePath": "staticwebassets\\img\\featur-3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\fruite-item-1.jpg",
-      "PackagePath": "staticwebassets\\img\\fruite-item-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\fruite-item-2.jpg",
-      "PackagePath": "staticwebassets\\img\\fruite-item-2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\fruite-item-3.jpg",
-      "PackagePath": "staticwebassets\\img\\fruite-item-3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\fruite-item-4.jpg",
-      "PackagePath": "staticwebassets\\img\\fruite-item-4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\fruite-item-5.jpg",
-      "PackagePath": "staticwebassets\\img\\fruite-item-5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\fruite-item-6.jpg",
-      "PackagePath": "staticwebassets\\img\\fruite-item-6.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-img-1.png",
-      "PackagePath": "staticwebassets\\img\\hero-img-1.png"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-img-2.jpg",
-      "PackagePath": "staticwebassets\\img\\hero-img-2.jpg"
     },
     {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-img.png",
@@ -173,8 +113,20 @@
       "PackagePath": "staticwebassets\\img\\image-product-4.jpg"
     },
     {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\jordan-ad.webp",
+      "PackagePath": "staticwebassets\\img\\jordan-ad.webp"
+    },
+    {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\jordan.png",
       "PackagePath": "staticwebassets\\img\\jordan.png"
+    },
+    {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nb-550.jpg",
+      "PackagePath": "staticwebassets\\img\\nb-550.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nb-fresh-foam.jpg",
+      "PackagePath": "staticwebassets\\img\\nb-fresh-foam.jpg"
     },
     {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nisa.png",
@@ -187,6 +139,18 @@
     {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\payment.png",
       "PackagePath": "staticwebassets\\img\\payment.png"
+    },
+    {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\puma-red.jpg",
+      "PackagePath": "staticwebassets\\img\\puma-red.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\puma-rs-x.jpg",
+      "PackagePath": "staticwebassets\\img\\puma-rs-x.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\puma-white.png",
+      "PackagePath": "staticwebassets\\img\\puma-white.png"
     },
     {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\running.png",
@@ -209,8 +173,12 @@
       "PackagePath": "staticwebassets\\img\\shoes-2.jpg"
     },
     {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\single-item.jpg",
-      "PackagePath": "staticwebassets\\img\\single-item.jpg"
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sketchers-turkuoise.jpg",
+      "PackagePath": "staticwebassets\\img\\sketchers-turkuoise.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sketchers-yellow.png",
+      "PackagePath": "staticwebassets\\img\\sketchers-yellow.png"
     },
     {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneaker-1.jpg",
@@ -245,28 +213,8 @@
       "PackagePath": "staticwebassets\\img\\under-armour.png"
     },
     {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-1.jpg",
-      "PackagePath": "staticwebassets\\img\\vegetable-item-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-2.jpg",
-      "PackagePath": "staticwebassets\\img\\vegetable-item-2.jpg"
-    },
-    {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-3.png",
       "PackagePath": "staticwebassets\\img\\vegetable-item-3.png"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-4.jpg",
-      "PackagePath": "staticwebassets\\img\\vegetable-item-4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-5.jpg",
-      "PackagePath": "staticwebassets\\img\\vegetable-item-5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-6.jpg",
-      "PackagePath": "staticwebassets\\img\\vegetable-item-6.jpg"
     },
     {
       "Id": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\yigit.png",
