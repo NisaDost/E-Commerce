@@ -100,20 +100,67 @@ namespace ECOMMERCE2.Controllers
             }
         }
 
-
-
-        public IActionResult UserOrder()
+        public IActionResult UserOrderDetail()
         {
-            var user = UserHelper.GetUserId(User);
-            var orders = _context.Orders.Include(o => o.OrderDetails).ThenInclude(p => p.Product).Where(o => o.UserId == user).ToList();
+            var userId = UserHelper.GetUserId(User);
+            var orders = _context.Orders
+                .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Product)
+                .Where(o => o.UserId == userId)
+                .Select(o => new OrderSummaryViewModel
+                {
+                    OrderId = o.OrderId,
+                    OrderDate = o.OrderDate,
+                    TotalPrice = o.OrderDetails.Sum(od => od.Product.Price * od.Quantity)
+                })
+                .ToList();
 
             return View(orders);
         }
         [HttpGet]
-        public IActionResult InsideOrderDetails(/*int id*/)
+        public IActionResult InsideOrderDetails(int id)
         {
-            //var order = _context.Orders.Find(id);
-            return View(/*order*/);
+            var userId = UserHelper.GetUserId(User);
+
+            var order = _context.Orders
+                .Include(o => o.User)
+                .Include(o => o.BillingAddresses)
+                .Where(o => o.OrderId == id && o.UserId == userId)
+                .FirstOrDefault();
+
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            var orderDetails = _context.OrderDetails
+                .Include(od => od.Product)
+                .Where(od => od.OrderId == id)
+                .Select(od => new OrderViewModel
+                {
+                    Id = od.ProductId,
+                    ProductName = od.Product.Name,
+                    ProductBrand = od.Product.Brand,
+                    ProductPrice = od.Product.Price,
+                    ProductImage = od.Product.Picture,
+                    Quantity = od.Quantity,
+                    TotalPrice = (od.Product.Price * od.Quantity) + 15 // Add a fixed shipping cost
+                })
+                .ToList();
+
+            var orderDetailViewModel = new OrderDetailViewModel
+            {
+                OrderId = order.OrderId,
+                OrderDate = order.OrderDate,
+                CustomerName = order.User.Name,
+                CustomerSurname = order.User.Surname,
+                ShippingAddress = string.Join(", ", order.BillingAddresses.Select(b => b.Address)),
+                OrderItems = orderDetails,
+                Total = orderDetails.Sum(od => od.TotalPrice) // Perform the sum operation in memory
+            };
+
+            return View(orderDetailViewModel);
         }
+
     }
 }

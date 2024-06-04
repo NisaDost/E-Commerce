@@ -1,4 +1,4 @@
-﻿@model ECOMMERCE2.Data.Model.OrderDetail;
+﻿@model ECOMMERCE2.Models.OrderDetailViewModel
 @{
     ViewBag.Title = "Order Details";
 }
@@ -9,42 +9,43 @@
         <div class="row">
             <div class="content d-flex justify-content-around align-items-center">
                 <div class="col-7">
-
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <td class="text-black-center">Product Image </td>
-                                <td class="text-center">Order ID</td>
-                                <td class="text-center">Order Date</td>
+                                @*<td class="text-center">Order ID</td>*@
+                                <td class="text-center">Product Image</td>
+                                <td class="text-center">Product Brand</td>
                                 <td class="text-center">Product Name</td>
-                                <td class="text-center">Qty</td>
+                                <td class="text-center">Quantity</td>
                                 <td class="text-center">Price</td>
                             </tr>
                         </thead>
                         <tbody>
-                            @* @foreach (var item in Model)
-                            { *@
-                            <tr>
-                                <td class="text-center">item.Picture</td>
-                                <td class="text-center">item.OrderId</td>
-                                <td class="text-center">item.OrderDate</td>
-                                <td class="text-left">item.ProductName</td>
-                                <td class="text-center">item.Quantity</td>
-                                <td class="text-right">$item.Price.ToString("F2")</td>
-                            </tr>
-                            @* } *@
+                            @foreach (var item in Model.OrderItems)
+                            {
+                                <tr class="text-center">
+                                    @*<td class="text-center">@item.Id</td>*@
+                                    <td>
+                                        <img src="@item.ProductImage" alt="Product Image" style="max-width: 50px;" />
+                                    </td>
+                                    <td>@item.ProductBrand</td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td>$@item.TotalPrice.ToString("0.##")</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
                 <div class="col-3">
                     <div>
                         <h4>Customer Information</h4>
-                        <p>Name: Model.CustomerName  Model.CustomerSurname</p>
+                        <p>Name: @Model.CustomerName @Model.CustomerSurname</p>
                     </div>
                     <div>
                         <h4>Cargo Information</h4>
-                        <p>Shipping Address: Model.ShippingAddress</p>
-                        <h4>Total: $@* @total *@</h4>
+                        <p>Shipping Address: @Model.ShippingAddress</p>
+                        <h4>Total: $@Model.Total.ToString("0.##")</h4>
                     </div>
                 </div>
             </div>

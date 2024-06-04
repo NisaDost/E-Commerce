@@ -70,6 +70,10 @@
                             <a asp-controller="Home" asp-action="Index" class="nav-item nav-link active">Home</a>
                             <a asp-controller="Products" asp-action="Index" class="nav-item nav-link">Products</a>
                             <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Contact</a>
+                            @if (User.IsInRole("User"))
+                            {
+                                <a asp-controller="Order" asp-action="UserOrderDetail" class="nav-item nav-link">Orders</a>
+                            }
                             @if (User.IsInRole("Admin"))
                             {
                                 <div class="nav-item dropdown">
