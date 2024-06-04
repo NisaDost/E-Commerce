@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Order History";
+}
+<partial name="_SinglePageHeaderPartial" />
+
+<div id="wrapper" class="wrapper-fluid banners-effect-5">
+    <div class="main-container container mt-5">
+        <div class="row">
+            <div id="content">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td class="text-left">User's Name</td>
+                                <td class="text-center">Order ID</td>
+                                <td class="text-center">Qty</td>
+                                <td class="text-center">Date Added</td>
+                                <td class="text-right">Total</td>
+                                <td class="text-center">Details</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-left">
+                                    <a">User 1</a>
+                                </td>
+                                <td class="text-center">#214521</td>
+                                <td class="text-center">1</td>
+                                <td class="text-center">21/06/2016</td>
+                                <td class="text-right">$228.00</td>
+                                <td class="text-center">
+                                    <a class="btn btn-info" href="order-details.html?orderId=214521">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">
+                                    <a>User 2</a>
+                                </td>
+                                <td class="text-center">#1565245</td>
+                                <td class="text-center">1</td>
+                                <td class="text-center">20/06/2016</td>
+                                <td class="text-right">$133.20</td>
+                                <td class="text-center">
+                                    <a class="btn btn-info" href="order-details.html?orderId=1565245">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

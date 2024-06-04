@@ -109,5 +109,11 @@ namespace ECOMMERCE2.Controllers
 
             return View(orders);
         }
+        [HttpGet]
+        public IActionResult InsideOrderDetails(/*int id*/)
+        {
+            //var order = _context.Orders.Find(id);
+            return View(/*order*/);
+        }
     }
 }
