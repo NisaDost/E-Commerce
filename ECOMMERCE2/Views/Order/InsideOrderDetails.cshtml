@@ -1,0 +1,53 @@
+﻿@model ECOMMERCE2.Data.Model.OrderDetail;
+@{
+    ViewBag.Title = "Order Details";
+}
+<partial name="_SinglePageHeaderPartial" />
+
+<div id="wrapper" class="wrapper-fluid banners-effect-5">
+    <div class="main-container container mt-5">
+        <div class="row">
+            <div class="content d-flex justify-content-around align-items-center">
+                <div class="col-7">
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td class="text-black-center">Product Image </td>
+                                <td class="text-center">Order ID</td>
+                                <td class="text-center">Order Date</td>
+                                <td class="text-center">Product Name</td>
+                                <td class="text-center">Qty</td>
+                                <td class="text-center">Price</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @* @foreach (var item in Model)
+                            { *@
+                            <tr>
+                                <td class="text-center">item.Picture</td>
+                                <td class="text-center">item.OrderId</td>
+                                <td class="text-center">item.OrderDate</td>
+                                <td class="text-left">item.ProductName</td>
+                                <td class="text-center">item.Quantity</td>
+                                <td class="text-right">$item.Price.ToString("F2")</td>
+                            </tr>
+                            @* } *@
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <h4>Customer Information</h4>
+                        <p>Name: Model.CustomerName  Model.CustomerSurname</p>
+                    </div>
+                    <div>
+                        <h4>Cargo Information</h4>
+                        <p>Shipping Address: Model.ShippingAddress</p>
+                        <h4>Total: $@* @total *@</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

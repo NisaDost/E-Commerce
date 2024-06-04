@@ -35,12 +35,18 @@ namespace ECOMMERCE2.Controllers
             return View(orderViewModels);
         }
 
-        public IActionResult UserOrderDetail()
+        public IActionResult UserOrder()
         {
             var user = UserHelper.GetUserId(User);
             var orders = _context.Orders.Include(o => o.OrderDetails).ThenInclude(p => p.Product).Where(o => o.UserId == user).ToList();
 
             return View(orders);
+        }
+        [HttpGet]
+        public IActionResult InsideOrderDetails(/*int id*/)
+        {
+            //var order = _context.Orders.Find(id);
+            return View(/*order*/);
         }
     }
 }
