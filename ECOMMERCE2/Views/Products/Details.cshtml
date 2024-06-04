@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <a id="addToCartBtn" asp-controller="Products" asp-action="AddToCartFromDetailsPage"
-                           asp-route-productId="@Model.Id" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
+                           asp-route-productId="@Model.Id" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" data-is-authenticated="@User.Identity.IsAuthenticated">
                             <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
                         </a>
 
@@ -168,18 +168,23 @@
                     </div>
                 </div>
             }
-
             <!-- Related Products end-->
         </div>
     </div>
 </div>
 <!-- Single Product End -->
-
 @section scripts
 {
     <script>
         $(document).ready(function () {
             $('#addToCartBtn').on('click', function (e) {
+                const isAuthenticated = $(this).data('is-authenticated') === 'True';
+                if (!isAuthenticated) {
+                    e.preventDefault();
+                    alert('Please login to add products to cart.');
+                    return;
+                }
+
                 e.preventDefault();
                 var quantity = $('#quantity').val();
                 var url = $(this).attr('href') + '&quantity=' + quantity;
@@ -187,6 +192,4 @@
             });
         });
     </script>
-
 }
-```
