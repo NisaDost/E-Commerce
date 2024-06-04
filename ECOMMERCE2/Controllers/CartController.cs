@@ -32,17 +32,20 @@ namespace ECOMMERCE2.Controllers
             var shipping = 15.00M;
             ViewBag.Shipping = shipping;
 
-            var billingAddress = _context.BillingAddresses.ToList();
+            var userId = UserHelper.GetUserId(User);
+
+            // Filter addresses and cards by the logged-in user's ID
+            var billingAddress = _context.BillingAddresses.Where(ba => ba.UserId == userId).ToList();
             ViewBag.billingAddress = billingAddress;
 
-            var billingCard = _context.BillingCard.ToList();
+            var billingCard = _context.BillingCard.Where(bc => bc.UserId == userId).ToList();
             ViewBag.billingCard = billingCard;
-            
-            var userId = UserHelper.GetUserId(User);
+
             var cart = _context.Carts.Include(c => c.CartItems).ThenInclude(ci => ci.Product).Where(c => c.UserId == userId && !c.IsCheckedOut).FirstOrDefault();
             ViewBag.Cart = cart;
             return View();
         }
+
 
         [HttpPost]
         public IActionResult Checkout(BillingViewModel billingViewModel)
