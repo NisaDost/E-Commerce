@@ -7,7 +7,7 @@
 <div class="container-fluid mt-5">
     <div id="body-container">
         <div id="right-column">
-            <div class="right-column-content container-fluid">
+            <div class="right-column-content container">
                 <div class="row">
                     <div class="col-md-6">
                         <h1>
@@ -17,119 +17,66 @@
                             </span>
                         </h1>
                     </div>
-                    <div class="col-md-6">
-                        <div class="page-heading-controls">
-                            <a href="pages-invoice.html" role="button" class="btn btn-primary">
-                                <span class="glyphicon glyphicon-print"></span>
-                                Print Invoice
-                            </a>
-                            <a href="#" role="button" class="btn btn-danger">Delete</a>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="block">
-                            <div class="block-heading">
-                                <div class="main-text h2">
-                                    Orders
-                                </div>
-                            </div>
                             <div class="block-content-outer">
                                 <div class="block-content-inner">
                                     <div class="table-responsive">
-                                        <form role="form">
+                                        <form method="get" role="form">
                                             <table class="table table-condensed table-striped table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center">
-                                                            <input type="checkbox" class="list-select-all">
-                                                        </th>
-                                                        <th class="text-right col-xs-1">Order ID</th>
-                                                        <th class="col-xs-2">Customer</th>
-                                                        <th class="col-xs-1">Status</th>
-                                                        <th class="text-right col-xs-2">Total</th>
-                                                        <th class="col-xs-2">Purchase Date</th>
-                                                        <th class="text-right col-xs-2">Action</th>
+                                                        <th class="col-2">Customer</th>
+                                                        <th class="text-right col-2">Total</th>
+                                                        <th class="col-2">Purchase Date</th>
+                                                        <th class="text-right col-1">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach (var item in Model)
-                                                    {
-                                                        <tr>
-                                                            <td class="text-center">
-                                                                <input type="checkbox">
-                                                            </td>
-                                                            <td class="text-right">@item.Order.OrderId</td>
-                                                            <td>@item.Order.User.Name @item.Order.User.Surname</td>
-                                                            <td>
-                                                                <select id="input-demo-v" class="form-control">
-                                                                    <option>-- Status --</option>
-                                                                    <option>Completed</option>
-                                                                    <option>Cancelled</option>
-                                                                    <option>Pending</option>
-                                                                    <option>Action Required</option>
-                                                                </select>
-                                                            </td>
-                                                            <td class="text-right">@item.TotalPrice</td>
-                                                            <td>@item.Order.OrderDate</td>
-                                                            <td class="text-right">
-                                                                <a href="ecommerce-order-view.html" class="btn btn-primary btn-sm" role="button">View</a>
-                                                            </td>
-                                                        </tr>
-                                                    }
                                                     <tr>
-                                                        <td></td>
                                                         <td>
-                                                            <input type="text" class="form-control input-sm text-right" placeholder="ID" size="2" />
+                                                            <input type="text" name="customerName" class="form-control input-sm" placeholder="Customer Name" size="5" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control input-sm" placeholder="Customer Name" size="5" />
-                                                        </td>
-                                                        <td>
-                                                            <select id="input-demo-v" class="form-control">
-                                                                <option>-- Status --</option>
-                                                                <option>Completed</option>
-                                                                <option>Cancelled</option>
-                                                                <option>Pending</option>
-                                                                <option>Action Required</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control input-sm text-right" placeholder="Total" size="3" />
+                                                            <input type="text" name="minTotal" class="form-control mb-1 input-sm text-right" placeholder="Min Total" />
+                                                            <input type="text" name="maxTotal" class="form-control input-sm text-right" placeholder="Max Total" />
                                                         </td>
                                                         <td>
                                                             <div id="date-added-from" class="input-group">
-                                                                <input type="text" class="form-control input-sm" placeholder="From Date" size="4" />
+                                                                <input type="datetime-local" name="fromDate" class="form-control mb-1 input-sm text-right" placeholder="From Date" />
                                                                 <span class="input-group-addon input-group-icon">
                                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                                 </span>
                                                             </div>
                                                             <div id="date-added-to" class="input-group">
-                                                                <input type="text" class="form-control input-sm" placeholder="To Date" size="4" />
+                                                                <input type="datetime-local" name="toDate" class="form-control input-sm text-right" placeholder="To Date" />
                                                                 <span class="input-group-addon input-group-icon">
                                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                                 </span>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div id="date-modified-from" class="input-group">
-                                                                <input type="text" class="form-control input-sm" placeholder="From Date" size="4" />
-                                                                <span class="input-group-addon input-group-icon">
-                                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                                </span>
+                                                            <div id="search" class="input-group mt-4 d-flex align-items-center justify-content-center">
+                                                                <button id="search-button" class="btn btn-success">
+                                                                    <i class="fas fa-search"></i> Search
+                                                                </button>
                                                             </div>
-                                                            <div id="date-modified-to" class="input-group">
-                                                                <input type="text" class="form-control input-sm" placeholder="To Date" size="4" />
-                                                                <span class="input-group-addon input-group-icon">
-                                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                                </span>
-                                                            </div>
-                                                        </td>
-                                                        <td class="text-right">
-                                                            <button type="button" class="btn btn-default">Filter</button>
                                                         </td>
                                                     </tr>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr data-order-id="@item.Order.,OrderId">
+                                                            <td>@item.Order.User.Name @item.Order.User.Surname</td>
+                                                            <td class="text-right">@item.TotalPrice</td>
+                                                            <td>@item.Order.OrderDate</td>
+                                                            <td class="d-flex align-items-center justify-content-around">
+                                                                <a class="btn btn-primary btn-sm" role="button"><i class="fa fa-eye"></i> View</a>
+                                                                <a class="btn btn-danger float-end delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    }
                                                 </tbody>
                                             </table>
 
@@ -155,5 +102,40 @@
             </div>
         </div>
     </div>
-
 </div>
+
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.delete-button').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    if (confirm('Are you sure you want to delete this order?')) {
+                        var row = this.closest('tr');
+                        var orderId = row.getAttribute('data-order-id');
+
+                        fetch('/Order/Delete', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'RequestVerificationToken': '@Html.AntiForgeryToken()'
+                            },
+                            body: JSON.stringify(orderId)
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    row.remove();
+                                } else {
+                                    alert('Error deleting order: ' + data.message);
+                                }
+                            })
+                            .catch(error => {
+                                alert('Error deleting order: ' + error.message);
+                            });
+                    }
+                });
+            });
+        });
+    </script>
+}
