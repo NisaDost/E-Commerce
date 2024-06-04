@@ -84,25 +84,43 @@
                         <div class="row g-4 justify-content-start" id="product-list">
                             @foreach (var item in Model)
                             {
-                                <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="@item.CategoryId" data-brand="@item.Brand" data-price="@item.Price">
-                                    <div class="rounded position-relative fruite-item">
-                                        <a href="/products/details/@item.Id">
-                                            <div class="fruite-img" style="position: relative; width: 100%; padding-top: 100%; overflow: hidden;">
-                                                <img src="@item.Picture" class="img-fluid rounded-top" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-                                            </div>
-                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.Brand</div>
-                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4>@item.Name</h4>
-                                                <p>@item.Description</p>
+                                if (item.InStock && item.StockQuantity > 0 && !User.IsInRole("Admin"))
+                                {
+                                    <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="@item.CategoryId" data-brand="@item.Brand" data-price="@item.Price">
+                                        <div class="rounded position-relative fruite-item">
+                                            <a href="/products/details/@item.Id">
+                                                <div class="fruite-img" style="position: relative; width: 100%; padding-top: 100%; overflow: hidden;">
+                                                    <img src="@item.Picture" class="img-fluid rounded-top" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                                </div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.Brand</div>
+                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                    <h4>@item.Name</h4>
+                                                    <p>@item.Description</p>
 
-                                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$@item.Price</p>
-                                                    @if (!User.IsInRole("Admin"))
-                                                    {
+                                                    <div class="d-flex justify-content-between flex-lg-wrap">
+                                                        <p class="text-dark fs-5 fw-bold mb-0">$@item.Price</p>
                                                         <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="@item.Id"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                    }
-                                                    else if (User.IsInRole("Admin"))
-                                                    {
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                                else if(User.IsInRole("Admin"))
+                                {
+                                    <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="@item.CategoryId" data-brand="@item.Brand" data-price="@item.Price">
+                                        <div class="rounded position-relative fruite-item">
+                                            <a href="/products/details/@item.Id">
+                                                <div class="fruite-img" style="position: relative; width: 100%; padding-top: 100%; overflow: hidden;">
+                                                    <img src="@item.Picture" class="img-fluid rounded-top" alt="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                                </div>
+                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">@item.Brand</div>
+                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                    <h4>@item.Name</h4>
+                                                    <p>@item.Description</p>
+
+                                                    <div class="d-flex justify-content-between flex-lg-wrap">
+                                                        <p class="text-dark fs-5 fw-bold mb-0">$@item.Price</p>
                                                         <div>
                                                             <a id="delete-icon-@item.Id" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="@item.Id">
                                                                 <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
@@ -111,12 +129,12 @@
                                                                 <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
                                                             </a>
                                                         </div>
-                                                    }
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             }
                         </div>
 
@@ -158,39 +176,39 @@
 
                     data.forEach(product => {
                         var productHtml = `
-                                        <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
-                                            <div class="rounded position-relative fruite-item">
-                                                <a href="/products/details/${product.id}">
-                                                    <div class="fruite-img" style="height:65.5%">
-                                                        <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
-                                                    </div>
-                                                    <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
-                                                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>${product.name}</h4>
-                                                        <p>${product.description}</p>
-                                                        <div class="d-flex justify-content-between flex-lg-wrap">
-                                                            <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
-                                                                @if (!User.IsInRole("Admin"))
-                                                                {
-                                                                    <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                                }
-                                                                else if (User.IsInRole("Admin"))
-                                                                {
-                                                                    <div>
-                                                                        <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
-                                                                            <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
-                                                                        </a>
-                                                                        <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
-                                                                            <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
+                                                                <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
+                                                                    <div class="rounded position-relative fruite-item">
+                                                                        <a href="/products/details/${product.id}">
+                                                                            <div class="fruite-img" style="height:65.5%">
+                                                                                <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
+                                                                            </div>
+                                                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
+                                                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                                                <h4>${product.name}</h4>
+                                                                                <p>${product.description}</p>
+                                                                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                                                                    <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
+        @if (!User.IsInRole("Admin"))
+        {
+                                                                                                        <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+        }
+        else if (User.IsInRole("Admin"))
+        {
+                                                                                                        <div>
+                                                                                                            <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
+                                                                                                                <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
+                                                                                                            </a>
+                                                                                                            <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
+                                                                                                                <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
+                                                                                                            </a>
+                                                                                                        </div>
+        }
+                                                                                </div>
+                                                                            </div>
                                                                         </a>
                                                                     </div>
-                                                                }
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    `;
+                                                                </div>
+                                                            `;
                         productContainer.innerHTML += productHtml;
                     });
                 })
