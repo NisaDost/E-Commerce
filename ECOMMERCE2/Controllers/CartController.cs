@@ -32,8 +32,8 @@ namespace ECOMMERCE2.Controllers
             var shipping = 15.00M;
             ViewBag.Shipping = shipping;
 
-            var billingAdress = _context.BillingAddresses.ToList();
-            ViewBag.billingAdress = billingAdress;
+            var billingAddress = _context.BillingAddresses.ToList();
+            ViewBag.billingAddress = billingAddress;
 
             var billingCard = _context.BillingCard.ToList();
             ViewBag.billingCard = billingCard;
@@ -56,6 +56,7 @@ namespace ECOMMERCE2.Controllers
                 // Handle cart not found
                 return RedirectToAction("Index", "Cart");
             }
+
             cart.IsCheckedOut = true;
             _context.Carts.Update(cart);
 
@@ -182,17 +183,16 @@ namespace ECOMMERCE2.Controllers
             }
 
             var product = _context.Products.Find(cartItem.ProductId);
-            if (editType == "increase")
+
+            if (editType == "increase" && cartItem.Quantity < product.StockQuantity)
             {
-                if (cartItem.Quantity + 1 <= product.StockQuantity)
-                {
-                    cartItem.Quantity++;
-                }
-                else
-                {
-                    return Json(new { success = false, message = "Stock quantity is not enough.", quantity = cartItem.Quantity });
-                }
+                cartItem.Quantity++; 
             }
+            else if (editType == "increase" && cartItem.Quantity == product.StockQuantity)
+            {
+                return Json(new { success = false, message = "Stock quantity is not enough.", quantity = cartItem.Quantity });
+            }
+            
             else if (editType == "decrease")
             {
                 if (cartItem.Quantity > 1)

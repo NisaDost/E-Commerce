@@ -34,35 +34,42 @@
                     <div class="col-md-12 col-lg-6">
                         <div class="form-item w-100">
                             <label class="form-label my-3">First Name<sup>*</sup></label>
-                            <input type="text" class="form-control" asp-for="FirstName">
+                            <input required type="text" class="form-control" asp-for="FirstName">
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6">
                         <div class="form-item w-100">
                             <label class="form-label my-3">Last Name<sup>*</sup></label>
-                            <input type="text" class="form-control" asp-for="LastName">
+                            <input required type="text" class="form-control" asp-for="LastName">
+                            <span asp-validation-for="LastName" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">Email Address<sup>*</sup></label>
-                    <input type="email" class="form-control" asp-for="Email">
+                    <input required type="email" class="form-control" asp-for="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">Mobile<sup>*</sup></label>
-                    <input type="tel" class="form-control" asp-for="Mobile">
+                    <input required type="tel" class="form-control" asp-for="Mobile">
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">Country<sup>*</sup></label>
-                    <input type="text" class="form-control" asp-for="Country">
+                    <input required type="text" class="form-control" asp-for="Country">
+                    <span asp-validation-for="Country" class="text-danger"></span>
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">City<sup>*</sup></label>
-                    <input type="text" class="form-control" asp-for="City">
+                    <input required type="text" class="form-control" asp-for="City">
+                    <span asp-validation-for="City" class="text-danger"></span>
                 </div>
                 <div class="form-item ">
                     <label class="form-label my-3">Address<sup>*</sup></label>
-                    <input type="text" class="form-control" placeholder="House Number Street Name" asp-for="Address">
+                    <input required type="text" class="form-control" placeholder="House Number Street Name" asp-for="Address">
+                    <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
                 <div class="form-check text-start mt-2">
                     <input type="checkbox" class="form-check-input bg-primary border-0" id="SaveAddress" name="SaveAddress" asp-for="SaveAddress">
@@ -87,25 +94,29 @@
                 </div>
                 <div class="form-item">
                     <label class="form-label my-3">Name on Card<sup>*</sup></label>
-                    <input type="text" class="form-control" asp-for="CardHolderName">
+                    <input required type="text" class="form-control" asp-for="CardHolderName">
+                    <span asp-validation-for="CardHolderName" class="text-danger"></span>
                 </div>
                 <div class="d-flex justify-content-between">
                     <div class="form-item col-5">
                         <label class="form-label my-3">Credit Card Number<sup>*</sup></label>
-                        <input type="number" maxlength="16" class="form-control" asp-for="CreditCardNumber">
+                        <input required type="number" maxlength="16" class="form-control" asp-for="CreditCardNumber">
+                        <span asp-validation-for="CreditCardNumber" class="text-danger"></span>
                     </div>
                     <div class="form-item col-3">
                         <label class="form-label my-3">Expire Date<sup>*</sup></label>
                         <div class="d-flex align-items-center">
-                            <input type="text" maxlength="2" class="form-control" placeholder="MM" asp-for="ExpiryDateMonth">
+                            <input required type="text" maxlength="2" class="form-control" placeholder="MM" asp-for="ExpiryDateMonth">
                             <span class="mx-2">/</span>
-                            <input type="number" maxlength="2" class="form-control" placeholder="YY" asp-for="ExpiryDateYear">
+                            <input required type="number" maxlength="2" class="form-control" placeholder="YY" asp-for="ExpiryDateYear">
                         </div>
+                        <span asp-validation-for="ExpiryDateMonth" class="text-danger"></span>
+                        <span asp-validation-for="ExpiryDateYear" class="text-danger"></span>
                     </div>
                     <div class="form-item col-3">
                         <label class="form-label my-3">CVV<sup>*</sup></label>
-                        <input type="number" maxlength="3" class="form-control" placeholder="***" asp-for="CVV">
-
+                        <input required type="number" maxlength="3" class="form-control" placeholder="***" asp-for="CVV">
+                        <span asp-validation-for="CVV" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-check text-start mt-2">

@@ -3,6 +3,7 @@ using ECOMMERCE2.Data.Model;
 using ECOMMERCE2.Helper;
 using ECOMMERCE2.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
@@ -55,8 +56,6 @@ namespace ECOMMERCE2.Controllers
             }
             return View(products);
         }
-
-
 
         public IActionResult Details(int id)
         {
@@ -245,5 +244,47 @@ namespace ECOMMERCE2.Controllers
 
             return RedirectToAction("Index");
         }
+
+       public IActionResult AddToCartFromDetailsPage(int productId, int quantity)
+{
+    var userId = UserHelper.GetUserId(User);
+    var cart = _context.Carts.FirstOrDefault(c => c.UserId == userId && !c.IsCheckedOut);
+
+    if (cart == null)
+    {
+        cart = new Cart
+        {
+            UserId = userId,
+            IsCheckedOut = false
+        };
+        _context.Carts.Add(cart);
+        _context.SaveChanges();
+    }
+
+    var product = _context.Products.Find(productId);
+    var cartItem = _context.CartItems.FirstOrDefault(ci => ci.CartId == cart.CartId && ci.ProductId == productId);
+    if (cartItem != null)
+    {
+        cartItem.Quantity += quantity;
+        _context.CartItems.Update(cartItem);
+        _context.SaveChanges();
+    }
+    else
+    {
+        cartItem = new CartItem
+        {
+            CartId = cart.CartId,
+            Cart = cart,
+            ProductId = productId,
+            Product = product,
+            Quantity = quantity
+        };
+        _context.CartItems.Add(cartItem);
+        _context.SaveChanges();
+    }
+
+    return RedirectToAction("Index");
+}
+
     }
 }
