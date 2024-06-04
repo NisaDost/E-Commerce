@@ -99,7 +99,7 @@
                                                     <p class="text-dark fs-5 fw-bold mb-0">$@item.Price</p>
                                                     @if (!User.IsInRole("Admin"))
                                                     {
-                                                        <a asp-controller="Products" asp-action="AddToCartSingle" asp-route-productId="@item.Id" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                        <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="@item.Id"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                                     }
                                                     else if (User.IsInRole("Admin"))
                                                     {
@@ -117,7 +117,6 @@
                                         </a>
                                     </div>
                                 </div>
-
                             }
                         </div>
 
@@ -173,7 +172,7 @@
                                                             <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
                                                                 @if (!User.IsInRole("Admin"))
                                                                 {
-                                                                    <a class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                                    <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
                                                                 }
                                                                 else if (User.IsInRole("Admin"))
                                                                 {
@@ -202,5 +201,23 @@
             document.getElementById('search-input').value = '';
             window.location.href = '@Url.Action("Index", "Products")';
         });
+
+        // Add to cart functionality
+        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+            button.addEventListener('click', function (event) {
+                event.preventDefault();
+
+                var isAuthenticated = @User.Identity.IsAuthenticated.ToString().ToLower(); // Inject authentication status
+                if (!isAuthenticated) {
+                    alert("Please login to add products to cart.");
+                    return;
+                }
+
+                // Proceed with adding to cart if authenticated
+                var productId = this.getAttribute('data-product-id');
+                window.location.href = '@Url.Action("AddToCartSingle", "Products")' + '?productId=' + productId;
+            });
+        });
     </script>
 }
+
