@@ -208,7 +208,7 @@ namespace ECOMMERCE2.Controllers
         {
             var userId = UserHelper.GetUserId(User);
             var cart = _context.Carts.Where(c => c.UserId == userId && c.IsCheckedOut == false).FirstOrDefault();
-            
+
             if (cart == null)
             {
                 cart = new Cart
@@ -227,7 +227,7 @@ namespace ECOMMERCE2.Controllers
                 cartItem.Quantity++;
                 _context.CartItems.Update(cartItem);
                 _context.SaveChanges();
-            } 
+            }
             else
             {
                 cartItem = new CartItem
@@ -245,46 +245,46 @@ namespace ECOMMERCE2.Controllers
             return RedirectToAction("Index");
         }
 
-       public IActionResult AddToCartFromDetailsPage(int productId, int quantity)
-{
-    var userId = UserHelper.GetUserId(User);
-    var cart = _context.Carts.FirstOrDefault(c => c.UserId == userId && !c.IsCheckedOut);
-
-    if (cart == null)
-    {
-        cart = new Cart
+        public IActionResult AddToCartFromDetailsPage(int productId, int quantity)
         {
-            UserId = userId,
-            IsCheckedOut = false
-        };
-        _context.Carts.Add(cart);
-        _context.SaveChanges();
-    }
+            var userId = UserHelper.GetUserId(User);
+            var cart = _context.Carts.FirstOrDefault(c => c.UserId == userId && !c.IsCheckedOut);
 
-    var product = _context.Products.Find(productId);
-    var cartItem = _context.CartItems.FirstOrDefault(ci => ci.CartId == cart.CartId && ci.ProductId == productId);
-    if (cartItem != null)
-    {
-        cartItem.Quantity += quantity;
-        _context.CartItems.Update(cartItem);
-        _context.SaveChanges();
-    }
-    else
-    {
-        cartItem = new CartItem
-        {
-            CartId = cart.CartId,
-            Cart = cart,
-            ProductId = productId,
-            Product = product,
-            Quantity = quantity
-        };
-        _context.CartItems.Add(cartItem);
-        _context.SaveChanges();
-    }
+            if (cart == null)
+            {
+                cart = new Cart
+                {
+                    UserId = userId,
+                    IsCheckedOut = false
+                };
+                _context.Carts.Add(cart);
+                _context.SaveChanges();
+            }
 
-    return RedirectToAction("Index");
-}
+            var product = _context.Products.Find(productId);
+            var cartItem = _context.CartItems.FirstOrDefault(ci => ci.CartId == cart.CartId && ci.ProductId == productId);
+            if (cartItem != null)
+            {
+                cartItem.Quantity += quantity;
+                _context.CartItems.Update(cartItem);
+                _context.SaveChanges();
+            }
+            else
+            {
+                cartItem = new CartItem
+                {
+                    CartId = cart.CartId,
+                    Cart = cart,
+                    ProductId = productId,
+                    Product = product,
+                    Quantity = quantity
+                };
+                _context.CartItems.Add(cartItem);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
 
     }
 }

@@ -1,0 +1,168 @@
+﻿@{
+	ViewBag.Title = "Order List";
+}
+<partial name="_SinglePageHeaderPartial" />
+
+	<div class="container-fluid mt-5">
+		<!-- START Body Container -->
+		<div id="body-container">
+			<!-- START Right Column -->
+			<div id="right-column">
+				<div class="right-column-content container-fluid">
+					<div class="row">
+						<div class="col-md-6">
+							<h1>
+								<span aria-hidden="true" class="icon icon-dollar"></span>
+								<span class="main-text">
+									Order List
+								</span>
+							</h1>
+						</div>
+						<div class="col-md-6">
+
+							<!-- START Main Buttons -->
+							<div class="page-heading-controls">
+								<a href="pages-invoice.html" role="button" class="btn btn-primary">
+									<span class="glyphicon glyphicon-print"></span>
+									Print Invoice
+								</a>
+								<a href="#" role="button" class="btn btn-danger">Delete</a>
+							</div>
+						</div>
+						<!-- END Main Buttons -->
+
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+
+							<!-- START Block: Orders -->
+							<div class="block">
+								<div class="block-heading">
+									<div class="main-text h2">
+										Orders
+									</div>
+								</div>
+								<div class="block-content-outer">
+									<div class="block-content-inner">
+										<div class="table-responsive">
+											<form role="form">
+												<table class="table table-condensed table-striped table-bordered table-hover">
+													<thead>
+														<tr>
+															<th class="text-center">
+																<input type="checkbox" class="list-select-all">
+															</th>
+															<th class="text-right col-xs-1">Order ID</th>
+															<th class="col-xs-2">Customer</th>
+															<th class="col-xs-1">Status</th>
+															<th class="text-right col-xs-2">Total</th>
+															<th class="col-xs-2">Date Added</th>
+															<th class="col-xs-2">Date Modified</th>
+															<th class="text-right col-xs-2">Action</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td></td>
+															<td>
+																<input type="text" class="form-control input-sm text-right" placeholder="ID" size="2" />
+															</td>
+															<td>
+																<input type="text" class="form-control input-sm" placeholder="Customer Name" size="5" />
+															</td>
+															<td>
+																<select id="input-demo-v" class="form-control">
+																	<option>-- Status --</option>
+																	<option>Completed</option>
+																	<option>Cancelled</option>
+																	<option>Pending</option>
+																	<option>Action Required</option>
+																</select>
+															</td>
+															<td>
+																<input type="text" class="form-control input-sm text-right" placeholder="Total" size="3" />
+															</td>
+															<td>
+																<div id="date-added-from" class="input-group">
+																	<input type="text" class="form-control input-sm" placeholder="From Date" size="4" />
+																	<span class="input-group-addon input-group-icon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
+																<div id="date-added-to" class="input-group">
+																	<input type="text" class="form-control input-sm" placeholder="To Date" size="4" />
+																	<span class="input-group-addon input-group-icon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
+															</td>
+															<td>
+																<div id="date-modified-from" class="input-group">
+																	<input type="text" class="form-control input-sm" placeholder="From Date" size="4" />
+																	<span class="input-group-addon input-group-icon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
+																<div id="date-modified-to" class="input-group">
+																	<input type="text" class="form-control input-sm" placeholder="To Date" size="4" />
+																	<span class="input-group-addon input-group-icon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
+															</td>
+															<td class="text-right">
+																<button type="button" class="btn btn-default">Filter</button>
+															</td>
+														</tr>
+
+														<!--user burada başlıyor-->
+														<tr>
+															<td class="text-center">
+																<input type="checkbox">
+															</td>
+															<td class="text-right">10999</td>
+															<td>Samantha Carter</td>
+															<td>
+																<span class="label label-success">Completed</span>
+															</td>
+															<td class="text-right">$105.00</td>
+															<td>27/09/2014 08:13</td>
+															<td>27/09/2014 08:45</td>
+															<td class="text-right">
+																<a href="ecommerce-order-view.html" class="btn btn-primary btn-sm" role="button">View</a>
+															</td>
+														</tr>
+														
+													</tbody>
+												</table>
+
+											<div class="col-12">
+												<div class="pagination d-flex justify-content-center mt-5">
+													<a href="#" class="rounded">&laquo;</a>
+													<a href="#" class="active rounded">1</a>
+													<a href="#" class="rounded">2</a>
+													<a href="#" class="rounded">3</a>
+													<a href="#" class="rounded">4</a>
+													<a href="#" class="rounded">5</a>
+													<a href="#" class="rounded">6</a>
+													<a href="#" class="rounded">&raquo;</a>
+												</div>
+											</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- END Block: Orders -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END Right Column -->
+
+		</div>
+		<!-- END Body Container -->
+
+	</div><!-- /.container -->
+
