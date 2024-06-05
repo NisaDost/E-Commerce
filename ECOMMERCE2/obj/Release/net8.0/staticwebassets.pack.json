@@ -133,6 +133,10 @@
       "PackagePath": "staticwebassets\\img\\nb-fresh-foam.jpg"
     },
     {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nb-yellow.png",
+      "PackagePath": "staticwebassets\\img\\nb-yellow.png"
+    },
+    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nisa.png",
       "PackagePath": "staticwebassets\\img\\nisa.png"
     },
@@ -179,10 +183,6 @@
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sketchers-turkuoise.jpg",
       "PackagePath": "staticwebassets\\img\\sketchers-turkuoise.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sketchers-yellow.png",
-      "PackagePath": "staticwebassets\\img\\sketchers-yellow.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneaker-1.jpg",

@@ -13,7 +13,7 @@ namespace ECOMMERCE2.Controllers
     public class ProductsController : Controller
     {
         private readonly DBContext _context;
-        private readonly int PageSize = 6;
+        private readonly int PageSize = 9;
 
         public ProductsController(DBContext context)
         {
@@ -22,8 +22,17 @@ namespace ECOMMERCE2.Controllers
         public IActionResult Index(int page = 1)
         {
             var categories = _context.Categories.ToList();
-            var products = _context.Products.OrderBy(p => p.Price).Skip((page - 1) * PageSize).Take(PageSize).ToList();
+            int totalProducts = _context.Products.Count();
+            var products = _context.Products
+                .OrderBy(p => p.Price)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
             ViewBag.Categories = categories;
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+
             return View(products);
         }
 
@@ -123,6 +132,7 @@ namespace ECOMMERCE2.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         public IActionResult EditProduct(int id)
         {

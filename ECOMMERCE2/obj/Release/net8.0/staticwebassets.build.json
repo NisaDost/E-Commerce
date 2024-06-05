@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sM0ji9XOBBNhAAgP/uwBHg1fZ3qK21E0wwXwL+y431k=",
+  "Hash": "Bh4Xj2zccM+k19XIVLIcqpOi0uNn0TvhRFSdOV4DjCU=",
   "Source": "ECOMMERCE2",
   "BasePath": "_content/ECOMMERCE2",
   "Mode": "Default",
@@ -606,6 +606,25 @@
       "OriginalItemSpec": "wwwroot\\img\\nb-fresh-foam.jpg"
     },
     {
+      "Identity": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nb-yellow.png",
+      "SourceId": "ECOMMERCE2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\",
+      "BasePath": "_content/ECOMMERCE2",
+      "RelativePath": "img/nb-yellow.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\nb-yellow.png"
+    },
+    {
       "Identity": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nisa.png",
       "SourceId": "ECOMMERCE2",
       "SourceType": "Discovered",
@@ -870,25 +889,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\sketchers-turkuoise.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sketchers-yellow.png",
-      "SourceId": "ECOMMERCE2",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\",
-      "BasePath": "_content/ECOMMERCE2",
-      "RelativePath": "img/sketchers-yellow.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\sketchers-yellow.png"
     },
     {
       "Identity": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sneaker-1.jpg",
