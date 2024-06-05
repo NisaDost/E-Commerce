@@ -16,6 +16,10 @@ namespace ECOMMERCE2.Controllers
         }
         public IActionResult Index()
         {
+            if (!User.IsInRole("User"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var total = 0.00M;
             var shipping = 15.00M;
             ViewBag.Total = total;

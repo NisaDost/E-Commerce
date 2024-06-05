@@ -23,17 +23,36 @@ namespace ECOMMERCE2.Controllers
         {
             var categories = _context.Categories.ToList();
             int totalProducts = _context.Products.Count();
-            var products = _context.Products
+            if (User.IsInRole("Admin"))
+            {
+                var products = _context.Products
                 .OrderBy(p => p.Price)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize)
                 .ToList();
 
-            ViewBag.Categories = categories;
-            ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+                ViewBag.Categories = categories;
+                ViewBag.CurrentPage = page;
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
 
-            return View(products);
+                return View(products);
+            }
+            else
+            {
+                var products = _context.Products
+                .Where(p => !p.IsDeleted)
+                .Where(p => p.InStock)
+                .OrderBy(p => p.Price)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
+                ViewBag.Categories = categories;
+                ViewBag.CurrentPage = page;
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+
+                return View(products);
+            }
         }
 
         public IActionResult SearchProducts(string search = null)
