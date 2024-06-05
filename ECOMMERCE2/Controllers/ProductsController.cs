@@ -19,64 +19,41 @@ namespace ECOMMERCE2.Controllers
         {
             _context = context;
         }
-
-        public IActionResult Index(string categoryFilter = null, string brandFilter = null, string priceFilter = "asc", int page = 1)
+        public IActionResult Index(int page = 1)
         {
-            const int PageSize = 9; // Example page size, adjust as needed
             var categories = _context.Categories.ToList();
-            var uniqueBrands = _context.Products
-                .Where(p => !string.IsNullOrEmpty(p.Brand))
-                .Select(p => p.Brand)
-                .Distinct()
-                .ToList();
-
-            ViewBag.Categories = categories;
-            ViewBag.UniqueBrands = uniqueBrands;
-
-            IQueryable<Product> productsQuery;
-
+            int totalProducts = _context.Products.Count();
             if (User.IsInRole("Admin"))
             {
-                productsQuery = _context.Products.AsQueryable();
-            }
-            else
-            {
-                productsQuery = _context.Products.Where(p => !p.IsDeleted && p.InStock).AsQueryable();
-            }
-
-            // Apply filters
-            if (!string.IsNullOrEmpty(categoryFilter) && categoryFilter != "all")
-            {
-                int categoryId = int.Parse(categoryFilter);
-                productsQuery = productsQuery.Where(p => p.CategoryId == categoryId);
-            }
-
-            if (!string.IsNullOrEmpty(brandFilter) && brandFilter != "all")
-            {
-                productsQuery = productsQuery.Where(p => p.Brand == brandFilter);
-            }
-
-            // Apply sorting
-            productsQuery = priceFilter == "desc" ? productsQuery.OrderByDescending(p => p.Price) : productsQuery.OrderBy(p => p.Price);
-
-            // Get total product count after filtering
-            int totalProducts = productsQuery.Count();
-
-            // Apply pagination
-            var products = productsQuery
+                var products = _context.Products
+                .OrderBy(p => p.Price)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize)
                 .ToList();
 
-            ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+                ViewBag.Categories = categories;
+                ViewBag.CurrentPage = page;
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
 
-            return View(products);
+                return View(products);
+            }
+            else
+            {
+                var products = _context.Products
+                .Where(p => !p.IsDeleted)
+                .Where(p => p.InStock)
+                .OrderBy(p => p.Price)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
+                ViewBag.Categories = categories;
+                ViewBag.CurrentPage = page;
+                ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+
+                return View(products);
+            }
         }
-
-
-
-
 
         public IActionResult SearchProducts(string search = null)
         {
