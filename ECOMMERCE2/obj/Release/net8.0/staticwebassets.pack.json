@@ -25,10 +25,6 @@
       "PackagePath": "staticwebassets\\img\\4f.png"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\Crying Jordan.png",
-      "PackagePath": "staticwebassets\\img\\Crying Jordan.png"
-    },
-    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\Jordan-RED-BLACK.png",
       "PackagePath": "staticwebassets\\img\\Jordan-RED-BLACK.png"
     },
@@ -37,28 +33,16 @@
       "PackagePath": "staticwebassets\\img\\Jordan-red.jpg"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\MV-10 Win.jpg",
-      "PackagePath": "staticwebassets\\img\\MV-10 Win.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\MVWallpaper.jpg",
-      "PackagePath": "staticwebassets\\img\\MVWallpaper.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\Obi-Wan.jpg",
-      "PackagePath": "staticwebassets\\img\\Obi-Wan.jpg"
-    },
-    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\Reebok-Aztrek.jpg",
       "PackagePath": "staticwebassets\\img\\Reebok-Aztrek.jpg"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\WhatsApp Image 2024-02-28 at 11.32.20.jpeg",
-      "PackagePath": "staticwebassets\\img\\WhatsApp Image 2024-02-28 at 11.32.20.jpeg"
-    },
-    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\adidas-predator.jpg",
       "PackagePath": "staticwebassets\\img\\adidas-predator.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\air-zoom.png",
+      "PackagePath": "staticwebassets\\img\\air-zoom.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\asics-gel-nimbus.jpg",
@@ -69,8 +53,8 @@
       "PackagePath": "staticwebassets\\img\\asics-purple.webp"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\avatar.jpg",
-      "PackagePath": "staticwebassets\\img\\avatar.jpg"
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\asics-senna.webp",
+      "PackagePath": "staticwebassets\\img\\asics-senna.webp"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\catalog.jpg",
@@ -85,8 +69,20 @@
       "PackagePath": "staticwebassets\\img\\converse.png"
     },
     {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\crazyfast-elite.png",
+      "PackagePath": "staticwebassets\\img\\crazyfast-elite.png"
+    },
+    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\dnd-converse.png",
       "PackagePath": "staticwebassets\\img\\dnd-converse.png"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\f-50-elite.png",
+      "PackagePath": "staticwebassets\\img\\f-50-elite.png"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\future7.png",
+      "PackagePath": "staticwebassets\\img\\future7.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\hero-img.png",
@@ -133,12 +129,12 @@
       "PackagePath": "staticwebassets\\img\\nb-fresh-foam.jpg"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nb-yellow.png",
-      "PackagePath": "staticwebassets\\img\\nb-yellow.png"
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nb-vsaro.jpg",
+      "PackagePath": "staticwebassets\\img\\nb-vsaro.jpg"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nisa.png",
-      "PackagePath": "staticwebassets\\img\\nisa.png"
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\nb-yellow.png",
+      "PackagePath": "staticwebassets\\img\\nb-yellow.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\page-header-img.jpg",
@@ -147,6 +143,10 @@
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\payment.png",
       "PackagePath": "staticwebassets\\img\\payment.png"
+    },
+    {
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\pele-legend.jpg",
+      "PackagePath": "staticwebassets\\img\\pele-legend.jpg"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\puma-red.jpg",
@@ -167,10 +167,6 @@
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\samba.png",
       "PackagePath": "staticwebassets\\img\\samba.png"
-    },
-    {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\sena.png",
-      "PackagePath": "staticwebassets\\img\\sena.png"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\shoes-1.jpg",
@@ -209,20 +205,12 @@
       "PackagePath": "staticwebassets\\img\\sneakers.jpg"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\testimonial-2.jpg",
-      "PackagePath": "staticwebassets\\img\\testimonial-2.jpg"
-    },
-    {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\under-armour.png",
       "PackagePath": "staticwebassets\\img\\under-armour.png"
     },
     {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vegetable-item-3.png",
-      "PackagePath": "staticwebassets\\img\\vegetable-item-3.png"
-    },
-    {
-      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\yigit.png",
-      "PackagePath": "staticwebassets\\img\\yigit.png"
+      "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\img\\vans.jpg",
+      "PackagePath": "staticwebassets\\img\\vans.jpg"
     },
     {
       "Id": "C:\\Users\\Nisa\\Documents\\GitHub\\E-Commerce\\ECOMMERCE2\\wwwroot\\js\\main.js",
