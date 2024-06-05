@@ -125,6 +125,8 @@ namespace ECOMMERCE2.Controllers
             var order = _context.Orders
                 .Include(o => o.User)
                 .Include(o => o.BillingAddresses)
+                .Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Product)
                 .Where(o => o.OrderId == id && o.UserId == userId)
                 .FirstOrDefault();
 
@@ -133,9 +135,7 @@ namespace ECOMMERCE2.Controllers
                 return NotFound();
             }
 
-            var orderDetails = _context.OrderDetails
-                .Include(od => od.Product)
-                .Where(od => od.OrderId == id)
+            var orderDetails = order.OrderDetails
                 .Select(od => new OrderViewModel
                 {
                     Id = od.ProductId,

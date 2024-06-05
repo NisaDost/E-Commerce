@@ -19,40 +19,45 @@ namespace ECOMMERCE2.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(int page = 1, List<int> selectedCategories = null, List<string> selectedBrands = null, string orderBy = "asc")
         {
             var categories = _context.Categories.ToList();
+            var brands = _context.Products.Select(p => p.Brand).Distinct().ToList();
             int totalProducts = _context.Products.Count();
-            if (User.IsInRole("Admin"))
+            ViewBag.Brands = brands;
+            ViewBag.CurrentPage = page;
+            ViewBag.Categories = categories;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+
+            var products = new List<Product>();
+            IQueryable<Product> productsQueryable = _context.Products;
+            if (!User.IsInRole("Admin"))
             {
-                var products = _context.Products
-                .OrderBy(p => p.Price)
-                .Skip((page - 1) * PageSize)
-                .Take(PageSize)
-                .ToList();
-
-                ViewBag.Categories = categories;
-                ViewBag.CurrentPage = page;
-                ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
-
-                return View(products);
+                productsQueryable = productsQueryable.Where(p => !p.IsDeleted && p.InStock && p.StockQuantity > 0);
             }
-            else
+
+            if (selectedCategories != null && selectedCategories.Count > 0)
             {
-                var products = _context.Products
-                .Where(p => !p.IsDeleted)
-                .Where(p => p.InStock)
-                .OrderBy(p => p.Price)
-                .Skip((page - 1) * PageSize)
-                .Take(PageSize)
-                .ToList();
-
-                ViewBag.Categories = categories;
-                ViewBag.CurrentPage = page;
-                ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
-
-                return View(products);
+                productsQueryable = productsQueryable.Where(p => selectedCategories.Contains(p.CategoryId));
             }
+
+            if (selectedBrands != null && selectedBrands.Count > 0)
+            {
+                productsQueryable = productsQueryable.Where(p => selectedBrands.Contains(p.Brand));
+            }
+
+            if (orderBy == "asc")
+            {
+                productsQueryable = productsQueryable.OrderBy(p => p.Price);
+            }
+            else if (orderBy == "desc")
+            {
+                productsQueryable = productsQueryable.OrderByDescending(p => p.Price);
+            }
+
+            products = productsQueryable.Skip((page - 1) * PageSize).Take(PageSize).ToList();
+
+            return View(products);
         }
 
         public IActionResult SearchProducts(string search = null)

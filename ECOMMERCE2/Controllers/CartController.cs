@@ -129,7 +129,7 @@ namespace ECOMMERCE2.Controllers
             }
 
             _context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("InsideOrderDetails", "Order", new {id = order.OrderId});
         }
 
         [HttpGet]

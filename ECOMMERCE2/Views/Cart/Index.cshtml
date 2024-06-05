@@ -78,7 +78,8 @@
                             {
                                 ViewBag.Total += item.Product.Price * item.Quantity;
                             }
-                            @ViewBag.Total;
+                            @ViewBag.Total
+                            ;
                         }
                     </p>
                 </div>
@@ -94,7 +95,7 @@
 
                 <p class="mb-0 pe-4" id="total">$ @(ViewBag.Total += ViewBag.Shipping)</p>
             </div>
-            <a class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" asp-controller="Cart" asp-action="Checkout">Proceed Checkout</a>
+            <a id="checkout-button" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4" asp-controller="Cart" asp-action="Checkout">Proceed Checkout</a>
         </div>
     </div>
 </div>
@@ -193,6 +194,15 @@
                 var total = subtotal + shipping;
                 $('#total').text(total.toFixed(2) + ' $');
             }
+
+            $('#checkout-button').click(function (e) {
+                var cartItems = $('.table tbody tr').length;
+
+                if (cartItems === 0) {
+                    e.preventDefault();
+                    alert("You have no products in your cart.");
+                }
+            });
         });
     </script>
 }

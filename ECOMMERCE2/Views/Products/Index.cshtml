@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Products";
     var categories = ViewBag.Categories as List<ECOMMERCE2.Data.Model.Category>;
-    var uniqueBrands = Model.Select(p => p.Brand).Distinct().ToList();
+    var uniqueBrands = ViewBag.Brands as List<string>;
     var orderViewModel = ViewBag.OrderViewModel as ECOMMERCE2.Models.OrderViewModel;
 }
 <partial name="_SinglePageHeaderPartial" />
@@ -175,7 +175,7 @@
 </div>
 <!-- Product Shop End-->
 @section Scripts
-{
+    {
     <script>
         document.getElementById('search-input').addEventListener('input', function () {
             var searchTerm = this.value;
@@ -193,39 +193,39 @@
 
                     data.forEach(product => {
                         var productHtml = `
-                                                                            <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
-                                                                                <div class="rounded position-relative fruite-item">
-                                                                                    <a href="/products/details/${product.id}">
-                                                                                        <div class="fruite-img" style="height:65.5%">
-                                                                                            <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
-                                                                                        </div>
-                                                                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
-                                                                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                                            <h4>${product.name}</h4>
-                                                                                            <p>${product.description}</p>
-                                                                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                                                                <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
+                                                        <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
+                                                            <div class="rounded position-relative fruite-item">
+                                                                <a href="/products/details/${product.id}">
+                                                                    <div class="fruite-img" style="height:65.5%">
+                                                                        <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
+                                                                    </div>
+                                                                    <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
+                                                                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                                        <h4>${product.name}</h4>
+                                                                        <p>${product.description}</p>
+                                                                        <div class="d-flex justify-content-between flex-lg-wrap">
+                                                                            <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
         @if (!User.IsInRole("Admin"))
         {
-                                                                                                                        <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                                                        <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
         }
         else if (User.IsInRole("Admin"))
         {
-                                                                                                                        <div>
-                                                                                                                            <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
-                                                                                                                                <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
-                                                                                                                            </a>
-                                                                                                                            <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
-                                                                                                                                <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
-                                                                                                                            </a>
-                                                                                                                        </div>
-        }
-                                                                                            </div>
+                                                                                        <div>
+                                                                                            <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
+                                                                                                <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
+                                                                                            </a>
+                                                                                            <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
+                                                                                                <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
+                                                                                            </a>
                                                                                         </div>
-                                                                                    </a>
-                                                                                </div>
+        }
                                                                             </div>
-                                                                        `;
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        `;
                         productContainer.innerHTML += productHtml;
                     });
                 })
