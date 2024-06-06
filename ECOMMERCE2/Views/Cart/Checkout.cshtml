@@ -24,7 +24,10 @@
                             {
                                 foreach (var item in billingAddress)
                                 {
-                                    <option value="@item.BillingAddressId">@item.FirstName @item.LastName</option>
+                                    if (item.IsAddressSaved)
+                                    {
+                                        <option value="@item.BillingAddressId">@item.FirstName @item.LastName</option>
+                                    }
                                 }
                             }
                         </select>

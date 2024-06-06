@@ -92,8 +92,6 @@ namespace ECOMMERCE2.Controllers
                 _context.Products.Find(cartItem.ProductId).StockQuantity -= cartItem.Quantity;
             }
 
-            if (billingViewModel.SaveAddress)
-            {
                 var billingAddress = new BillingAddress
                 {
                     FirstName = billingViewModel.FirstName,
@@ -106,10 +104,12 @@ namespace ECOMMERCE2.Controllers
                     UserId = userId,
                     User = user,
                     OrderId = order.OrderId,
-                    Order = order
+                    Order = order,
+                    IsAddressSaved = billingViewModel.SaveAddress
                 };
+
                 _context.BillingAddresses.Add(billingAddress);
-            }
+            
 
             if (billingViewModel.SaveCard)
             {
@@ -140,17 +140,24 @@ namespace ECOMMERCE2.Controllers
             {
                 return NotFound();
             }
-
-            return Json(new
+            else
             {
-                firstName = billingAddress.FirstName,
-                lastName = billingAddress.LastName,
-                email = billingAddress.Email,
-                mobile = billingAddress.Mobile,
-                country = billingAddress.Country,
-                city = billingAddress.City,
-                address = billingAddress.Address
-            });
+                //if (billingAddress.IsAddressSaved)
+                //{
+                    return Json(new
+                    {
+                        firstName = billingAddress.FirstName,
+                        lastName = billingAddress.LastName,
+                        email = billingAddress.Email,
+                        mobile = billingAddress.Mobile,
+                        country = billingAddress.Country,
+                        city = billingAddress.City,
+                        address = billingAddress.Address
+                    });
+                //}
+                //else
+                //    return NotFound();
+            }
         }
 
         [HttpGet]
