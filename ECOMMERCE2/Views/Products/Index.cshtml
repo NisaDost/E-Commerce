@@ -151,22 +151,6 @@
                                 }
                             }
                         </div>
-                        <div class="col-12">
-                            <div class="pagination d-flex justify-content-center mt-5">
-                                @if (ViewBag.CurrentPage > 1)
-                                {
-                                    <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" class="rounded">&laquo;</a>
-                                }
-                                @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                                {
-                                    <a href="@Url.Action("Index", new { page = i })" class="rounded @(i == ViewBag.CurrentPage ? "active" : "")">@i</a>
-                                }
-                                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-                                {
-                                    <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" class="rounded">&raquo;</a>
-                                }
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -175,7 +159,7 @@
 </div>
 <!-- Product Shop End-->
 @section Scripts
-    {
+{
     <script>
         document.getElementById('search-input').addEventListener('input', function () {
             var searchTerm = this.value;
@@ -193,77 +177,125 @@
 
                     data.forEach(product => {
                         var productHtml = `
-                                                        <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
-                                                            <div class="rounded position-relative fruite-item">
-                                                                <a href="/products/details/${product.id}">
-                                                                    <div class="fruite-img" style="height:65.5%">
-                                                                        <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
-                                                                    </div>
-                                                                    <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
-                                                                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                        <h4>${product.name}</h4>
-                                                                        <p>${product.description}</p>
-                                                                        <div class="d-flex justify-content-between flex-lg-wrap">
-                                                                            <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
-        @if (!User.IsInRole("Admin"))
-        {
-                                                                                        <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-        }
-        else if (User.IsInRole("Admin"))
-        {
-                                                                                        <div>
-                                                                                            <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
-                                                                                                <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
-                                                                                            </a>
-                                                                                            <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
-                                                                                                <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
-                                                                                            </a>
-                                                                                        </div>
-        }
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        `;
+                                <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
+                                    <div class="rounded position-relative fruite-item">
+                                        <a href="/products/details/${product.id}">
+                                            <div class="fruite-img" style="height:65.5%">
+                                                <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>${product.name}</h4>
+                                                <p>${product.description}</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
+                                                    <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+
                         productContainer.innerHTML += productHtml;
                     });
                 })
-                .catch(error => console.error('Error fetching products:', error));
-        });
-
-        document.getElementById('reset-button').addEventListener('click', function () {
-            document.getElementById('search-input').value = '';
-            window.location.href = '@Url.Action("Index", "Products")';
-        });
-
-        // Add to cart functionality
-        document.querySelectorAll('.btn-add-to-cart').forEach(button => {
-            button.addEventListener('click', function (event) {
-                event.preventDefault();
-
-                var isAuthenticated = @User.Identity.IsAuthenticated.ToString().ToLower(); // Inject authentication status
-                if (!isAuthenticated) {
-                    alert("Please login to add products to cart.");
-                    return;
-                }
-
-                // Proceed with adding to cart if authenticated
-                var productId = this.getAttribute('data-product-id');
-                window.location.href = '@Url.Action("AddToCartSingle", "Products")' + '?productId=' + productId;
-            });
-        });
-
-        // Confirmation for delete action
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.delete-product').forEach(button => {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    if (confirm('Are you sure you want to delete this product?')) {
-                        window.location.href = this.getAttribute('href');
-                    }
+                .catch(error => {
+                    console.error('Error fetching search results:', error);
                 });
+        });
+
+        // Reset button event listener
+        document.getElementById('reset-button').addEventListener('click', function () {
+            document.getElementById('search-input').value = ''; // Clear the search input
+            fetch('@Url.Action("SearchProducts", "Products")', {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var productContainer = document.getElementById('product-list');
+                    productContainer.innerHTML = ''; // Clear existing products
+
+                    data.forEach(product => {
+                        var productHtml = `
+                                <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
+                                    <div class="rounded position-relative fruite-item">
+                                        <a href="/products/details/${product.id}">
+                                            <div class="fruite-img" style="height:65.5%">
+                                                <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
+                                            </div>
+                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
+                                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                <h4>${product.name}</h4>
+                                                <p>${product.description}</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
+                                                    <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+
+                        productContainer.innerHTML += productHtml;
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching search results:', error);
+                });
+        });
+
+        // Event listener for sort change
+        document.getElementById('priceFilter').addEventListener('change', function () {
+            // Get selected sort option
+            var sortOrder = this.value;
+            var productList = document.getElementById('product-list');
+            var products = Array.from(productList.getElementsByClassName('product-item'));
+
+            // Sort the products based on the selected sort order
+            products.sort(function (a, b) {
+                var priceA = parseFloat(a.getAttribute('data-price'));
+                var priceB = parseFloat(b.getAttribute('data-price'));
+                return sortOrder === 'asc' ? priceA - priceB : priceB - priceA;
+            });
+
+            // Reorder the products in the DOM
+            productList.innerHTML = '';
+            products.forEach(function (product) {
+                productList.appendChild(product);
             });
         });
+
+        // Event listener for category filter change
+        document.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
+            checkbox.addEventListener('change', filterProducts);
+        });
+
+        // Event listener for brand filter change
+        document.querySelectorAll('.brand-checkbox').forEach(function (checkbox) {
+            checkbox.addEventListener('change', filterProducts);
+        });
+
+        function filterProducts() {
+            var selectedCategories = Array.from(document.querySelectorAll('.category-checkbox:checked')).map(cb => cb.value);
+            var selectedBrands = Array.from(document.querySelectorAll('.brand-checkbox:checked')).map(cb => cb.value);
+
+            document.querySelectorAll('.product-item').forEach(function (product) {
+                var productCategory = product.getAttribute('data-category');
+                var productBrand = product.getAttribute('data-brand');
+
+                var categoryMatch = selectedCategories.includes('all') || selectedCategories.includes(productCategory);
+                var brandMatch = selectedBrands.includes('all') || selectedBrands.includes(productBrand);
+
+                if (categoryMatch && brandMatch) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
     </script>
 }
