@@ -13,21 +13,19 @@ namespace ECOMMERCE2.Controllers
     public class ProductsController : Controller
     {
         private readonly DBContext _context;
-        private readonly int PageSize = 9;
 
         public ProductsController(DBContext context)
         {
             _context = context;
         }
-        public IActionResult Index(int page = 1, List<int> selectedCategories = null, List<string> selectedBrands = null, string orderBy = "asc")
+        public IActionResult Index(List<int> selectedCategories = null, List<string> selectedBrands = null, string orderBy = "asc")
         {
             var categories = _context.Categories.ToList();
             var brands = _context.Products.Select(p => p.Brand).Distinct().ToList();
             int totalProducts = _context.Products.Count();
             ViewBag.Brands = brands;
-            ViewBag.CurrentPage = page;
             ViewBag.Categories = categories;
-            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+           
 
             var products = new List<Product>();
             IQueryable<Product> productsQueryable = _context.Products;
@@ -55,7 +53,7 @@ namespace ECOMMERCE2.Controllers
                 productsQueryable = productsQueryable.OrderByDescending(p => p.Price);
             }
 
-            products = productsQueryable.Skip((page - 1) * PageSize).Take(PageSize).ToList();
+            products = productsQueryable.ToList();
 
             return View(products);
         }
