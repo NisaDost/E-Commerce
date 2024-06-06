@@ -151,22 +151,6 @@
                                 }
                             }
                         </div>
-                        <div class="col-12">
-                            <div class="pagination d-flex justify-content-center mt-5">
-                                @if (ViewBag.CurrentPage > 1)
-                                {
-                                    <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" class="rounded">&laquo;</a>
-                                }
-                                @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                                {
-                                    <a href="@Url.Action("Index", new { page = i })" class="rounded @(i == ViewBag.CurrentPage ? "active" : "")">@i</a>
-                                }
-                                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-                                {
-                                    <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" class="rounded">&raquo;</a>
-                                }
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -193,39 +177,39 @@
 
                     data.forEach(product => {
                         var productHtml = `
-                                                        <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
-                                                            <div class="rounded position-relative fruite-item">
-                                                                <a href="/products/details/${product.id}">
-                                                                    <div class="fruite-img" style="height:65.5%">
-                                                                        <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
-                                                                    </div>
-                                                                    <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
-                                                                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                        <h4>${product.name}</h4>
-                                                                        <p>${product.description}</p>
-                                                                        <div class="d-flex justify-content-between flex-lg-wrap">
-                                                                            <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
-        @if (!User.IsInRole("Admin"))
-        {
-                                                                                        <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-        }
-        else if (User.IsInRole("Admin"))
-        {
-                                                                                        <div>
-                                                                                            <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
-                                                                                                <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
-                                                                                            </a>
-                                                                                            <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
-                                                                                                <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
-                                                                                            </a>
-                                                                                        </div>
-        }
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        `;
+                            <div class="col-md-6 col-lg-6 col-xl-4 product-item" data-category="${product.categoryId}" data-brand="${product.brand}" data-price="${product.price}">
+                                <div class="rounded position-relative fruite-item">
+                                    <a href="/products/details/${product.id}">
+                                        <div class="fruite-img" style="height:65.5%">
+                                            <img src="${product.image}" class="img-fluid w-100 h-100 rounded-top" alt="">
+                                        </div>
+                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">${product.brand}</div>
+                                        <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                            <h4>${product.name}</h4>
+                                            <p>${product.description}</p>
+                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                <p class="text-dark fs-5 fw-bold mb-0">$${product.price}</p>
+                                                    @if (!User.IsInRole("Admin"))
+                                                    {
+                                                        <a class="btn-add-to-cart btn border border-secondary rounded-pill px-3 text-primary" href="#" data-product-id="${product.id}"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                    }
+                                                    else if (User.IsInRole("Admin"))
+                                                    {
+                                                        <div>
+                                                            <a id="delete-icon-${product.id}" asp-controller="Products" asp-action="DeleteProduct" asp-route-id="${product.id}">
+                                                                <i class="bi bi-trash border rounded py-1 px-2 text-danger"></i>
+                                                            </a>
+                                                            <a asp-controller="Products" asp-action="EditProduct" asp-route-id="${product.id}">
+                                                                <i class="bi bi-pencil-fill border rounded py-1 px-2"></i>
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
                         productContainer.innerHTML += productHtml;
                     });
                 })
