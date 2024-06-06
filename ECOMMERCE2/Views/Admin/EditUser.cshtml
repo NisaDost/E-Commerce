@@ -25,7 +25,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">Usernames</th>
+                    <th scope="col">Username</th>
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Role</th>
@@ -36,9 +36,15 @@
                 @foreach (var item in Model)
                 {
                     <tr id="user-row-@item.UserId">
-                        <td class="col">@item.Username</td>
-                        <td class="col">@item.Name</td>
-                        <td class="col">@item.Surname</td>
+                        <td class="col">
+                            <input type="text" class="form-control username-input" data-userid="@item.UserId" value="@item.Username" />
+                        </td>
+                        <td class="col">
+                            <input type="text" class="form-control name-input" data-userid="@item.UserId" value="@item.Name" />
+                        </td>
+                        <td class="col">
+                            <input type="text" class="form-control surname-input" data-userid="@item.UserId" value="@item.Surname" />
+                        </td>
                         <td class="col">
                             @if (item.Role == "Admin")
                             {
@@ -47,13 +53,13 @@
                             else
                             {
                                 <select class="form-select role-select" data-userid="@item.UserId">
-                                    <option value="User">User</option>
-                                    <option value="Admin">Admin</option>
+                                    <option value="User" selected=@(item.Role == "User" ? true : false)>User</option>
+                                    <option value="Admin" selected=@(item.Role == "Admin" ? true : false)>Admin</option>
                                 </select>
                             }
                         </td>
                         <td class="actions">
-                            <a class="btn btn-danger float-end delete-button" asp-route-userid="@item.UserId" asp-controller="Admin" asp-action="DeleteUser">
+                            <a class="btn btn-danger float-end delete-button" data-userid="@item.UserId" asp-controller="Admin" asp-action="DeleteUser">
                                 <i class="fas fa-trash"></i> Delete
                             </a>
                         </td>
@@ -82,14 +88,23 @@
 
         document.getElementById('save-button').addEventListener('click', async function () {
             let changes = [];
-            document.querySelectorAll('.role-select').forEach(select => {
+            document.querySelectorAll('tr[id^="user-row-"]').forEach(row => {
+                const userId = row.id.split('-').pop();
+                const username = row.querySelector('.username-input').value;
+                const name = row.querySelector('.name-input').value;
+                const surname = row.querySelector('.surname-input').value;
+                const role = row.querySelector('.role-select') ? row.querySelector('.role-select').value : 'Admin';
+
                 changes.push({
-                    userId: select.dataset.userid,
-                    role: select.value
+                    userId: parseInt(userId),
+                    username: username,
+                    name: name,
+                    surname: surname,
+                    role: role
                 });
             });
 
-            await fetch('@Url.Action("SaveUserRoles", "Admin")', {
+            await fetch('@Url.Action("UpdateUserDetails", "Admin")', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -101,10 +116,10 @@
         });
 
         document.querySelectorAll('.delete-button').forEach(button => {
-            button.addEventListener('click', async function () {
-                let userId = this.dataset.userid;
+            button.addEventListener('click', function () {
+                let userId = this.getAttribute('asp-route-userid');
                 if (confirm('Are you sure you want to delete this user?')) {
-
+                    window.location.href = '@Url.Action("DeleteUser", "Admin")' + '?userId=' + userId;
                 }
             });
         });

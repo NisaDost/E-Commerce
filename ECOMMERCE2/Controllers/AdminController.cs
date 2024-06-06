@@ -126,7 +126,7 @@ namespace ECOMMERCE2.Controllers
         public async Task<IActionResult> DeleteUser(int userId)
         {
             var user = await _context.Users.FindAsync(userId);
-            if (user != null) 
+            if (user != null)
             {
                 user.IsDeleted = true;
                 _context.Users.Update(user);
@@ -134,6 +134,36 @@ namespace ECOMMERCE2.Controllers
             }
             return RedirectToAction("EditUser");
         }
+        [HttpPost]
+        public async Task<IActionResult> UpdateUserDetails([FromBody] List<UserDetailUpdateModel> updates)
+        {
+            foreach (var update in updates)
+            {
+                Console.WriteLine($"Updating User ID: {update.UserId}, Username: {update.Username}, Name: {update.Name}, Surname: {update.Surname}, Role: {update.Role}"); // Add this line
+                var user = await _context.Users.FindAsync(update.UserId);
+                if (user != null)
+                {
+                    user.Username = update.Username;
+                    user.Name = update.Name;
+                    user.Surname = update.Surname;
+                    if (user.Role != "Admin") // Only update role if the user is not an admin
+                    {
+                        user.Role = update.Role;
+                    }
+                }
+            }
+
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+    }
+    public class UserDetailUpdateModel
+    {
+        public int UserId { get; set; }
+        public string Username { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Role { get; set; }
     }
 
     public class UserRoleUpdateModel
@@ -141,4 +171,5 @@ namespace ECOMMERCE2.Controllers
         public int UserId { get; set; }
         public string Role { get; set; }
     }
+
 }
