@@ -27,14 +27,15 @@
                         <div class="form-group">
                             <div>
                                 <label for="productcategory" class="text-secondary">Product Category:</label>
-                                <select class="form-select" asp-for="CategoryId">
-                                    <option value="none">Select</option>
+                                <select required class="form-select" asp-for="CategoryId" id="productcategory">
+                                    <option value="">Select</option>
                                     @foreach (var item in categories)
                                     {
-                                        <option value="@item.Id" required>@item.Name</option>
+                                        <option value="@item.Id">@item.Name</option>
                                     }
                                 </select>
-                                <div class="invalid-feedback">Product ID Can't Be Empty</div>
+                                <div class="invalid-feedback">Please select a valid category.</div>
+
                             </div>
                             <div>
                                 <a>Don't see your category? Add a new one <a asp-controller="Admin" asp-action="Index">here</a></a>
@@ -100,3 +101,18 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            var categorySelect = document.getElementById('productcategory');
+            if (categorySelect.value === "") {
+                categorySelect.classList.add('is-invalid');
+                e.preventDefault(); // Prevent form submission
+            } else {
+                categorySelect.classList.remove('is-invalid');
+            }
+        });
+    </script>
+
+}

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ECOMMERCE2.Controllers
 {
@@ -61,19 +62,23 @@ namespace ECOMMERCE2.Controllers
 
             return View(orderViewModels);
         }
+
         [HttpPost]
-        public async Task<IActionResult> Delete([FromBody] int id)
+        public async Task<IActionResult> Delete([FromBody] OrderDeleteRequest request)
         {
             if (!User.IsInRole("Admin"))
             {
                 return Unauthorized();
             }
 
+            // Log the received data for debugging
+            Console.WriteLine("Received Order ID: " + request.Id);
+
             var order = await _context.Orders
                 .Include(o => o.OrderDetails)
                 .ThenInclude(od => od.Product)
                 .Include(o => o.BillingAddresses)
-                .FirstOrDefaultAsync(o => o.OrderId == id);
+                .FirstOrDefaultAsync(o => o.OrderId == request.Id);
 
             if (order == null)
             {
@@ -99,6 +104,10 @@ namespace ECOMMERCE2.Controllers
                 return Json(new { success = false, message = "Error deleting order: " + ex.Message });
             }
         }
+        public class OrderDeleteRequest
+        {
+            public int Id { get; set; }
+        }
 
         public IActionResult UserOrderDetail()
         {
@@ -117,18 +126,16 @@ namespace ECOMMERCE2.Controllers
 
             return View(orders);
         }
+
         [HttpGet]
         public IActionResult InsideOrderDetails(int id)
         {
-            var userId = UserHelper.GetUserId(User);
-
             var order = _context.Orders
                 .Include(o => o.User)
                 .Include(o => o.BillingAddresses)
                 .Include(o => o.OrderDetails)
                 .ThenInclude(od => od.Product)
-                .Where(o => o.OrderId == id && o.UserId == userId)
-                .FirstOrDefault();
+                .FirstOrDefault(o => o.OrderId == id);
 
             if (order == null)
             {
@@ -161,6 +168,5 @@ namespace ECOMMERCE2.Controllers
 
             return View(orderDetailViewModel);
         }
-
     }
 }

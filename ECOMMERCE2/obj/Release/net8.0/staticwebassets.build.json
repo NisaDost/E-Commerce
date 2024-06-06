@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/lmeo3hpDouQsJTnxQz5FJxnrXp1Li+ly6C4ig9yXtE=",
+  "Hash": "yFKe+gv5gkHSJ+/J9XFLNmpbFHPZU9niNyzHYJQVsm0=",
   "Source": "ECOMMERCE2",
   "BasePath": "_content/ECOMMERCE2",
   "Mode": "Default",
@@ -91,25 +91,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
-    },
-    {
-      "Identity": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\favicon.ico",
-      "SourceId": "ECOMMERCE2",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\",
-      "BasePath": "_content/ECOMMERCE2",
-      "RelativePath": "favicon.ico",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
       "Identity": "C:\\Users\\Yigit\\Desktop\\Maltepe\\6. Donem\\E-commerce\\E-Commerce\\ECOMMERCE2\\wwwroot\\favicon.png",

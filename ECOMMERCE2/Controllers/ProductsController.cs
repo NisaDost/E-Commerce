@@ -131,6 +131,20 @@ namespace ECOMMERCE2.Controllers
         [HttpPost]
         public async Task<IActionResult> AddProductAsync(ProductAddViewModel product)
         {
+            if (product.CategoryId == 0)
+            {
+                ModelState.AddModelError("CategoryId", "Please select a valid category.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                var categories = _context.Categories.ToList();
+                var brands = _context.Products.ToList();
+                ViewBag.Categories = categories;
+                ViewBag.Brands = brands;
+                return View(product);
+            }
+
             var fileName = Path.GetFileName(product.Image.FileName);
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", fileName);
             using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -156,7 +170,6 @@ namespace ECOMMERCE2.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
-
 
         public IActionResult EditProduct(int id)
         {
@@ -195,9 +208,14 @@ namespace ECOMMERCE2.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+
             var category = _context.Categories.Find(productViewModel.CategoryId);
             var product = _context.Products.Find(productViewModel.Id);
-            var brands = _context.Products.ToList();
+
+            if (product == null)
+            {
+                return NotFound();
+            }
 
             product.Name = productViewModel.Name;
             product.Brand = productViewModel.Brand;
@@ -223,6 +241,7 @@ namespace ECOMMERCE2.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         public IActionResult DeleteProduct(int id)
         {

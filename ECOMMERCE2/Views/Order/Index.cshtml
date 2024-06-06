@@ -25,6 +25,7 @@
                                 <div class="block-content-inner">
                                     <div class="table-responsive">
                                         <form method="get" role="form">
+                                            @Html.AntiForgeryToken()
                                             <table class="table table-condensed table-striped table-bordered table-hover">
                                                 <thead>
                                                     <tr>
@@ -67,31 +68,18 @@
                                                     </tr>
                                                     @foreach (var item in Model)
                                                     {
-                                                        <tr data-order-id="@item.Order.,OrderId">
+                                                        <tr data-order-id="@item.Order.OrderId">
                                                             <td>@item.Order.User.Name @item.Order.User.Surname</td>
                                                             <td class="text-right">@item.TotalPrice</td>
                                                             <td>@item.Order.OrderDate</td>
                                                             <td class="d-flex align-items-center justify-content-around">
-                                                                <a class="btn btn-primary btn-sm" role="button"><i class="fa fa-eye"></i> View</a>
-                                                                <a class="btn btn-danger float-end delete-button"><i class="fas fa-trash"></i> Delete</a>
+                                                                <a asp-controller="Order" asp-action="InsideOrderDetails" asp-route-id="@item.Order.OrderId" class="btn btn-primary btn-sm" role="button"><i class="fa fa-eye"></i> View</a>
+                                                                @*<button type="button" class="btn btn-danger btn-sm delete-button"><i class="fas fa-trash"></i> Delete</button>*@
                                                             </td>
                                                         </tr>
                                                     }
                                                 </tbody>
                                             </table>
-
-                                            <div class="col-12">
-                                                <div class="pagination d-flex justify-content-center mt-5">
-                                                    <a href="#" class="rounded">&laquo;</a>
-                                                    <a href="#" class="active rounded">1</a>
-                                                    <a href="#" class="rounded">2</a>
-                                                    <a href="#" class="rounded">3</a>
-                                                    <a href="#" class="rounded">4</a>
-                                                    <a href="#" class="rounded">5</a>
-                                                    <a href="#" class="rounded">6</a>
-                                                    <a href="#" class="rounded">&raquo;</a>
-                                                </div>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -104,7 +92,6 @@
     </div>
 </div>
 
-
 @section Scripts {
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -114,13 +101,16 @@
                         var row = this.closest('tr');
                         var orderId = row.getAttribute('data-order-id');
 
+                        // Retrieve the anti-forgery token value
+                        var antiForgeryToken = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
                         fetch('/Order/Delete', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'RequestVerificationToken': '@Html.AntiForgeryToken()'
+                                'RequestVerificationToken': antiForgeryToken
                             },
-                            body: JSON.stringify(orderId)
+                            body: JSON.stringify({ id: parseInt(orderId) })
                         })
                             .then(response => response.json())
                             .then(data => {

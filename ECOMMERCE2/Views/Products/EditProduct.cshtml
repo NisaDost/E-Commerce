@@ -27,7 +27,6 @@
                         <div class="form-group">
                             <label for="productcategory" class="text-secondary">Product Category:</label>
                             <select class="form-select" asp-for="CategoryId">
-                                <option value="none">Select</option>
                                 @foreach (var item in categories)
                                 {
                                     <option value="@item.Id" required>@item.Name</option>
@@ -48,15 +47,15 @@
                             <div class="d-flex justify-content-between align-items-center form-group col-7">
                                 <div class="col-7">
                                     <label for="productquantity" class="text-secondary">Product Quantity:</label>
-                                    <input type="number" class="form-control" id="productquantity" asp-for="StockQuantity"
-                                           placeholder="Enter Product Quantity" required>
+                                    <input type="number" class="form-control" id="productquantity" asp-for="StockQuantity" placeholder="Enter Product Quantity" required>
                                     <div class="invalid-feedback">Product Quantity Can't Be Empty</div>
                                 </div>
                                 <div class="col-4 form-check text-start mt-4">
-                                    <input type="checkbox" asp-for="InStock" class="form-check-input bg-primary border-0" id="InStock" name="InStock" value="Stock">
-                                    <label class="form-check-label" for="InStock">In Sale</label>
+                                    <input type="checkbox" asp-for="InStock" class="form-check-input bg-primary border-0" id="InStock" value="true" />
+                                    <label class="form-check-label" for="InStock">In Stock</label>
                                 </div>
                             </div>
+
                         </div>
                         <br />
                         <p class="text-secondary">Product Image:</p>
@@ -75,7 +74,7 @@
                         <div class="form-group">
                             <label for="productbrand" class="text-secondary">Product Brand:</label>
                             <input type="text" class="form-control" id="productbrand" asp-for="Brand"
-                                   placeholder="Enter Product Brand" required>
+                                   placeholder="Enter Product Brand" required> 
                             <div class="invalid-feedback">Product Brand Can't Be Empty</div>
                         </div>
                         <br />
@@ -87,7 +86,6 @@
                         </div>
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-secondary text-light mt-5" type="submit">
-                                @* işlevsiz *@
                                 Save Changes
                             </button>
                         </div>
