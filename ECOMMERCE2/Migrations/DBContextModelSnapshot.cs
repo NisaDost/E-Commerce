@@ -50,6 +50,9 @@ namespace ECOMMERCE2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsAddressSaved")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -98,6 +101,9 @@ namespace ECOMMERCE2.Migrations
 
                     b.Property<int>("ExpiryDateYear")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsCardSaved")
+                        .HasColumnType("bit");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");

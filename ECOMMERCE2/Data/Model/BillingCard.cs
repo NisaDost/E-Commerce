@@ -24,5 +24,6 @@ namespace ECOMMERCE2.Data.Model
         public int OrderId { get; set; }
         [Required]
         public Order Order { get; set; }
+        public bool IsCardSaved { get; set; }
     }
 }

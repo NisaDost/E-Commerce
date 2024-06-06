@@ -14,5 +14,6 @@
         public User User { get; set; }
         public int OrderId { get; set; }
         public Order Order { get; set; }
+        public bool IsAddressSaved { get; set; }
     }
 }
