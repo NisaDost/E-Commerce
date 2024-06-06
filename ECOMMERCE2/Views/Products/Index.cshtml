@@ -33,8 +33,11 @@
                         <div class="row g-4">
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <h4>Categories</h4>
-                                    <div class="fruite-categorie text-primary">
+                                    <div class="d-flex justify-content-between">
+                                        <h4>Categories</h4>
+                                        <a style="cursor:pointer" id="reverse-categories-button"><h4><i class="bi bi-arrow-down-up"></i></h4></a>
+                                    </div>
+                                    <div class="fruite-categorie text-primary" id="category-container">
                                         <div class="mb-2">
                                             <input type="checkbox" class="category-checkbox" id="category-all" value="all" checked>
                                             <label for="category-all"><i class="fas fa-bolt"></i> All</label>
@@ -159,8 +162,20 @@
 </div>
 <!-- Product Shop End-->
 @section Scripts
-    {
+{
     <script>
+        // Function to reverse the order of categories
+        function reverseCategories() {
+            const container = document.getElementById('category-container');
+            const categories = Array.from(container.querySelectorAll('div.mb-2.text-primary'));
+            categories.reverse().forEach(category => container.appendChild(category));
+        }
+
+        // Attach the click event to the reverse button
+        document.getElementById('reverse-categories-button').addEventListener('click', function () {
+            reverseCategories();
+        });
+
         document.getElementById('search-input').addEventListener('input', function () {
             var searchTerm = this.value;
 
