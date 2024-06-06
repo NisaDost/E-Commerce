@@ -129,8 +129,9 @@ namespace ECOMMERCE2.Controllers
         }
 
         [HttpGet]
-        public IActionResult InsideOrderDetails(int id)
+        public IActionResult InsideOrderDetails(int id, bool showPartial = false)
         {
+            ViewBag.ShowPartial = showPartial;
             var order = _context.Orders
                 .Include(o => o.User)
                 .Include(o => o.BillingAddresses)

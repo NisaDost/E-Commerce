@@ -3,7 +3,10 @@
     ViewBag.Title = "Order Details";
 }
 <partial name="_SinglePageHeaderPartial" />
-
+@if (ViewBag.ShowPartial)
+{
+    <partial name="_OrderSuccessPartialView" />
+}
 <div id="wrapper" class="wrapper-fluid banners-effect-5">
     <div class="main-container container mt-5">
         <div class="row">

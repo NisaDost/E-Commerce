@@ -129,7 +129,7 @@ namespace ECOMMERCE2.Controllers
             }
 
             _context.SaveChanges();
-            return RedirectToAction("InsideOrderDetails", "Order", new {id = order.OrderId});
+            return RedirectToAction("InsideOrderDetails", "Order", new {id = order.OrderId, showPartial = true});
         }
 
         [HttpGet]
@@ -156,7 +156,9 @@ namespace ECOMMERCE2.Controllers
                     });
                 }
                 else
+                {
                     return NotFound();
+                }
             }
         }
 
@@ -239,6 +241,5 @@ namespace ECOMMERCE2.Controllers
 
             return Json(new { success = true });
         }
-
     }
 }
