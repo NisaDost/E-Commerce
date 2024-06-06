@@ -52,7 +52,7 @@
                 </div>
                 <!-- Category pills start-->
                 <div class="col-lg-8 text-end">
-                    <ul class="nav nav-pills d-inline-flex text-center">
+                    <ul class="nav nav-pills d-inline-flex text-center flex-nowrap">
                         <li class="nav-item">
                             <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" data-bs-target="#tab-all">
                                 <span class="text-dark" style="width: 80px;">All</span>
@@ -61,7 +61,7 @@
                         @foreach (var item in categories)
                         {
                             <li class="nav-item">
-                                <a class="d-flex m-2 py-2 bg-light rounded-pill btn" data-bs-toggle="pill"> <!--ÇALIŞMIYOR-->
+                                <a class="d-flex m-2 py-2 bg-light rounded-pill btn">
                                     <span class="text-dark" style="width: 110px;">@item.Name</span>
                                 </a>
                             </li>
