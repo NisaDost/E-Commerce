@@ -123,7 +123,7 @@ namespace ECOMMERCE2.Controllers
                     TotalPrice = o.OrderDetails.Sum(od => od.Product.Price * od.Quantity)
                 })
                 .ToList();
-
+            orders.Reverse();
             return View(orders);
         }
 

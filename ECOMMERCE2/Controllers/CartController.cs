@@ -142,8 +142,8 @@ namespace ECOMMERCE2.Controllers
             }
             else
             {
-                //if (billingAddress.IsAddressSaved)
-                //{
+                if (billingAddress.IsAddressSaved)
+                {
                     return Json(new
                     {
                         firstName = billingAddress.FirstName,
@@ -154,9 +154,9 @@ namespace ECOMMERCE2.Controllers
                         city = billingAddress.City,
                         address = billingAddress.Address
                     });
-                //}
-                //else
-                //    return NotFound();
+                }
+                else
+                    return NotFound();
             }
         }
 
