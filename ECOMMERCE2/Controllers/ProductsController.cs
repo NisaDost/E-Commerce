@@ -19,37 +19,75 @@ namespace ECOMMERCE2.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, List<int> selectedCategories = null, List<string> selectedBrands = null, string orderBy = "asc")
         {
             var categories = _context.Categories.ToList();
             var brands = _context.Products.Select(p => p.Brand).Distinct().ToList();
-            var products = _context.Products.ToList();
-
-            ViewBag.Categories = categories;
+            int totalProducts = _context.Products.Count();
             ViewBag.Brands = brands;
-            ViewBag.OrderViewModel = new OrderViewModel();
+            ViewBag.CurrentPage = page;
+            ViewBag.Categories = categories;
+            ViewBag.TotalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+
+            var products = new List<Product>();
+            IQueryable<Product> productsQueryable = _context.Products;
+            if (!User.IsInRole("Admin"))
+            {
+                productsQueryable = productsQueryable.Where(p => !p.IsDeleted && p.InStock && p.StockQuantity > 0);
+            }
+
+            if (selectedCategories != null && selectedCategories.Count > 0)
+            {
+                productsQueryable = productsQueryable.Where(p => selectedCategories.Contains(p.CategoryId));
+            }
+
+            if (selectedBrands != null && selectedBrands.Count > 0)
+            {
+                productsQueryable = productsQueryable.Where(p => selectedBrands.Contains(p.Brand));
+            }
+
+            if (orderBy == "asc")
+            {
+                productsQueryable = productsQueryable.OrderBy(p => p.Price);
+            }
+            else if (orderBy == "desc")
+            {
+                productsQueryable = productsQueryable.OrderByDescending(p => p.Price);
+            }
+
+            products = productsQueryable.Skip((page - 1) * PageSize).Take(PageSize).ToList();
 
             return View(products);
         }
 
-        [HttpGet]
-        public JsonResult SearchProducts(string search)
+        public IActionResult SearchProducts(string search = null)
         {
-            var products = _context.Products
-                .Where(p => p.Name.Contains(search) || string.IsNullOrEmpty(search))
-                .Select(p => new
-                {
-                    p.Id,
-                    p.Name,
-                    p.Description,
-                    p.Price,
-                    p.CategoryId,
-                    p.Brand,
-                    Image = p.Picture
-                })
-                .ToList();
+            var products = _context.Products.ToList();
+            var searchedProducts = _context.Products.Where(p => !p.IsDeleted && p.Name.Contains(search)).ToList();
 
-            return Json(products);
+            if (string.IsNullOrEmpty(search))
+            {
+                return View(products);
+            }
+
+            // Return JSON if the request is AJAX
+            if (Request.Headers.XRequestedWith == "XMLHttpRequest" && searchedProducts != null)
+            {
+                var searchedProductList = searchedProducts.Select(p => new ProductViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Brand = p.Brand,
+                    Description = p.Description,
+                    Price = p.Price,
+                    StockQuantity = p.StockQuantity,
+                    InStock = p.InStock,
+                    CategoryId = p.CategoryId,
+                    Image = p.Picture
+                }).ToList();
+                return Json(searchedProductList);
+            }
+            return View(products);
         }
 
         public IActionResult Details(int id)
