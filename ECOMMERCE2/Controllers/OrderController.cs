@@ -121,7 +121,7 @@ namespace ECOMMERCE2.Controllers
                 {
                     OrderId = o.OrderId,
                     OrderDate = o.OrderDate,
-                    TotalPrice = o.OrderDetails.Sum(od => od.Product.Price * od.Quantity)
+                    TotalPrice = o.OrderDetails.Sum(od => od.Product.Price * od.Quantity + 15)
                 })
                 .ToList();
             orders.Reverse();
